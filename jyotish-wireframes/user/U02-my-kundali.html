@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Kundali — JyotishAI</title>
+  <link rel="stylesheet" href="../assets/style.css"/>
+  <style>
+    body { background: var(--cream); }
+    .chart-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
+    .chart-tabs { display: flex; gap: 8px; }
+    .ctab { padding: 8px 20px; border-radius: var(--radius); font-family: var(--font-display); font-size: 13px; font-weight: 700; cursor: pointer; border: 1.5px solid var(--cream-3); color: var(--muted); background: var(--white); transition: var(--transition); }
+    .ctab.active { background: var(--saffron); color: var(--white); border-color: var(--saffron); }
+    .kundali-layout { display: grid; grid-template-columns: 1fr 360px; gap: 28px; }
+    .chart-main { background: var(--white); border-radius: var(--radius-lg); padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+    .north-indian-chart {
+      display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(4, 80px);
+      border: 2px solid var(--cream-3); border-radius: var(--radius); overflow: hidden; margin-bottom: 24px;
+      max-width: 500px; margin: 0 auto 28px;
+    }
+    .nc { border: 1px solid var(--cream-3); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 4px; background: var(--cream); }
+    .nc.blank { background: var(--white); }
+    .nc.center { background: linear-gradient(135deg, rgba(232,80,10,0.06), rgba(244,169,27,0.04)); grid-column: 2/5; grid-row: 2/4; display: flex; align-items: center; justify-content: center; }
+    .nc .house-num { font-size: 9px; color: var(--muted); font-family: var(--font-display); font-weight: 700; }
+    .nc .planets { font-size: 11px; font-weight: 700; color: var(--saffron); font-family: var(--font-display); text-align: center; }
+    .nc .rashi { font-size: 9px; color: var(--muted-light); }
+    .nc.asc { background: rgba(232,80,10,0.06); }
+    .center-label { text-align: center; }
+    .center-label .name { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .center-label .dob { font-size: 12px; color: var(--muted); }
+    .center-label .om { font-family: var(--font-hindi); font-size: 28px; color: var(--saffron); }
+    .planet-table-wrap { overflow-x: auto; }
+    .planet-detail-table { width: 100%; }
+    .planet-detail-table th { background: var(--dark); color: var(--gold); font-family: var(--font-display); font-size: 11px; font-weight: 700; padding: 12px 16px; text-align: left; }
+    .planet-detail-table td { padding: 12px 16px; font-size: 13px; border-bottom: 1px solid var(--cream-3); }
+    .planet-detail-table tr:last-child td { border: none; }
+    .sidebar-panels { display: flex; flex-direction: column; gap: 20px; }
+    .side-panel { background: var(--white); border-radius: var(--radius-lg); padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+    .sp-title { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .dasha-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--cream-3); }
+    .dasha-item:last-child { border: none; }
+    .dasha-planet { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--dark); width: 80px; }
+    .dasha-bar { flex: 1; height: 6px; background: var(--cream-3); border-radius: 999px; overflow: hidden; }
+    .dasha-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--saffron), var(--gold)); }
+    .dasha-years { font-size: 11px; color: var(--muted); width: 80px; text-align: right; }
+    .dasha-item.active .dasha-planet { color: var(--saffron); }
+    .ayanamsha-info { background: var(--cream); border-radius: var(--radius); padding: 14px; font-size: 13px; color: var(--muted); }
+    .action-row { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+<div class="app-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><a href="../public/01-home.html">Jyotish<span>AI</span></a><div class="plan-badge"><span class="badge badge-gold">Basic Plan</span></div></div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Main</div>
+      <a href="U01-dashboard.html" class="sidebar-link"><span class="icon">🏠</span>Dashboard</a>
+      <a href="U02-my-kundali.html" class="sidebar-link active"><span class="icon">📜</span>My Kundali</a>
+      <a href="U03-ai-reader.html" class="sidebar-link"><span class="icon">🤖</span>AI Kundali Reader</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Reports</div>
+      <a href="U04-general-report.html" class="sidebar-link"><span class="icon">📊</span>General Report</a>
+      <a href="U05-career-report.html" class="sidebar-link"><span class="icon">💼</span>Career Analysis</a>
+      <a href="U06-love-report.html" class="sidebar-link"><span class="icon">❤️</span>Love Life Report</a>
+      <a href="U07-full-life-report.html" class="sidebar-link"><span class="icon">📖</span>Full Life Report</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Services</div>
+      <a href="U08-matchmaking.html" class="sidebar-link"><span class="icon">💑</span>Matchmaking</a>
+      <a href="U09-baby-names.html" class="sidebar-link"><span class="icon">👶</span>Baby Names</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Account</div>
+      <a href="U10-my-reports.html" class="sidebar-link"><span class="icon">🗂️</span>My Reports</a>
+      <a href="U11-billing.html" class="sidebar-link"><span class="icon">💳</span>Billing</a>
+      <a href="U12-profile.html" class="sidebar-link"><span class="icon">👤</span>Profile</a>
+    </div>
+    <div class="sidebar-footer">
+      <div style="display:flex;align-items:center;gap:10px;padding:0 4px">
+        <div class="avatar">RS</div>
+        <div><div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--cream)">Rahul Sharma</div><div style="font-size:11px;color:var(--muted)">Basic Plan</div></div>
+      </div>
+    </div>
+  </aside>
+  <div class="main-content">
+    <div class="top-bar">
+      <div class="top-bar-title">📜 My Kundali</div>
+      <div class="top-bar-actions">
+        <button class="btn btn-outline btn-sm">+ Add New Person</button>
+        <div class="avatar">RS</div>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="chart-header">
+        <div>
+          <h2 style="font-family:var(--font-display);font-size:22px;margin-bottom:4px">Rahul Sharma — राहुल शर्मा</h2>
+          <p style="font-size:13px;color:var(--muted)">15 August 1992 • 06:30 AM • Mumbai, Maharashtra | Lahiri Ayanamsha</p>
+        </div>
+        <div class="chart-tabs">
+          <div class="ctab active">D1 — Birth Chart</div>
+          <div class="ctab">D9 — Navamsa</div>
+          <div class="ctab">D10 — Dashamsa</div>
+          <div class="ctab">Transit</div>
+        </div>
+      </div>
+
+      <div class="kundali-layout">
+        <div class="chart-main">
+          <div class="north-indian-chart">
+            <div class="nc blank"></div><div class="nc"><div class="house-num">H12</div><div class="planets">Su Me</div><div class="rashi">Pisces</div></div><div class="nc asc"><div class="house-num">H1 ASC</div><div class="planets">♈</div><div class="rashi">Aries</div></div><div class="nc"><div class="house-num">H2</div><div class="planets">Ve</div><div class="rashi">Taurus</div></div><div class="nc blank"></div>
+            <div class="nc"><div class="house-num">H11</div><div class="planets">Sa</div><div class="rashi">Aquarius</div></div>
+            <div class="nc center"><div class="center-label"><div class="om">ॐ</div><div class="name">Rahul Sharma</div><div class="dob">15 Aug 1992 • 06:30 AM</div><div style="font-size:11px;color:var(--muted);margin-top:4px">North Indian Chart</div></div></div>
+            <div class="nc"><div class="house-num">H3</div><div class="planets">Ju</div><div class="rashi">Gemini</div></div>
+            <div class="nc blank"></div><div class="nc"><div class="house-num">H10</div><div class="planets">Mo</div><div class="rashi">Capricorn</div></div><div class="nc"><div class="house-num">H9</div><div class="planets">Ra</div><div class="rashi">Sagittarius</div></div><div class="nc"><div class="house-num">H6</div><div class="planets">Ma Ke</div><div class="rashi">Virgo</div></div><div class="nc blank"></div>
+          </div>
+
+          <div class="planet-table-wrap">
+            <table class="planet-detail-table">
+              <thead><tr><th>Planet</th><th>Sign (Rashi)</th><th>House</th><th>Degree</th><th>Nakshatra</th><th>Pada</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>☀️ <strong>Sun</strong> (Surya)</td><td>Pisces — मीन</td><td>12th</td><td>29°52'</td><td>Revati</td><td>4</td><td><span class="badge badge-green">Strong</span></td></tr>
+                <tr><td>🌙 <strong>Moon</strong> (Chandra)</td><td>Capricorn — मकर</td><td>10th</td><td>18°02'</td><td>Shravana</td><td>2</td><td><span class="badge badge-gold">Good</span></td></tr>
+                <tr><td>♂️ <strong>Mars</strong> (Mangal)</td><td>Virgo — कन्या</td><td>6th</td><td>12°44'</td><td>Hasta</td><td>1</td><td><span class="badge badge-saffron">Neutral</span></td></tr>
+                <tr><td>☿ <strong>Mercury</strong> (Budh)</td><td>Pisces — मीन</td><td>12th</td><td>3°12'</td><td>Uttara Bhadra</td><td>3</td><td><span class="badge badge-red">Debilitated</span></td></tr>
+                <tr><td>♀️ <strong>Venus</strong> (Shukra)</td><td>Aries — मेष</td><td>1st</td><td>22°10'</td><td>Bharani</td><td>3</td><td><span class="badge badge-green">Strong</span></td></tr>
+                <tr><td>♃ <strong>Jupiter</strong> (Guru)</td><td>Virgo — कन्या</td><td>6th</td><td>8°55'</td><td>Uttara Phalguni</td><td>4</td><td><span class="badge badge-gold">Good</span></td></tr>
+                <tr><td>♄ <strong>Saturn</strong> (Shani)</td><td>Aquarius — कुम्भ</td><td>11th</td><td>20°30'</td><td>Purva Bhadra</td><td>4</td><td><span class="badge badge-green">Own Sign</span></td></tr>
+                <tr><td>☊ <strong>Rahu</strong></td><td>Sagittarius — धनु</td><td>9th</td><td>14°22'</td><td>Purva Ashadha</td><td>2</td><td><span class="badge badge-saffron">—</span></td></tr>
+                <tr><td>☋ <strong>Ketu</strong></td><td>Gemini — मिथुन</td><td>3rd</td><td>14°22'</td><td>Ardra</td><td>2</td><td><span class="badge badge-saffron">—</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="action-row">
+            <button class="btn btn-primary">🤖 Ask AI Reader About This Chart</button>
+            <a href="U04-general-report.html" class="btn btn-outline">📊 Generate Report</a>
+            <button class="btn btn-outline">📥 Download Chart PDF</button>
+            <button class="btn btn-outline">🔗 Share Chart</button>
+          </div>
+        </div>
+
+        <div class="sidebar-panels">
+          <div class="side-panel">
+            <div class="sp-title">⚡ Key Chart Facts</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:10px;color:var(--muted);font-family:var(--font-display);font-weight:700;letter-spacing:0.5px">LAGNA</div><div style="font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--dark);margin-top:2px">♈ Aries</div></div>
+              <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:10px;color:var(--muted);font-family:var(--font-display);font-weight:700;letter-spacing:0.5px">MOON SIGN</div><div style="font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--dark);margin-top:2px">♑ Capricorn</div></div>
+              <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:10px;color:var(--muted);font-family:var(--font-display);font-weight:700;letter-spacing:0.5px">NAKSHATRA</div><div style="font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--dark);margin-top:2px">Shravana</div></div>
+              <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:10px;color:var(--muted);font-family:var(--font-display);font-weight:700;letter-spacing:0.5px">LAGNA LORD</div><div style="font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--dark);margin-top:2px">♂️ Mars</div></div>
+            </div>
+            <div style="margin-top:12px;padding:14px;background:rgba(232,80,10,0.06);border-radius:var(--radius);border-left:3px solid var(--saffron)">
+              <div style="font-family:var(--font-display);font-size:11px;font-weight:700;color:var(--saffron);margin-bottom:4px">YOGA DETECTED</div>
+              <div style="font-size:13px;color:var(--dark)">Neecha Bhanga Raja Yoga — powerful success after overcoming obstacles</div>
+            </div>
+          </div>
+
+          <div class="side-panel">
+            <div class="sp-title">⏱️ Vimshottari Dasha</div>
+            <div class="dasha-item active">
+              <div class="dasha-planet">♄ Saturn</div>
+              <div class="dasha-bar"><div class="dasha-fill" style="width:55%"></div></div>
+              <div class="dasha-years" style="color:var(--saffron)">2016–2035</div>
+            </div>
+            <div class="dasha-item"><div class="dasha-planet">☿ Mercury</div><div class="dasha-bar"><div class="dasha-fill" style="width:0%"></div></div><div class="dasha-years">2035–2052</div></div>
+            <div class="dasha-item"><div class="dasha-planet">☋ Ketu</div><div class="dasha-bar"><div class="dasha-fill" style="width:0%"></div></div><div class="dasha-years">2052–2059</div></div>
+            <div style="margin-top:12px;font-size:12px;color:var(--muted)">Current Antardasha: <strong style="color:var(--dark)">Saturn–Venus</strong> (ends Mar 2027)</div>
+          </div>
+
+          <div class="side-panel">
+            <div class="sp-title">🔔 Important Transits</div>
+            <div style="font-size:13px;color:var(--dark);padding:10px 0;border-bottom:1px solid var(--cream-3)"><strong>Jupiter</strong> enters Gemini → Favorable for siblings and communication (May 2026)</div>
+            <div style="font-size:13px;color:var(--dark);padding:10px 0;border-bottom:1px solid var(--cream-3)"><strong>Saturn</strong> transits Aries → Big career period begins (2027)</div>
+            <div style="font-size:13px;color:var(--dark);padding:10px 0"><strong>Rahu</strong> in Pisces → Foreign connections activated (Oct 2026)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><title>Contact — JyotishAI</title><link rel="stylesheet" href="../assets/style.css"/>
+<style>
+body { background: var(--cream); }
+.nav-bar { background:var(--dark);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:70px;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(244,169,27,.1) }
+.contact-hero { background: linear-gradient(135deg, var(--dark), var(--dark-2)); padding: 60px 40px; text-align: center; }
+.contact-layout { max-width: 1000px; margin: 0 auto; padding: 60px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.contact-info-item { display: flex; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--cream-3); }
+.cii-icon { font-size: 28px; flex-shrink: 0; }
+.contact-form { background: var(--white); border-radius: var(--radius-lg); padding: 36px; box-shadow: 0 4px 20px rgba(0,0,0,.06); }
+</style>
+</head>
+<body>
+<nav class="nav-bar">
+  <a href="01-home.html" style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--cream);text-decoration:none">Jyotish<span style="color:var(--gold)">AI</span></a>
+  <div style="display:flex;gap:24px;align-items:center">
+    <a href="07-pricing.html" style="font-family:var(--font-display);font-size:14px;color:var(--muted-light);text-decoration:none;font-weight:700">Pricing</a>
+    <a href="06-blog.html" style="font-family:var(--font-display);font-size:14px;color:var(--muted-light);text-decoration:none;font-weight:700">Blog</a>
+    <a href="03-about.html" style="font-family:var(--font-display);font-size:14px;color:var(--muted-light);text-decoration:none;font-weight:700">About</a>
+    <a href="10-login.html" class="btn btn-outline btn-sm" style="color:var(--cream);border-color:rgba(255,255,255,.2)">Login</a>
+    <a href="11-register.html" class="btn btn-primary btn-sm">Get Started</a>
+  </div>
+</nav>
+
+<div class="contact-hero">
+  <div style="font-family:var(--font-hindi);font-size:16px;color:var(--saffron);margin-bottom:12px">संपर्क करें</div>
+  <h1 style="font-family:var(--font-display);font-size:46px;color:var(--cream);margin-bottom:12px">Get in <span style="color:var(--gold)">Touch</span></h1>
+  <p style="color:var(--muted-light);max-width:500px;margin:0 auto">Have a question, need support, or want to share feedback? We'd love to hear from you.</p>
+</div>
+
+<div class="contact-layout">
+  <div>
+    <h2 style="font-family:var(--font-display);font-size:24px;margin-bottom:24px">Contact Information</h2>
+    <div class="contact-info-item"><div class="cii-icon">📧</div><div><div style="font-family:var(--font-display);font-weight:700;margin-bottom:4px">Email Support</div><div style="font-size:14px;color:var(--saffron)">support@jyotishai.com</div><div style="font-size:12px;color:var(--muted)">We respond within 24 hours</div></div></div>
+    <div class="contact-info-item"><div class="cii-icon">📱</div><div><div style="font-family:var(--font-display);font-weight:700;margin-bottom:4px">WhatsApp Support</div><div style="font-size:14px;color:var(--saffron)">+91 98765 00000</div><div style="font-size:12px;color:var(--muted)">Mon–Sat, 9 AM – 9 PM IST</div></div></div>
+    <div class="contact-info-item"><div class="cii-icon">🏢</div><div><div style="font-family:var(--font-display);font-weight:700;margin-bottom:4px">Office Address</div><div style="font-size:14px;color:var(--muted)">JyotishAI Technologies Pvt Ltd<br/>3rd Floor, Prestige Tower<br/>Bandra West, Mumbai – 400050</div></div></div>
+    <div style="margin-top:24px;background:linear-gradient(135deg,var(--dark),var(--dark-2));border-radius:var(--radius-lg);padding:24px;border:1px solid rgba(244,169,27,.15)">
+      <div style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--gold);margin-bottom:12px">🤖 Quick Help via AI</div>
+      <p style="font-size:13px;color:var(--muted-light);margin-bottom:16px">For chart questions or reading-related queries, our AI can help you instantly — no waiting.</p>
+      <a href="05-free-kundali.html" class="btn btn-primary w-full">Ask AI Astrologer</a>
+    </div>
+  </div>
+
+  <div class="contact-form">
+    <h3 style="font-family:var(--font-display);font-size:20px;font-weight:700;margin-bottom:20px">Send Us a Message</h3>
+    <div class="form-grid-2">
+      <div class="form-group"><label class="form-label">Your Name</label><input class="form-control" placeholder="Rahul Sharma"/></div>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-control" placeholder="you@email.com" type="email"/></div>
+    </div>
+    <div class="form-group"><label class="form-label">Subject</label><select class="form-control"><option>General Inquiry</option><option>Technical Support</option><option>Billing / Payment</option><option>Report Issue</option><option>Feedback</option><option>Partnerships</option></select></div>
+    <div class="form-group"><label class="form-label">Message</label><textarea class="form-control" rows="5" placeholder="Tell us how we can help you..."></textarea></div>
+    <div class="form-group"><label class="form-label">Preferred Language for Response</label><select class="form-control"><option>English</option><option>Hindi — हिंदी</option></select></div>
+    <button class="btn btn-primary w-full" style="font-size:15px;padding:16px">Send Message ✉️</button>
+    <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:12px">We typically respond within 24 hours on business days</p>
+  </div>
+</div>
+
+<footer style="background:var(--dark);padding:40px;text-align:center;border-top:1px solid rgba(244,169,27,.1)">
+  <a href="01-home.html" style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--cream);text-decoration:none">Jyotish<span style="color:var(--gold)">AI</span></a>
+  <p style="color:var(--muted);font-size:13px;margin-top:12px">© 2026 JyotishAI • Made with 🙏 in India</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><title>Baby Names — JyotishAI</title><link rel="stylesheet" href="../assets/style.css"/>
+<style>body{background:var(--cream)}.baby-banner{background:linear-gradient(135deg,#0D2B1A,#1A4A2A);border-radius:var(--radius-lg);padding:32px;margin-bottom:28px;border:1px solid rgba(104,211,145,0.2);display:flex;justify-content:space-between;align-items:center}.bb-title{font-family:var(--font-display);font-size:26px;color:white;margin-bottom:6px}.bb-title span{color:#68D391}.names-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}.name-card{background:var(--white);border-radius:var(--radius-lg);padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.05);border:1.5px solid transparent;cursor:pointer;transition:var(--transition)}.name-card:hover{border-color:var(--saffron)}.name-card.recommended{border-color:var(--gold);background:linear-gradient(145deg,rgba(244,169,27,0.04),white)}.nc-num{font-family:var(--font-display);font-size:11px;font-weight:700;color:var(--muted);margin-bottom:8px}.nc-name{font-family:var(--font-display);font-size:22px;font-weight:900;color:var(--dark)}.nc-hindi{font-family:var(--font-hindi);font-size:18px;color:var(--saffron);margin-top:2px}.nc-meaning{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5}.nc-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px}.nc-tag{background:var(--cream);border-radius:999px;padding:3px 8px;font-size:10px;color:var(--muted);font-family:var(--font-display);font-weight:700}</style></head>
+<body>
+<div class="app-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><a href="../public/01-home.html">Jyotish<span>AI</span></a><div class="plan-badge"><span class="badge badge-dark">Elite</span></div></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Main</div><a href="U01-dashboard.html" class="sidebar-link"><span class="icon">🏠</span>Dashboard</a><a href="U02-my-kundali.html" class="sidebar-link"><span class="icon">📜</span>My Kundali</a><a href="U03-ai-reader.html" class="sidebar-link"><span class="icon">🤖</span>AI Kundali Reader</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Services</div><a href="U08-matchmaking.html" class="sidebar-link"><span class="icon">💑</span>Matchmaking</a><a href="U09-baby-names.html" class="sidebar-link active"><span class="icon">👶</span>Baby Names</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Account</div><a href="U11-billing.html" class="sidebar-link"><span class="icon">💳</span>Billing</a></div>
+    <div class="sidebar-footer"><div style="display:flex;align-items:center;gap:10px;padding:0 4px"><div class="avatar">RS</div><div><div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--cream)">Rahul Sharma</div></div></div></div>
+  </aside>
+  <div class="main-content">
+    <div class="top-bar"><div class="top-bar-title">👶 Baby Name Suggestions</div><div class="top-bar-actions"><button class="btn btn-primary btn-sm">📥 Download Report</button><div class="avatar">RS</div></div></div>
+    <div class="page-content">
+      <div class="baby-banner">
+        <div><div class="bb-title">Baby Name Report — <span>Rahul & Priya's Child</span></div><div style="font-family:var(--font-hindi);font-size:14px;color:#68D391;margin-bottom:10px">शिशु नामकरण</div><div style="display:flex;gap:10px"><span style="background:rgba(104,211,145,0.12);border:1px solid rgba(104,211,145,0.3);border-radius:999px;padding:4px 12px;font-size:12px;font-family:var(--font-display);font-weight:700;color:#68D391">🌙 Nakshatra: Rohini</span><span style="background:rgba(104,211,145,0.12);border:1px solid rgba(104,211,145,0.3);border-radius:999px;padding:4px 12px;font-size:12px;font-family:var(--font-display);font-weight:700;color:#68D391">♉ Moon Sign: Taurus</span></div></div>
+        <button class="btn btn-primary">📥 Download PDF</button>
+      </div>
+
+      <!-- Birth details form for new request -->
+      <div style="background:var(--white);border-radius:var(--radius-lg);padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin-bottom:28px">
+        <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--dark);margin-bottom:20px">📋 Generate Names for a New Baby</div>
+        <div class="form-grid-3">
+          <div class="form-group"><label class="form-label">Date of Birth</label><input class="form-control" type="date"/></div>
+          <div class="form-group"><label class="form-label">Time of Birth</label><input class="form-control" type="time"/></div>
+          <div class="form-group"><label class="form-label">Place of Birth</label><input class="form-control" placeholder="Search city..."/></div>
+        </div>
+        <div class="form-grid-2">
+          <div class="form-group"><label class="form-label">Gender</label><select class="form-control"><option>Boy — लड़का</option><option>Girl — लड़की</option></select></div>
+          <div class="form-group"><label class="form-label">Preferred Starting Letter</label><input class="form-control" placeholder="Optional — leave blank for Nakshatra-based"/></div>
+        </div>
+        <button class="btn btn-primary">✨ Generate Names</button>
+      </div>
+
+      <div style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--dark);margin-bottom:4px">✨ 20 Auspicious Names Suggested</div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px">Based on Rohini Nakshatra, Taurus Rashi, and Vedic name science (Namakarana)</p>
+      <div class="names-grid">
+        <div class="name-card recommended"><div class="nc-num">⭐ TOP PICK</div><div class="nc-name">Aryan</div><div class="nc-hindi">आर्यन</div><div class="nc-meaning">Noble, warrior of the highest order. Strong Mars energy.</div><div class="nc-tags"><span class="nc-tag">Ro-syllable</span><span class="nc-tag">Rohini</span><span class="nc-tag">Strength</span></div></div>
+        <div class="name-card recommended"><div class="nc-num">⭐ TOP PICK</div><div class="nc-name">Rohan</div><div class="nc-hindi">रोहन</div><div class="nc-meaning">One who ascends, brings growth and prosperity.</div><div class="nc-tags"><span class="nc-tag">Ro-syllable</span><span class="nc-tag">Rohini</span><span class="nc-tag">Success</span></div></div>
+        <div class="name-card"><div class="nc-num">NAME 3</div><div class="nc-name">Rishit</div><div class="nc-hindi">ऋषित</div><div class="nc-meaning">Best among sages, virtuous and wise.</div><div class="nc-tags"><span class="nc-tag">Ro-syllable</span><span class="nc-tag">Wisdom</span></div></div>
+        <div class="name-card"><div class="nc-num">NAME 4</div><div class="nc-name">Rudra</div><div class="nc-hindi">रुद्र</div><div class="nc-meaning">Lord Shiva's form, powerful and fearless.</div><div class="nc-tags"><span class="nc-tag">Ro-syllable</span><span class="nc-tag">Shiva</span><span class="nc-tag">Power</span></div></div>
+        <div class="name-card"><div class="nc-num">NAME 5</div><div class="nc-name">Ronit</div><div class="nc-hindi">रोनित</div><div class="nc-meaning">Joyful song, brings happiness to family.</div><div class="nc-tags"><span class="nc-tag">Ro-syllable</span><span class="nc-tag">Joy</span></div></div>
+        <div class="name-card"><div class="nc-num">NAME 6</div><div class="nc-name">Raghav</div><div class="nc-hindi">राघव</div><div class="nc-meaning">Descendant of Raghu, associated with Lord Ram.</div><div class="nc-tags"><span class="nc-tag">Ra-syllable</span><span class="nc-tag">Divine</span></div></div>
+      </div>
+      <div style="text-align:center;margin-top:16px"><button class="btn btn-outline">Load 14 More Names ↓</button></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

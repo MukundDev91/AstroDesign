@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Matchmaking — JyotishAI</title>
+  <link rel="stylesheet" href="../assets/style.css"/>
+  <style>
+    body { background: var(--cream); }
+    /* Two-person form */
+    .match-form-grid { display: grid; grid-template-columns: 1fr 60px 1fr; gap: 0; align-items: start; margin-bottom: 32px; }
+    .person-card { background: var(--white); border-radius: var(--radius-lg); padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 2px solid transparent; }
+    .person-card.boy { border-color: rgba(49,130,206,0.2); }
+    .person-card.girl { border-color: rgba(237,100,166,0.2); }
+    .person-card h3 { font-family: var(--font-display); font-size: 16px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+    .person-card.boy h3 { color: #3182CE; }
+    .person-card.girl h3 { color: #ED64A6; }
+    .vs-center { display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px; padding-top: 80px; }
+    .vs-circle { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--saffron), var(--gold)); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 14px; font-weight: 900; color: var(--white); }
+
+    /* Result section */
+    .result-card { background: var(--dark); border-radius: var(--radius-lg); padding: 40px; margin-bottom: 32px; border: 1px solid rgba(244,169,27,0.2); }
+    .result-header { text-align: center; margin-bottom: 40px; }
+    .result-header h2 { font-family: var(--font-display); font-size: 28px; color: var(--cream); margin-bottom: 8px; }
+    .score-donut { position: relative; width: 160px; height: 160px; margin: 0 auto 24px; }
+    .score-donut svg { transform: rotate(-90deg); }
+    .score-donut .score-text { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .score-donut .score-num { font-family: var(--font-display); font-size: 48px; font-weight: 900; color: var(--gold); line-height: 1; }
+    .score-donut .score-max { font-family: var(--font-display); font-size: 16px; color: var(--muted); }
+    .verdict { display: inline-flex; align-items: center; gap: 8px; background: rgba(56,161,105,0.15); border: 1px solid rgba(56,161,105,0.3); border-radius: 999px; padding: 8px 20px; font-family: var(--font-display); font-size: 14px; font-weight: 700; color: #68D391; }
+    
+    .koot-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+    .koot-card { background: var(--dark-card); border-radius: var(--radius); padding: 16px; text-align: center; border: 1px solid rgba(244,169,27,0.1); }
+    .koot-name { font-family: var(--font-display); font-size: 11px; font-weight: 700; color: var(--muted-light); letter-spacing: 0.5px; margin-bottom: 8px; text-transform: uppercase; }
+    .koot-score { font-family: var(--font-display); font-size: 26px; font-weight: 900; color: var(--gold); }
+    .koot-max { font-size: 12px; color: var(--muted); }
+    .koot-bar { height: 4px; background: var(--dark-3); border-radius: 999px; margin-top: 8px; }
+    .koot-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--saffron), var(--gold)); }
+    .koot-fill.low { background: var(--danger); }
+    .koot-fill.medium { background: var(--gold); }
+    .koot-fill.high { background: var(--success); }
+
+    .marriage-verdict { background: linear-gradient(135deg, rgba(56,161,105,0.1), rgba(56,161,105,0.05)); border: 1px solid rgba(56,161,105,0.25); border-radius: var(--radius-lg); padding: 28px; margin-bottom: 32px; }
+    .mv-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .mv-icon { font-size: 36px; }
+    .mv-header h3 { font-family: var(--font-display); font-size: 20px; color: var(--cream); }
+    .mv-header .mv-score { font-family: var(--font-display); font-size: 36px; font-weight: 900; color: var(--success); margin-left: auto; }
+    .mv-body { font-size: 14px; color: var(--cream-2); line-height: 1.8; }
+    .life-stages { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 20px; }
+    .ls { background: var(--dark-card); border-radius: var(--radius); padding: 14px; text-align: center; }
+    .ls-yr { font-family: var(--font-display); font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+    .ls-status { font-family: var(--font-display); font-size: 13px; font-weight: 700; }
+    .ls-status.good { color: var(--success); }
+    .ls-status.moderate { color: var(--gold); }
+    .ls-status.watch { color: var(--danger); }
+
+    /* Paywall overlay on detailed analysis */
+    .blurred-section { position: relative; border-radius: var(--radius-lg); overflow: hidden; }
+    .blurred-content { filter: blur(5px); opacity: 0.6; pointer-events: none; background: var(--dark-card); border-radius: var(--radius-lg); padding: 24px; }
+    .paywall-overlay-box { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(26,8,0,0.8); gap: 12px; text-align: center; padding: 24px; border-radius: var(--radius-lg); }
+    .paywall-overlay-box h3 { font-family: var(--font-display); color: var(--gold); font-size: 20px; }
+    .paywall-overlay-box p { color: var(--muted-light); font-size: 13px; max-width: 280px; }
+    .paywall-price { font-family: var(--font-display); font-size: 28px; font-weight: 900; color: var(--saffron); }
+  </style>
+</head>
+<body>
+<div class="app-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><a href="../public/01-home.html">Jyotish<span>AI</span></a><div class="plan-badge"><span class="badge badge-gold">Premium</span></div></div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Main</div>
+      <a href="U01-dashboard.html" class="sidebar-link"><span class="icon">🏠</span>Dashboard</a>
+      <a href="U02-my-kundali.html" class="sidebar-link"><span class="icon">📜</span>My Kundali</a>
+      <a href="U03-ai-reader.html" class="sidebar-link"><span class="icon">🤖</span>AI Kundali Reader</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Reports</div>
+      <a href="U04-general-report.html" class="sidebar-link"><span class="icon">📊</span>General Report</a>
+      <a href="U05-career-report.html" class="sidebar-link"><span class="icon">💼</span>Career Analysis</a>
+      <a href="U06-love-report.html" class="sidebar-link"><span class="icon">❤️</span>Love Life Report</a>
+      <a href="U07-full-life-report.html" class="sidebar-link"><span class="icon">📖</span>Full Life Report</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Services</div>
+      <a href="U08-matchmaking.html" class="sidebar-link active"><span class="icon">💑</span>Matchmaking</a>
+      <a href="U09-baby-names.html" class="sidebar-link"><span class="icon">👶</span>Baby Names</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Account</div>
+      <a href="U11-billing.html" class="sidebar-link"><span class="icon">💳</span>Billing & Plans</a>
+      <a href="U12-profile.html" class="sidebar-link"><span class="icon">👤</span>My Profile</a>
+    </div>
+    <div class="sidebar-footer">
+      <div style="display:flex;align-items:center;gap:10px;padding:0 4px">
+        <div class="avatar">RS</div>
+        <div><div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--cream)">Rahul Sharma</div><div style="font-size:11px;color:var(--muted)">Premium Plan</div></div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main-content">
+    <div class="top-bar">
+      <div class="top-bar-title">💑 Kundali Matchmaking</div>
+      <div style="font-size:13px;color:var(--muted)">36-Gun Milan • Marriage Compatibility Analysis</div>
+      <div class="top-bar-actions"><div class="avatar">RS</div></div>
+    </div>
+
+    <div class="page-content">
+      <div style="margin-bottom:28px">
+        <h2 style="font-family:var(--font-display);font-size:24px;margin-bottom:4px">Kundali Matching — कुंडली मिलान</h2>
+        <p style="color:var(--muted);font-size:14px">Enter birth details of both Boy and Girl to check compatibility, 36-Gun Milan score, and marriage longevity.</p>
+      </div>
+
+      <!-- 2-Person Form -->
+      <div class="match-form-grid">
+        <div class="person-card boy">
+          <h3>👦 Boy's Details — वर की जानकारी</h3>
+          <div class="form-group"><label class="form-label">Full Name</label><input class="form-control" placeholder="e.g. Arjun Mehta" type="text"/></div>
+          <div class="form-group"><label class="form-label">Date of Birth</label><input class="form-control" type="date"/></div>
+          <div class="form-group"><label class="form-label">Time of Birth</label><input class="form-control" type="time"/></div>
+          <div class="form-group"><label class="form-label">Place of Birth</label><input class="form-control" placeholder="Search city..." type="text"/></div>
+        </div>
+        <div class="vs-center">
+          <div class="vs-circle">VS</div>
+          <div style="font-family:var(--font-hindi);font-size:14px;color:var(--saffron)">बनाम</div>
+        </div>
+        <div class="person-card girl">
+          <h3>👧 Girl's Details — वधू की जानकारी</h3>
+          <div class="form-group"><label class="form-label">Full Name</label><input class="form-control" placeholder="e.g. Priya Kapoor" type="text"/></div>
+          <div class="form-group"><label class="form-label">Date of Birth</label><input class="form-control" type="date"/></div>
+          <div class="form-group"><label class="form-label">Time of Birth</label><input class="form-control" type="time"/></div>
+          <div class="form-group"><label class="form-label">Place of Birth</label><input class="form-control" placeholder="Search city..." type="text"/></div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-bottom:40px">
+        <button class="btn btn-primary btn-lg">💑 Check Compatibility →</button>
+        <p style="margin-top:12px;font-size:13px;color:var(--muted)">Premium users get full 36-Gun analysis • Basic users get summary only</p>
+      </div>
+
+      <!-- RESULT SECTION (shown after analysis) -->
+      <div class="result-card">
+        <div class="result-header">
+          <h2>Arjun Mehta × Priya Kapoor</h2>
+          <div style="font-family:var(--font-hindi);font-size:16px;color:var(--saffron);margin-bottom:20px">कुंडली मिलान परिणाम</div>
+          <div class="score-donut">
+            <svg viewBox="0 0 100 100" width="160" height="160">
+              <circle cx="50" cy="50" r="42" stroke="rgba(244,169,27,0.1)" stroke-width="12" fill="none"/>
+              <circle cx="50" cy="50" r="42" stroke="url(#grad)" stroke-width="12" fill="none" stroke-dasharray="220 264" stroke-linecap="round"/>
+              <defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#E8500A"/><stop offset="100%" style="stop-color:#F4A91B"/></linearGradient></defs>
+            </svg>
+            <div class="score-text"><div class="score-num">28</div><div class="score-max">/ 36 Gunas</div></div>
+          </div>
+          <div class="verdict">✓ Excellent Match — विवाह की अनुमति है</div>
+        </div>
+
+        <!-- 8 Koot Analysis -->
+        <div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--gold);margin-bottom:16px;letter-spacing:0.5px">8 KOOT — अष्टकूट मिलान</div>
+        <div class="koot-grid">
+          <div class="koot-card"><div class="koot-name">Varna</div><div class="koot-score">1<span class="koot-max">/1</span></div><div class="koot-bar"><div class="koot-fill high" style="width:100%"></div></div></div>
+          <div class="koot-card"><div class="koot-name">Vashya</div><div class="koot-score">2<span class="koot-max">/2</span></div><div class="koot-bar"><div class="koot-fill high" style="width:100%"></div></div></div>
+          <div class="koot-card"><div class="koot-name">Tara</div><div class="koot-score">3<span class="koot-max">/3</span></div><div class="koot-bar"><div class="koot-fill high" style="width:100%"></div></div></div>
+          <div class="koot-card"><div class="koot-name">Yoni</div><div class="koot-score">3<span class="koot-max">/4</span></div><div class="koot-bar"><div class="koot-fill medium" style="width:75%"></div></div></div>
+          <div class="koot-card"><div class="koot-name">Graha Maitri</div><div class="koot-score">4<span class="koot-max">/5</span></div><div class="koot-bar"><div class="koot-fill medium" style="width:80%"></div></div></div>
+          <div class="koot-card"><div class="koot-name">Gana</div><div class="koot-score">6<span class="koot-max">/6</span></div><div class="koot-bar"><div class="koot-fill high" style="width:100%"></div></div></div>
+          <div class="koot-card"><div class="koot-name">Rashi</div><div class="koot-score">5<span class="koot-max">/7</span></div><div class="koot-bar"><div class="koot-fill medium" style="width:71%"></div></div></div>
+          <div class="koot-card"><div class="koot-name">Nadi</div><div class="koot-score">4<span class="koot-max">/8</span></div><div class="koot-bar"><div class="koot-fill medium" style="width:50%"></div></div></div>
+        </div>
+
+        <!-- Marriage Longevity -->
+        <div class="marriage-verdict">
+          <div class="mv-header">
+            <div class="mv-icon">💍</div>
+            <h3>Will the Marriage Last?</h3>
+            <div class="mv-score">89%</div>
+          </div>
+          <p class="mv-body">Based on the 28/36 Gun Milan score and planetary analysis of both charts, this match has a <strong style="color:#68D391">very high probability of a long and successful marriage</strong>. The Gana, Tara, and Varna Koot show excellent spiritual and emotional compatibility. The Nadi score of 4/8 requires attention — we recommend performing the Nadi Dosha Nivaran Puja before marriage.</p>
+          <div class="life-stages">
+            <div class="ls"><div class="ls-yr">Years 1-5</div><div class="ls-status good">✓ Blissful</div></div>
+            <div class="ls"><div class="ls-yr">Years 6-15</div><div class="ls-status good">✓ Strong</div></div>
+            <div class="ls"><div class="ls-yr">Years 16-25</div><div class="ls-status moderate">~ Moderate</div></div>
+            <div class="ls"><div class="ls-yr">Years 25+</div><div class="ls-status good">✓ Settled</div></div>
+          </div>
+        </div>
+
+        <!-- Detailed Analysis — BLURRED (paywall) -->
+        <div style="margin-bottom:8px;font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--gold)">DETAILED ANALYSIS — विस्तृत विश्लेषण</div>
+        <div class="blurred-section">
+          <div class="blurred-content">
+            <p style="color:var(--cream-2)">Mangal Dosha Analysis: Boy has Mangal Dosha from 7th house... Financial compatibility: Jupiter in 2nd house of girl... Children prospects: Strong 5th house... Remedies: Gemstone recommendations, Puja suggestions, Auspicious marriage dates...</p>
+            <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <div style="background:var(--dark-3);border-radius:8px;padding:12px;height:80px"></div>
+              <div style="background:var(--dark-3);border-radius:8px;padding:12px;height:80px"></div>
+            </div>
+          </div>
+          <div class="paywall-overlay-box">
+            <div style="font-size:36px">🔓</div>
+            <h3>Full Matchmaking Report</h3>
+            <p>Get Mangal Dosha check, auspicious wedding dates, remedies, financial compatibility, and children predictions</p>
+            <div class="paywall-price">₹149</div>
+            <button class="btn btn-primary">📥 Buy Full Report</button>
+            <p style="font-size:11px;color:var(--muted)">Instant PDF download • Includes AI-generated remedies</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

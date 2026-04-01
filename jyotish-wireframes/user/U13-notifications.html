@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><title>Notifications — JyotishAI</title><link rel="stylesheet" href="../assets/style.css"/>
+<style>body{background:var(--cream)}.notif-card{background:var(--white);border-radius:var(--radius-lg);padding:20px 24px;box-shadow:0 2px 8px rgba(0,0,0,.05);margin-bottom:10px;display:flex;gap:16px;align-items:flex-start;border-left:3px solid transparent;transition:var(--transition)}.notif-card.unread{border-left-color:var(--saffron);background:rgba(232,80,10,.02)}.notif-icon{font-size:28px;width:48px;height:48px;background:var(--cream);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;flex-shrink:0}.notif-content{flex:1}.notif-title{font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--dark);margin-bottom:4px}.notif-text{font-size:13px;color:var(--muted);line-height:1.5}.notif-time{font-size:11px;color:var(--muted);margin-top:6px}.notif-action{flex-shrink:0}</style></head>
+<body>
+<div class="app-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><a href="../public/01-home.html">Jyotish<span>AI</span></a><div class="plan-badge"><span class="badge badge-saffron">Free Plan</span></div></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Main</div><a href="U01-dashboard.html" class="sidebar-link"><span class="icon">🏠</span>Dashboard</a><a href="U02-my-kundali.html" class="sidebar-link"><span class="icon">📜</span>My Kundali</a><a href="U03-ai-reader.html" class="sidebar-link"><span class="icon">🤖</span>AI Kundali Reader</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Account</div><a href="U10-my-reports.html" class="sidebar-link"><span class="icon">🗂️</span>My Reports</a><a href="U11-billing.html" class="sidebar-link"><span class="icon">💳</span>Billing</a><a href="U12-profile.html" class="sidebar-link"><span class="icon">👤</span>Profile</a><a href="U13-notifications.html" class="sidebar-link active"><span class="icon">🔔</span>Notifications</a></div>
+    <div class="sidebar-footer"><div style="display:flex;align-items:center;gap:10px;padding:0 4px"><div class="avatar">RS</div><div><div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--cream)">Rahul Sharma</div></div></div></div>
+  </aside>
+  <div class="main-content">
+    <div class="top-bar"><div class="top-bar-title">🔔 Notifications</div><div class="top-bar-actions"><button class="btn btn-outline btn-sm">Mark All Read</button><div class="avatar">RS</div></div></div>
+    <div class="page-content" style="max-width:800px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+        <div><h2 style="font-family:var(--font-display);font-size:22px;margin-bottom:4px">All Notifications</h2><p style="font-size:13px;color:var(--muted)">3 unread notifications</p></div>
+      </div>
+
+      <div style="font-family:var(--font-display);font-size:11px;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px">TODAY</div>
+      <div class="notif-card unread"><div class="notif-icon">📊</div><div class="notif-content"><div class="notif-title">Your Kundali Report is Ready!</div><div class="notif-text">Your General Kundali Report for Rahul Sharma has been generated. It includes personality analysis, dasha predictions, and career insights.</div><div class="notif-time">5 minutes ago</div></div><div class="notif-action"><a href="U04-general-report.html" class="btn btn-primary btn-sm">View Report</a></div></div>
+      <div class="notif-card unread"><div class="notif-icon">🌙</div><div class="notif-content"><div class="notif-title">Tonight is Purnima — Auspicious Time!</div><div class="notif-text">Full Moon in Virgo tonight at 9:24 PM IST. Excellent time for meditation, chanting, and starting new spiritual practices. Light a lamp and offer prayers to your Nakshatra deity.</div><div class="notif-time">2 hours ago</div></div><div class="notif-action"></div></div>
+      <div class="notif-card unread"><div class="notif-icon">⚡</div><div class="notif-content"><div class="notif-title">Special Offer — 20% Off Premium Plan</div><div class="notif-text">For the next 48 hours, use code PURNIMA20 for 20% off Premium Plan. Unlock AI Reader, Career Report, Love Life Report, and unlimited Matchmaking.</div><div class="notif-time">3 hours ago</div></div><div class="notif-action"><a href="U11-billing.html" class="btn btn-gold btn-sm">Upgrade Now</a></div></div>
+
+      <div style="font-family:var(--font-display);font-size:11px;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin:20px 0 12px">YESTERDAY</div>
+      <div class="notif-card"><div class="notif-icon">💑</div><div class="notif-content"><div class="notif-title">Matchmaking Summary Ready</div><div class="notif-text">Summary report for Arjun Mehta × Priya Kapoor is ready. Score: 28/36 (Excellent Match). Buy the full report for detailed analysis including Mangal Dosha check and auspicious wedding dates.</div><div class="notif-time">Yesterday, 4:32 PM</div></div><div class="notif-action"><a href="U08-matchmaking.html" class="btn btn-outline btn-sm">View</a></div></div>
+      <div class="notif-card"><div class="notif-icon">🔭</div><div class="notif-content"><div class="notif-title">Daily Horoscope — Capricorn Moon</div><div class="notif-text">Yesterday's horoscope for your Moon Sign (Capricorn) predicted a favorable day for professional matters. Saturn's blessing was active — hope it was a productive day!</div><div class="notif-time">Yesterday, 6:00 AM</div></div><div class="notif-action"></div></div>
+
+      <div style="font-family:var(--font-display);font-size:11px;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin:20px 0 12px">EARLIER</div>
+      <div class="notif-card"><div class="notif-icon">🎁</div><div class="notif-content"><div class="notif-title">Welcome to JyotishAI!</div><div class="notif-text">Your account has been created. You have 2 free kundali readings ready to use. Start by generating your birth chart.</div><div class="notif-time">12 Mar 2026</div></div><div class="notif-action"><a href="U02-my-kundali.html" class="btn btn-outline btn-sm">Get Kundali</a></div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

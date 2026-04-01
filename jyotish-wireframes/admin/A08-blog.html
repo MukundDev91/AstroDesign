@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><title>Blog Management — JyotishAI Admin</title><link rel="stylesheet" href="../assets/style.css"/>
+<style>
+body { background: var(--cream); }
+.admin-sidebar { background: #0D0500; }
+.blog-card { background: var(--white); border-radius: var(--radius-lg); padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,.05); margin-bottom: 16px; display: flex; gap: 20px; align-items: flex-start; }
+.blog-thumb { width: 120px; height: 80px; border-radius: var(--radius); background: linear-gradient(135deg, rgba(232,80,10,.12), rgba(244,169,27,.08)); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 32px; }
+.blog-title { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+.blog-meta { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+.blog-excerpt { font-size: 13px; color: var(--muted); line-height: 1.5; }
+.editor-panel { background: var(--white); border-radius: var(--radius-lg); padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.05); }
+.toolbar { display: flex; gap: 6px; flex-wrap: wrap; padding: 12px; background: var(--cream); border-radius: var(--radius); margin-bottom: 16px; }
+.tb-btn { padding: 6px 12px; border: 1.5px solid var(--cream-3); border-radius: 6px; background: var(--white); font-size: 13px; cursor: pointer; font-family: var(--font-body); }
+.content-area { width: 100%; min-height: 200px; border: 1.5px solid var(--cream-3); border-radius: var(--radius); padding: 16px; font-family: var(--font-body); font-size: 14px; resize: vertical; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="app-layout">
+  <aside class="sidebar admin-sidebar">
+    <div class="sidebar-logo"><a href="A01-admin-dashboard.html">Jyotish<span>AI</span></a><div style="background:rgba(232,80,10,.15);color:var(--saffron);border:none;padding:3px 10px;border-radius:999px;font-size:10px;font-family:var(--font-display);font-weight:700;display:inline-block;margin-top:4px">Admin Panel</div></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Overview</div><a href="A01-admin-dashboard.html" class="sidebar-link"><span class="icon">📊</span>Dashboard</a><a href="A09-analytics.html" class="sidebar-link"><span class="icon">📈</span>Analytics</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Users</div><a href="A02-users.html" class="sidebar-link"><span class="icon">👥</span>User Management</a><a href="A04-payments.html" class="sidebar-link"><span class="icon">💳</span>Payments</a><a href="A05-plans.html" class="sidebar-link"><span class="icon">📦</span>Plan Management</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Content</div><a href="A06-reports.html" class="sidebar-link"><span class="icon">📄</span>Report Management</a><a href="A07-horoscope.html" class="sidebar-link"><span class="icon">🔭</span>Horoscope Content</a><a href="A08-blog.html" class="sidebar-link active"><span class="icon">✍️</span>Blog Management</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">System</div><a href="A10-settings.html" class="sidebar-link"><span class="icon">⚙️</span>Settings</a></div>
+    <div class="sidebar-footer"><div style="display:flex;align-items:center;gap:10px;padding:0 4px"><div class="avatar" style="background:linear-gradient(135deg,var(--saffron),var(--ember))">AD</div><div><div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--cream)">Admin User</div><div style="font-size:11px;color:var(--muted)">Super Admin</div></div></div></div>
+  </aside>
+  <div class="main-content">
+    <div class="top-bar">
+      <div class="top-bar-title">✍️ Blog Management</div>
+      <div class="top-bar-actions">
+        <button class="btn btn-outline btn-sm" onclick="document.getElementById('editorSection').style.display='block'">+ New Post</button>
+        <button class="btn btn-primary btn-sm">🤖 AI Generate Post</button>
+      </div>
+    </div>
+    <div class="page-content">
+      <div style="display:grid;grid-template-columns:1fr 300px;gap:24px">
+        <div>
+          <!-- New post editor (hidden by default in wireframe) -->
+          <div id="editorSection" style="display:none;margin-bottom:28px">
+            <div class="editor-panel">
+              <div style="font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:20px">✍️ New Blog Post</div>
+              <div class="form-group"><label class="form-label">Post Title (English)</label><input class="form-control" placeholder="e.g. Saturn Mahadasha Explained: What to Expect in 19 Years"/></div>
+              <div class="form-group"><label class="form-label">Post Title (Hindi)</label><input class="form-control" style="font-family:var(--font-hindi)" placeholder="हिंदी में शीर्षक..."/></div>
+              <div class="form-grid-2">
+                <div class="form-group"><label class="form-label">Category</label><select class="form-control"><option>Dasha Predictions</option><option>Kundali Basics</option><option>Marriage & Love</option><option>Career & Finance</option><option>Remedies & Gems</option><option>Panchang & Muhurta</option></select></div>
+                <div class="form-group"><label class="form-label">Author</label><input class="form-control" value="Admin — JyotishAI"/></div>
+              </div>
+              <div class="form-group"><label class="form-label">Featured Image URL</label><input class="form-control" placeholder="https://..."/></div>
+              <div class="form-group"><label class="form-label">Content</label>
+                <div class="toolbar">
+                  <button class="tb-btn"><strong>B</strong></button>
+                  <button class="tb-btn"><em>I</em></button>
+                  <button class="tb-btn">H1</button><button class="tb-btn">H2</button>
+                  <button class="tb-btn">🔗 Link</button>
+                  <button class="tb-btn">📷 Image</button>
+                  <button class="tb-btn">• List</button>
+                  <button class="tb-btn">🤖 AI Expand</button>
+                </div>
+                <textarea class="content-area" placeholder="Start writing your blog post here..."></textarea>
+              </div>
+              <div class="form-group"><label class="form-label">SEO Meta Description</label><textarea class="form-control" rows="2" placeholder="Brief description for search engines (150-160 characters)..."></textarea></div>
+              <div class="form-group"><label class="form-label">Tags (comma separated)</label><input class="form-control" placeholder="Saturn Mahadasha, Shani, Vedic Astrology, Dasha System"/></div>
+              <div style="display:flex;gap:12px">
+                <button class="btn btn-primary">🚀 Publish Now</button>
+                <button class="btn btn-outline">💾 Save Draft</button>
+                <button class="btn btn-outline">👁️ Preview</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filters -->
+          <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap">
+            <button class="btn btn-primary btn-sm">All Posts (24)</button>
+            <button class="btn btn-outline btn-sm">Published (20)</button>
+            <button class="btn btn-outline btn-sm">Drafts (3)</button>
+            <button class="btn btn-outline btn-sm">Scheduled (1)</button>
+            <input style="padding:8px 12px;border:1.5px solid var(--cream-3);border-radius:var(--radius);font-size:13px;margin-left:auto" placeholder="🔍 Search posts..."/>
+          </div>
+
+          <!-- Blog Post Cards -->
+          <div class="blog-card">
+            <div class="blog-thumb">🪐</div>
+            <div style="flex:1">
+              <div class="blog-title">Saturn Mahadasha: A Complete Guide to the 19-Year Journey</div>
+              <div style="font-family:var(--font-hindi);font-size:12px;color:var(--saffron);margin-bottom:4px">शनि महादशा: संपूर्ण मार्गदर्शिका</div>
+              <div class="blog-meta">Category: Dasha Predictions • 12 Mar 2026 • 2,840 views • 4.8 min read</div>
+              <div class="blog-excerpt">Saturn Mahadasha lasts 19 years and is one of the most transformative periods in one's life. Learn what to expect and how to navigate it successfully...</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;align-items:flex-end">
+              <span class="badge badge-green">Published</span>
+              <button class="btn btn-outline btn-sm">✏️ Edit</button>
+              <button class="btn btn-outline btn-sm" style="color:var(--danger)">🗑️ Delete</button>
+            </div>
+          </div>
+
+          <div class="blog-card">
+            <div class="blog-thumb">💍</div>
+            <div style="flex:1">
+              <div class="blog-title">Marriage Timing in Kundali: The 5 Key Indicators Every Astrologer Checks</div>
+              <div style="font-family:var(--font-hindi);font-size:12px;color:var(--saffron);margin-bottom:4px">कुंडली में विवाह का समय</div>
+              <div class="blog-meta">Category: Marriage & Love • 8 Mar 2026 • 5,120 views • 6.2 min read</div>
+              <div class="blog-excerpt">Understanding when marriage will occur in your kundali requires analyzing 5 specific planetary factors. Venus, Jupiter, the 7th house, and more...</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;align-items:flex-end">
+              <span class="badge badge-green">Published</span>
+              <button class="btn btn-outline btn-sm">✏️ Edit</button>
+              <button class="btn btn-outline btn-sm" style="color:var(--danger)">🗑️ Delete</button>
+            </div>
+          </div>
+
+          <div class="blog-card" style="border-left:3px solid var(--gold)">
+            <div class="blog-thumb">💎</div>
+            <div style="flex:1">
+              <div class="blog-title">Blue Sapphire (Neelam) — Who Should and Shouldn't Wear It</div>
+              <div class="blog-meta">Category: Remedies & Gems • Last edited: Today 10:00 AM</div>
+              <div class="blog-excerpt">Blue Sapphire is the most powerful and dangerous gemstone in Vedic astrology. It can transform your life — but only if it suits your chart...</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;align-items:flex-end">
+              <span class="badge badge-saffron">Draft</span>
+              <button class="btn btn-primary btn-sm">🚀 Publish</button>
+              <button class="btn btn-outline btn-sm">✏️ Edit</button>
+            </div>
+          </div>
+
+          <div class="blog-card" style="border-left:3px solid var(--info)">
+            <div class="blog-thumb">🔭</div>
+            <div style="flex:1">
+              <div class="blog-title">Understanding Nakshatras: The 27 Lunar Mansions Explained</div>
+              <div class="blog-meta">Category: Kundali Basics • Scheduled: 22 Mar 2026, 8:00 AM</div>
+              <div class="blog-excerpt">Nakshatras are the 27 divisions of the zodiac that define your Moon Sign, personality, and destiny. Each Nakshatra has a deity, symbol, and...</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;align-items:flex-end">
+              <span class="badge" style="background:rgba(49,130,206,.1);color:var(--info);border:none">Scheduled</span>
+              <button class="btn btn-outline btn-sm">✏️ Edit</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar stats -->
+        <div>
+          <div style="background:var(--white);border-radius:var(--radius-lg);padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin-bottom:20px">
+            <div style="font-family:var(--font-display);font-size:14px;font-weight:700;margin-bottom:16px">📊 Blog Stats (This Month)</div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:11px;color:var(--muted);font-family:var(--font-display);font-weight:700">TOTAL VIEWS</div><div style="font-family:var(--font-display);font-size:22px;font-weight:700">48,240</div></div>
+              <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:11px;color:var(--muted);font-family:var(--font-display);font-weight:700">ORGANIC TRAFFIC</div><div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--success)">72%</div></div>
+              <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:11px;color:var(--muted);font-family:var(--font-display);font-weight:700">SIGNUPS VIA BLOG</div><div style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--saffron)">342</div></div>
+            </div>
+          </div>
+
+          <div style="background:var(--white);border-radius:var(--radius-lg);padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin-bottom:20px">
+            <div style="font-family:var(--font-display);font-size:14px;font-weight:700;margin-bottom:16px">🏆 Top Posts</div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="font-size:13px;padding:8px 0;border-bottom:1px solid var(--cream-3)"><div style="font-weight:700">Marriage Timing in Kundali</div><div style="color:var(--muted);font-size:11px">5,120 views</div></div>
+              <div style="font-size:13px;padding:8px 0;border-bottom:1px solid var(--cream-3)"><div style="font-weight:700">Saturn Mahadasha Guide</div><div style="color:var(--muted);font-size:11px">2,840 views</div></div>
+              <div style="font-size:13px;padding:8px 0"><div style="font-weight:700">Mangal Dosha: Myths vs Facts</div><div style="color:var(--muted);font-size:11px">2,210 views</div></div>
+            </div>
+          </div>
+
+          <div style="background:linear-gradient(135deg,var(--dark),var(--dark-2));border-radius:var(--radius-lg);padding:24px;border:1px solid rgba(244,169,27,.15)">
+            <div style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--gold);margin-bottom:12px">🤖 AI Blog Generator</div>
+            <p style="font-size:13px;color:var(--muted-light);margin-bottom:16px">Generate a full SEO-optimized blog post on any Vedic astrology topic instantly.</p>
+            <input style="width:100%;padding:10px 14px;border:1.5px solid rgba(255,255,255,.1);border-radius:var(--radius);background:rgba(255,255,255,.05);color:white;font-size:13px;margin-bottom:12px" placeholder="Topic: e.g. 'Effects of Ketu in 10th house'"/>
+            <button class="btn btn-gold w-full">✨ Generate Post</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

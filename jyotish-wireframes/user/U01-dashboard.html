@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Dashboard — JyotishAI</title>
+  <link rel="stylesheet" href="../assets/style.css"/>
+  <style>
+    body { background: var(--cream); color: var(--dark); }
+    .sidebar { background: var(--dark); }
+    .greeting-banner {
+      background: linear-gradient(135deg, var(--dark), var(--dark-2));
+      border-radius: var(--radius-lg); padding: 28px 32px; margin-bottom: 28px;
+      border: 1px solid rgba(244,169,27,0.15);
+      display: flex; align-items: center; justify-content: space-between;
+      position: relative; overflow: hidden;
+    }
+    .greeting-banner::before { content: 'ॐ'; position: absolute; right: 160px; font-family: var(--font-hindi); font-size: 120px; color: rgba(244,169,27,0.05); top: 50%; transform: translateY(-50%); }
+    .greeting-left h2 { font-family: var(--font-display); font-size: 26px; color: var(--cream); margin-bottom: 4px; }
+    .greeting-left h2 span { color: var(--gold); }
+    .greeting-left p { font-size: 14px; color: var(--muted-light); }
+    .greeting-left .plan-row { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
+    .greeting-right { text-align: right; flex-shrink: 0; }
+    .greeting-right .free-reads { font-family: var(--font-display); font-size: 13px; color: var(--gold); margin-bottom: 8px; }
+
+    .quick-actions { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 28px; }
+    .qa {
+      background: var(--white); border-radius: var(--radius-lg); padding: 20px 16px;
+      text-align: center; border: 1.5px solid transparent;
+      transition: var(--transition); cursor: pointer; text-decoration: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .qa:hover { border-color: var(--saffron); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(232,80,10,0.1); }
+    .qa .qi { font-size: 36px; margin-bottom: 10px; }
+    .qa .ql { font-family: var(--font-display); font-size: 12px; font-weight: 700; color: var(--dark); }
+    .qa .qs { font-size: 11px; color: var(--muted); margin-top: 3px; }
+    .qa.new { border-color: var(--saffron); background: linear-gradient(145deg, rgba(232,80,10,0.05), rgba(244,169,27,0.03)); }
+
+    .dashboard-grid { display: grid; grid-template-columns: 1fr 360px; gap: 24px; }
+    .widget { background: var(--white); border-radius: var(--radius-lg); padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05); margin-bottom: 24px; }
+    .widget-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    .widget-header h3 { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--dark); }
+    .widget-header a { font-size: 12px; color: var(--saffron); font-family: var(--font-display); font-weight: 700; text-decoration: none; }
+
+    /* Daily Horoscope Widget */
+    .horo-widget { background: linear-gradient(135deg, var(--dark), var(--dark-2)); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 24px; border: 1px solid rgba(244,169,27,0.15); }
+    .horo-widget .sign-row { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .horo-widget .sign-sym { font-size: 40px; }
+    .horo-widget .sign-name { font-family: var(--font-display); font-size: 18px; color: var(--gold); }
+    .horo-widget .sign-sub { font-size: 12px; color: var(--muted-light); }
+    .horo-widget p { font-size: 14px; color: var(--cream-2); line-height: 1.8; }
+    .horo-scores { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 16px; }
+    .hs { text-align: center; background: rgba(255,255,255,0.04); border-radius: 8px; padding: 10px 6px; }
+    .hs .val { font-family: var(--font-display); font-size: 16px; font-weight: 900; color: var(--gold); }
+    .hs .lab { font-size: 10px; color: var(--muted); margin-top: 2px; }
+
+    /* Recent reports */
+    .report-row { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--cream-3); }
+    .report-row:last-child { border: none; }
+    .report-icon { font-size: 28px; width: 44px; height: 44px; background: var(--cream); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .report-name { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--dark); }
+    .report-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .report-action { margin-left: auto; flex-shrink: 0; }
+
+    /* Kundali mini widget */
+    .kundali-mini { background: var(--dark); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 24px; border: 1px solid rgba(244,169,27,0.15); }
+    .km-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .km-header h3 { font-family: var(--font-display); font-size: 16px; color: var(--gold); }
+    .km-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .km-detail { background: rgba(244,169,27,0.06); border-radius: 8px; padding: 10px 12px; }
+    .km-label { font-size: 10px; color: var(--muted); font-family: var(--font-display); font-weight: 700; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .km-val { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: var(--cream); }
+
+    /* Notifications */
+    .notif-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--cream-3); }
+    .notif-item:last-child { border: none; }
+    .notif-icon { font-size: 20px; }
+    .notif-text { font-size: 13px; color: var(--dark); line-height: 1.5; }
+    .notif-time { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+    /* Upgrade banner */
+    .upgrade-banner { background: linear-gradient(135deg, var(--saffron), var(--ember)); border-radius: var(--radius-lg); padding: 24px; text-align: center; color: var(--white); }
+    .upgrade-banner h4 { font-family: var(--font-display); font-size: 18px; margin-bottom: 8px; }
+    .upgrade-banner p { font-size: 13px; opacity: 0.9; margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+<div class="app-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <a href="../public/01-home.html">Jyotish<span>AI</span></a>
+      <div class="plan-badge"><span class="badge badge-saffron">Free Plan</span></div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Main</div>
+      <a href="U01-dashboard.html" class="sidebar-link active"><span class="icon">🏠</span>Dashboard</a>
+      <a href="U02-my-kundali.html" class="sidebar-link"><span class="icon">📜</span>My Kundali</a>
+      <a href="U03-ai-reader.html" class="sidebar-link"><span class="icon">🤖</span>AI Kundali Reader</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Reports</div>
+      <a href="U04-general-report.html" class="sidebar-link"><span class="icon">📊</span>General Report</a>
+      <a href="U05-career-report.html" class="sidebar-link"><span class="icon">💼</span>Career Analysis</a>
+      <a href="U06-love-report.html" class="sidebar-link"><span class="icon">❤️</span>Love Life Report</a>
+      <a href="U07-full-life-report.html" class="sidebar-link"><span class="icon">📖</span>Full Life Report</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Services</div>
+      <a href="U08-matchmaking.html" class="sidebar-link"><span class="icon">💑</span>Matchmaking</a>
+      <a href="U09-baby-names.html" class="sidebar-link"><span class="icon">👶</span>Baby Names</a>
+      <a href="../public/02-horoscope.html" class="sidebar-link"><span class="icon">📅</span>Horoscope</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Account</div>
+      <a href="U10-my-reports.html" class="sidebar-link"><span class="icon">🗂️</span>My Reports</a>
+      <a href="U11-billing.html" class="sidebar-link"><span class="icon">💳</span>Billing & Plans</a>
+      <a href="U12-profile.html" class="sidebar-link"><span class="icon">👤</span>My Profile</a>
+      <a href="U13-notifications.html" class="sidebar-link"><span class="icon">🔔</span>Notifications <span class="badge badge-saffron" style="margin-left:auto;font-size:10px;padding:2px 7px">3</span></a>
+    </div>
+    <div class="sidebar-footer">
+      <div style="display:flex;align-items:center;gap:10px;padding:0 4px">
+        <div class="avatar">RS</div>
+        <div><div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--cream)">Rahul Sharma</div><div style="font-size:11px;color:var(--muted)">Free Plan</div></div>
+        <a href="../public/10-login.html" style="margin-left:auto;font-size:18px;color:var(--muted);text-decoration:none" title="Logout">⇢</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="top-bar">
+      <div class="top-bar-title">🏠 My Dashboard</div>
+      <div style="font-family:var(--font-hindi);font-size:14px;color:var(--muted)">मेरा डैशबोर्ड</div>
+      <div class="top-bar-actions">
+        <div class="lang-toggle" style="background:var(--cream);color:var(--dark);border-color:var(--cream-3)">🌐 EN | हिं</div>
+        <a href="U13-notifications.html" style="font-size:20px;position:relative;text-decoration:none">🔔<span style="position:absolute;top:-4px;right:-4px;background:var(--danger);color:white;border-radius:50%;width:16px;height:16px;font-size:10px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display)">3</span></a>
+        <div class="avatar">RS</div>
+      </div>
+    </div>
+
+    <div class="page-content">
+      <!-- Greeting -->
+      <div class="greeting-banner">
+        <div class="greeting-left">
+          <h2>Namaste, <span>Rahul</span> 🙏</h2>
+          <div style="font-family:var(--font-hindi);font-size:14px;color:var(--saffron);margin-top:2px">नमस्ते, आपका स्वागत है</div>
+          <p>Thursday, 19 March 2026 • Purnima Tithi • Your Nakshatra: <strong style="color:var(--gold)">Shravana</strong></p>
+          <div class="plan-row">
+            <span class="badge badge-dark">Free Plan</span>
+            <a href="U11-billing.html" class="btn btn-gold btn-sm">⚡ Upgrade to Basic — ₹299/mo</a>
+          </div>
+        </div>
+        <div class="greeting-right">
+          <div class="free-reads">🎁 Free Kundali Reads Left</div>
+          <div style="font-family:var(--font-display);font-size:52px;font-weight:900;color:var(--gold);line-height:1">1</div>
+          <div style="font-size:12px;color:var(--muted-light);margin-bottom:12px">of 2 remaining</div>
+          <a href="U02-my-kundali.html" class="btn btn-primary btn-sm">Use Free Read →</a>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="quick-actions">
+        <a href="U02-my-kundali.html" class="qa new"><div class="qi">📜</div><div class="ql">My Kundali</div><div class="qs">View birth chart</div></a>
+        <a href="U03-ai-reader.html" class="qa"><div class="qi">🤖</div><div class="ql">AI Reader</div><div class="qs">Ask about chart</div></a>
+        <a href="U08-matchmaking.html" class="qa"><div class="qi">💑</div><div class="ql">Matchmaking</div><div class="qs">36-Gun Milan</div></a>
+        <a href="U09-baby-names.html" class="qa"><div class="qi">👶</div><div class="ql">Baby Names</div><div class="qs">Nakshatra names</div></a>
+        <a href="U04-general-report.html" class="qa"><div class="qi">📊</div><div class="ql">Get Report</div><div class="qs">10-page PDF</div></a>
+      </div>
+
+      <div class="dashboard-grid">
+        <div>
+          <!-- Today's Horoscope -->
+          <div class="horo-widget">
+            <div class="horo-widget-header" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+              <div style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--gold)">☀️ Your Daily Horoscope</div>
+              <a href="../public/02-horoscope.html" style="font-size:11px;color:var(--saffron);font-family:var(--font-display);font-weight:700;text-decoration:none">View All Signs →</a>
+            </div>
+            <div class="sign-row">
+              <div class="sign-sym">♑</div>
+              <div><div class="sign-name">Capricorn — मकर राशि</div><div class="sign-sub">Your Moon Sign • Today is favorable for career decisions</div></div>
+            </div>
+            <p>Today, Saturn's influence strengthens your professional capabilities. A long-pending project may finally see completion. In relationships, patience will be your greatest virtue — avoid rushing any decisions before 4 PM. Lucky directions: North & East.</p>
+            <div class="horo-scores">
+              <div class="hs"><div class="val">85%</div><div class="lab">Overall</div></div>
+              <div class="hs"><div class="val">70%</div><div class="lab">Career</div></div>
+              <div class="hs"><div class="val">65%</div><div class="lab">Love</div></div>
+              <div class="hs"><div class="val">90%</div><div class="lab">Health</div></div>
+            </div>
+          </div>
+
+          <!-- Recent Reports -->
+          <div class="widget">
+            <div class="widget-header"><h3>📂 Recent Reports</h3><a href="U10-my-reports.html">View All</a></div>
+            <div class="report-row">
+              <div class="report-icon">📊</div>
+              <div><div class="report-name">General Kundali Report</div><div class="report-meta">Generated • 12 Mar 2026 • 10 pages PDF</div></div>
+              <div class="report-action"><a href="U04-general-report.html" class="btn btn-outline btn-sm">📥 Download</a></div>
+            </div>
+            <div class="report-row" style="opacity:0.5">
+              <div class="report-icon">💼</div>
+              <div><div class="report-name">Career Analysis Report</div><div class="report-meta">🔒 Locked — Requires Premium Plan</div></div>
+              <div class="report-action"><a href="U11-billing.html" class="btn btn-primary btn-sm">Unlock</a></div>
+            </div>
+            <div class="report-row" style="opacity:0.5">
+              <div class="report-icon">❤️</div>
+              <div><div class="report-name">Love Life Report</div><div class="report-meta">🔒 Locked — Requires Premium Plan</div></div>
+              <div class="report-action"><a href="U11-billing.html" class="btn btn-primary btn-sm">Unlock</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Sidebar Widgets -->
+        <div>
+          <!-- Mini Kundali Card -->
+          <div class="kundali-mini">
+            <div class="km-header"><div style="font-size:32px">📜</div><div><h3>My Kundali Summary</h3><div style="font-size:12px;color:var(--muted-light)">Rahul Sharma • 15 Aug 1992</div></div></div>
+            <div class="km-details">
+              <div class="km-detail"><div class="km-label">Lagna</div><div class="km-val">♈ Aries</div></div>
+              <div class="km-detail"><div class="km-label">Moon Sign</div><div class="km-val">♑ Capricorn</div></div>
+              <div class="km-detail"><div class="km-label">Nakshatra</div><div class="km-val">Shravana</div></div>
+              <div class="km-detail"><div class="km-label">Mahadasha</div><div class="km-val">Saturn</div></div>
+              <div class="km-detail"><div class="km-label">Dasha End</div><div class="km-val">2030</div></div>
+              <div class="km-detail"><div class="km-label">Rashi Lord</div><div class="km-val">Saturn</div></div>
+            </div>
+            <a href="U02-my-kundali.html" class="btn btn-outline w-full" style="margin-top:16px;color:var(--gold);border-color:rgba(244,169,27,0.3)">View Full Chart</a>
+          </div>
+
+          <!-- Notifications -->
+          <div class="widget">
+            <div class="widget-header"><h3>🔔 Notifications</h3><a href="U13-notifications.html">See All</a></div>
+            <div class="notif-item"><div class="notif-icon">⭐</div><div><div class="notif-text">Your Kundali report is ready to download</div><div class="notif-time">5 mins ago</div></div></div>
+            <div class="notif-item"><div class="notif-icon">🌙</div><div><div class="notif-text">Tonight is Purnima — excellent time for spiritual practices</div><div class="notif-time">2 hrs ago</div></div></div>
+            <div class="notif-item"><div class="notif-icon">🎁</div><div><div class="notif-text">You have 1 free kundali reading left</div><div class="notif-time">Yesterday</div></div></div>
+          </div>
+
+          <!-- Upgrade Banner -->
+          <div class="upgrade-banner">
+            <h4>🚀 Unlock Full Potential</h4>
+            <p>Get AI Kundali Reader, unlimited charts, career & love reports with Basic Plan</p>
+            <a href="U11-billing.html" class="btn" style="background:var(--white);color:var(--saffron);font-family:var(--font-display);font-weight:700;width:100%;justify-content:center">Upgrade — ₹299/mo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

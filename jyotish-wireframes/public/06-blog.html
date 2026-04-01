@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><title>Blog — JyotishAI</title><link rel="stylesheet" href="../assets/style.css"/>
+<style>
+body { background: var(--cream); }
+.nav-bar { background:var(--dark);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:70px;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(244,169,27,.1) }
+.blog-hero { background: linear-gradient(135deg, var(--dark), var(--dark-2)); padding: 60px 40px; text-align: center; }
+.blog-hero h1 { font-family: var(--font-display); font-size: 48px; color: var(--cream); margin-bottom: 12px; }
+.blog-hero h1 span { color: var(--gold); }
+.blog-layout { max-width: 1100px; margin: 0 auto; padding: 60px 40px; display: grid; grid-template-columns: 1fr 320px; gap: 40px; }
+.featured-post { background: var(--white); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 28px; box-shadow: 0 4px 20px rgba(0,0,0,.06); }
+.fp-image { height: 280px; background: linear-gradient(135deg, rgba(232,80,10,.12), rgba(244,169,27,.08)); display: flex; align-items: center; justify-content: center; font-size: 80px; }
+.fp-content { padding: 28px; }
+.post-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.post-card { background: var(--white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,.05); transition: var(--transition); cursor: pointer; }
+.post-card:hover { box-shadow: 0 6px 24px rgba(232,80,10,.1); transform: translateY(-2px); }
+.pc-image { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 48px; background: linear-gradient(135deg, rgba(232,80,10,.06), rgba(244,169,27,.04)); }
+.pc-content { padding: 16px; }
+.pc-category { font-family: var(--font-display); font-size: 10px; font-weight: 700; color: var(--saffron); letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 6px; }
+.pc-title { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: var(--dark); line-height: 1.4; margin-bottom: 8px; }
+.pc-meta { font-size: 11px; color: var(--muted); }
+</style>
+</head>
+<body>
+<nav class="nav-bar">
+  <a href="01-home.html" style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--cream);text-decoration:none">Jyotish<span style="color:var(--gold)">AI</span></a>
+  <div style="display:flex;gap:24px;align-items:center">
+    <a href="02-horoscope.html" style="font-family:var(--font-display);font-size:14px;color:var(--muted-light);text-decoration:none;font-weight:700">Horoscope</a>
+    <a href="04-services.html" style="font-family:var(--font-display);font-size:14px;color:var(--muted-light);text-decoration:none;font-weight:700">Services</a>
+    <a href="07-pricing.html" style="font-family:var(--font-display);font-size:14px;color:var(--muted-light);text-decoration:none;font-weight:700">Pricing</a>
+    <a href="06-blog.html" style="font-family:var(--font-display);font-size:14px;color:var(--gold);text-decoration:none;font-weight:700">Blog</a>
+    <a href="03-about.html" style="font-family:var(--font-display);font-size:14px;color:var(--muted-light);text-decoration:none;font-weight:700">About</a>
+    <a href="10-login.html" class="btn btn-outline btn-sm" style="color:var(--cream);border-color:rgba(255,255,255,.2)">Login</a>
+    <a href="11-register.html" class="btn btn-primary btn-sm">Get Started Free</a>
+  </div>
+</nav>
+
+<div class="blog-hero">
+  <div style="font-family:var(--font-hindi);font-size:16px;color:var(--saffron);margin-bottom:12px">ज्योतिष ज्ञान</div>
+  <h1>Vedic <span>Astrology Insights</span></h1>
+  <p style="color:var(--muted-light);max-width:520px;margin:0 auto;line-height:1.7">Expert-written and AI-curated articles on Kundali, Dasha, remedies, marriage, career, and more.</p>
+  <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:24px">
+    <button class="btn btn-primary btn-sm">All Topics</button>
+    <button class="btn btn-ghost btn-sm">Dasha System</button>
+    <button class="btn btn-ghost btn-sm">Marriage & Love</button>
+    <button class="btn btn-ghost btn-sm">Career & Finance</button>
+    <button class="btn btn-ghost btn-sm">Remedies</button>
+    <button class="btn btn-ghost btn-sm">Nakshatra</button>
+    <button class="btn btn-ghost btn-sm">Panchang</button>
+  </div>
+</div>
+
+<div class="blog-layout">
+  <div>
+    <!-- Featured Post -->
+    <div class="featured-post">
+      <div class="fp-image">🪐</div>
+      <div class="fp-content">
+        <div style="font-family:var(--font-display);font-size:11px;font-weight:700;color:var(--saffron);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:8px">⭐ FEATURED • DASHA SYSTEM</div>
+        <div style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--dark);margin-bottom:8px">Saturn Mahadasha: A Complete Guide to the 19-Year Journey of Shani</div>
+        <div style="font-family:var(--font-hindi);font-size:14px;color:var(--saffron);margin-bottom:12px">शनि महादशा: 19 वर्षों की यात्रा</div>
+        <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px">Saturn Mahadasha lasts 19 years — the longest of all planetary periods in Vimshottari Dasha. It's a time of discipline, karma, and transformation. Learn what to expect and how to navigate it with grace...</p>
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div style="font-size:12px;color:var(--muted)">By JyotishAI Team • 12 Mar 2026 • 4.8 min read • 2,840 views</div>
+          <a href="#" class="btn btn-primary btn-sm">Read Article →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Post Grid -->
+    <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--dark);margin-bottom:16px">Latest Articles</div>
+    <div class="post-grid">
+      <div class="post-card"><div class="pc-image">💍</div><div class="pc-content"><div class="pc-category">Marriage & Love</div><div class="pc-title">5 Key Indicators of Marriage Timing in Your Kundali</div><div class="pc-meta">8 Mar 2026 • 6.2 min • 5,120 views</div></div></div>
+      <div class="post-card"><div class="pc-image">💎</div><div class="pc-content"><div class="pc-category">Remedies & Gems</div><div class="pc-title">Blue Sapphire (Neelam): Who Should and Shouldn't Wear It</div><div class="pc-meta">5 Mar 2026 • 5 min • 3,420 views</div></div></div>
+      <div class="post-card"><div class="pc-image">♂️</div><div class="pc-content"><div class="pc-category">Marriage & Love</div><div class="pc-title">Mangal Dosha: Myths vs Reality — What Astrology Actually Says</div><div class="pc-meta">1 Mar 2026 • 7 min • 2,210 views</div></div></div>
+      <div class="post-card"><div class="pc-image">🌙</div><div class="pc-content"><div class="pc-category">Nakshatra</div><div class="pc-title">The 27 Nakshatras: Your Complete Guide to Lunar Mansions</div><div class="pc-meta">25 Feb 2026 • 8 min • 1,980 views</div></div></div>
+      <div class="post-card"><div class="pc-image">🏠</div><div class="pc-content"><div class="pc-category">Kundali Basics</div><div class="pc-title">The 12 Houses in Kundali: What Each House Controls in Your Life</div><div class="pc-meta">20 Feb 2026 • 6 min • 1,750 views</div></div></div>
+      <div class="post-card"><div class="pc-image">🔭</div><div class="pc-content"><div class="pc-category">Career & Finance</div><div class="pc-title">Best Career Fields Based on Your Lagna Lord Placement</div><div class="pc-meta">15 Feb 2026 • 5 min • 1,520 views</div></div></div>
+    </div>
+    <div style="text-align:center;margin-top:28px"><button class="btn btn-outline">Load More Articles</button></div>
+  </div>
+
+  <!-- Sidebar -->
+  <div>
+    <div style="background:var(--white);border-radius:var(--radius-lg);padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.05);margin-bottom:20px">
+      <div style="font-family:var(--font-display);font-size:14px;font-weight:700;margin-bottom:16px">🔍 Search Articles</div>
+      <input style="width:100%;padding:10px 14px;border:1.5px solid var(--cream-3);border-radius:var(--radius);font-size:13px" placeholder="Search astrology topics..."/>
+    </div>
+    <div style="background:linear-gradient(135deg,var(--dark),var(--dark-2));border-radius:var(--radius-lg);padding:24px;border:1px solid rgba(244,169,27,.15);margin-bottom:20px">
+      <div style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--gold);margin-bottom:12px">🔭 Free Kundali Reading</div>
+      <p style="font-size:13px;color:var(--muted-light);margin-bottom:16px">Get your free birth chart + AI analysis — no credit card needed</p>
+      <a href="05-free-kundali.html" class="btn btn-primary w-full">Generate Free Kundali</a>
+    </div>
+    <div style="background:var(--white);border-radius:var(--radius-lg);padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.05)">
+      <div style="font-family:var(--font-display);font-size:14px;font-weight:700;margin-bottom:16px">📚 Popular Categories</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--cream-3);font-size:13px"><span>Dasha System</span><span class="badge badge-saffron">8</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--cream-3);font-size:13px"><span>Marriage & Love</span><span class="badge badge-saffron">6</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--cream-3);font-size:13px"><span>Remedies & Gems</span><span class="badge badge-saffron">5</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--cream-3);font-size:13px"><span>Nakshatra</span><span class="badge badge-saffron">4</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:13px"><span>Career & Finance</span><span class="badge badge-saffron">3</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer style="background:var(--dark);padding:40px;text-align:center;border-top:1px solid rgba(244,169,27,.1)">
+  <a href="01-home.html" style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--cream);text-decoration:none">Jyotish<span style="color:var(--gold)">AI</span></a>
+  <p style="color:var(--muted);font-size:13px;margin-top:12px">© 2026 JyotishAI • Made with 🙏 in India</p>
+</footer>
+</body>
+</html>

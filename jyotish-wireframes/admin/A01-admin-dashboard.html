@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><title>Admin Dashboard — JyotishAI</title><link rel="stylesheet" href="../assets/style.css"/>
+<style>body{background:var(--cream)}.admin-sidebar{background:#0D0500}.admin-sidebar .sidebar-logo a{color:var(--saffron)}.admin-sidebar .sidebar-logo a span{color:var(--gold)}.admin-badge{background:rgba(232,80,10,.15);color:var(--saffron);border:none;padding:3px 10px;border-radius:999px;font-size:10px;font-family:var(--font-display);font-weight:700;letter-spacing:0.5px;text-transform:uppercase;margin-top:4px;display:inline-block}.chart-placeholder{background:linear-gradient(135deg,rgba(232,80,10,.04),rgba(244,169,27,.04));border:2px dashed rgba(232,80,10,.15);border-radius:var(--radius);height:200px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-family:var(--font-display);font-size:13px;font-weight:700}</style></head>
+<body>
+<div class="app-layout">
+  <aside class="sidebar admin-sidebar">
+    <div class="sidebar-logo"><a href="A01-admin-dashboard.html">Jyotish<span>AI</span></a><div class="admin-badge">Admin Panel</div></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Overview</div><a href="A01-admin-dashboard.html" class="sidebar-link active"><span class="icon">📊</span>Dashboard</a><a href="A09-analytics.html" class="sidebar-link"><span class="icon">📈</span>Analytics</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Users</div><a href="A02-users.html" class="sidebar-link"><span class="icon">👥</span>User Management</a><a href="A04-payments.html" class="sidebar-link"><span class="icon">💳</span>Payments</a><a href="A05-plans.html" class="sidebar-link"><span class="icon">📦</span>Plan Management</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Content</div><a href="A06-reports.html" class="sidebar-link"><span class="icon">📄</span>Report Management</a><a href="A07-horoscope.html" class="sidebar-link"><span class="icon">🔭</span>Horoscope Content</a><a href="A08-blog.html" class="sidebar-link"><span class="icon">✍️</span>Blog Management</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">System</div><a href="A10-settings.html" class="sidebar-link"><span class="icon">⚙️</span>Settings</a></div>
+    <div class="sidebar-footer"><div style="display:flex;align-items:center;gap:10px;padding:0 4px"><div class="avatar" style="background:linear-gradient(135deg,var(--saffron),var(--ember))">AD</div><div><div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--cream)">Admin User</div><div style="font-size:11px;color:var(--muted)">Super Admin</div></div></div></div>
+  </aside>
+  <div class="main-content">
+    <div class="top-bar">
+      <div class="top-bar-title">📊 Admin Dashboard</div>
+      <div style="font-size:13px;color:var(--muted)">Thursday, 19 March 2026</div>
+      <div class="top-bar-actions"><a href="../user/U01-dashboard.html" class="btn btn-outline btn-sm">View as User</a><div class="avatar" style="background:linear-gradient(135deg,var(--saffron),var(--ember))">AD</div></div>
+    </div>
+    <div class="page-content">
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-number">52,841</div><div class="stat-label">Total Users</div><div class="stat-change up">↑ 12.4% this month</div></div>
+        <div class="stat-card gold"><div class="stat-number">8,420</div><div class="stat-label">Paid Subscribers</div><div class="stat-change up">↑ 8.2% this month</div></div>
+        <div class="stat-card green"><div class="stat-number">₹24.8L</div><div class="stat-label">Monthly Revenue</div><div class="stat-change up">↑ 18.6% vs last month</div></div>
+        <div class="stat-card blue"><div class="stat-number">1,24,520</div><div class="stat-label">Kundalis Generated</div><div class="stat-change up">↑ 22.1% this month</div></div>
+        <div class="stat-card"><div class="stat-number">3,840</div><div class="stat-label">Reports Purchased</div><div class="stat-change up">↑ 15.3% this month</div></div>
+        <div class="stat-card gold"><div class="stat-number">98.4%</div><div class="stat-label">AI Uptime</div><div class="stat-change up">↑ 0.2% vs last month</div></div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="flex-between" style="margin-bottom:16px"><h3 style="font-family:var(--font-display);font-size:16px">📈 Revenue (Last 30 Days)</h3></div>
+          <div class="chart-placeholder">[ Bar Chart: Daily Revenue — ₹24.8L Total ]</div>
+        </div>
+        <div class="card">
+          <div class="flex-between" style="margin-bottom:16px"><h3 style="font-family:var(--font-display);font-size:16px">👥 User Signup Trend</h3></div>
+          <div class="chart-placeholder">[ Line Chart: New Signups Per Day ]</div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top:24px">
+        <div class="card">
+          <div class="flex-between" style="margin-bottom:16px"><h3 style="font-family:var(--font-display);font-size:16px">💳 Plan Distribution</h3></div>
+          <div class="chart-placeholder">[ Donut Chart: Free 84% / Basic 8% / Premium 5% / Elite 3% ]</div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px">
+            <div style="text-align:center;background:var(--cream);border-radius:8px;padding:10px"><div style="font-family:var(--font-display);font-size:16px;font-weight:700">44,420</div><div style="font-size:10px;color:var(--muted)">Free</div></div>
+            <div style="text-align:center;background:var(--cream);border-radius:8px;padding:10px"><div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--saffron)">4,220</div><div style="font-size:10px;color:var(--muted)">Basic</div></div>
+            <div style="text-align:center;background:var(--cream);border-radius:8px;padding:10px"><div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--gold)">2,640</div><div style="font-size:10px;color:var(--muted)">Premium</div></div>
+            <div style="text-align:center;background:var(--cream);border-radius:8px;padding:10px"><div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--dark)">1,560</div><div style="font-size:10px;color:var(--muted)">Elite</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="flex-between" style="margin-bottom:16px"><h3 style="font-family:var(--font-display);font-size:16px">🕐 Recent Activity</h3></div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;gap:12px;align-items:flex-start;font-size:13px"><span style="color:var(--success)">●</span><div><div style="font-weight:700">New user registered: priya.k@gmail.com</div><div style="color:var(--muted)">2 minutes ago</div></div></div>
+            <div style="display:flex;gap:12px;align-items:flex-start;font-size:13px"><span style="color:var(--gold)">●</span><div><div style="font-weight:700">Payment received: ₹499 — Premium Plan</div><div style="color:var(--muted)">5 minutes ago</div></div></div>
+            <div style="display:flex;gap:12px;align-items:flex-start;font-size:13px"><span style="color:var(--saffron)">●</span><div><div style="font-weight:700">Kundali generated: arjun.m@yahoo.com</div><div style="color:var(--muted)">7 minutes ago</div></div></div>
+            <div style="display:flex;gap:12px;align-items:flex-start;font-size:13px"><span style="color:var(--info)">●</span><div><div style="font-weight:700">Report downloaded: Career Analysis PDF</div><div style="color:var(--muted)">12 minutes ago</div></div></div>
+            <div style="display:flex;gap:12px;align-items:flex-start;font-size:13px"><span style="color:var(--danger)">●</span><div><div style="font-weight:700">Refund requested: rahul.s@gmail.com</div><div style="color:var(--muted)">18 minutes ago</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:24px">
+        <div class="flex-between" style="margin-bottom:16px"><h3 style="font-family:var(--font-display);font-size:16px">👥 Recent Signups</h3><a href="A02-users.html" style="font-size:13px;color:var(--saffron);font-family:var(--font-display);font-weight:700;text-decoration:none">View All Users →</a></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>User</th><th>Email</th><th>Plan</th><th>Kundalis</th><th>Joined</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td><div style="display:flex;align-items:center;gap:10px"><div class="avatar" style="width:32px;height:32px;font-size:11px">PK</div>Priya Kapoor</div></td><td>priya.k@gmail.com</td><td><span class="badge badge-saffron">Free</span></td><td>0</td><td>Just now</td><td><a href="A03-user-detail.html" style="color:var(--saffron);font-size:12px;font-family:var(--font-display);font-weight:700;text-decoration:none">View</a></td></tr>
+              <tr><td><div style="display:flex;align-items:center;gap:10px"><div class="avatar" style="width:32px;height:32px;font-size:11px">AM</div>Arjun Mehta</div></td><td>arjun.m@yahoo.com</td><td><span class="badge badge-gold">Premium</span></td><td>8</td><td>Yesterday</td><td><a href="A03-user-detail.html" style="color:var(--saffron);font-size:12px;font-family:var(--font-display);font-weight:700;text-decoration:none">View</a></td></tr>
+              <tr><td><div style="display:flex;align-items:center;gap:10px"><div class="avatar" style="width:32px;height:32px;font-size:11px">RS</div>Rahul Sharma</div></td><td>rahul.s@gmail.com</td><td><span class="badge badge-saffron">Free</span></td><td>2</td><td>12 Mar 2026</td><td><a href="A03-user-detail.html" style="color:var(--saffron);font-size:12px;font-family:var(--font-display);font-weight:700;text-decoration:none">View</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

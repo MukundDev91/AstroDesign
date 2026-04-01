@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free Kundali — JyotishAI</title>
+  <link rel="stylesheet" href="../assets/style.css"/>
+  <style>
+    body { background: var(--dark); color: var(--cream); padding-top: var(--header-height); }
+    .page-hero {
+      background: radial-gradient(ellipse at 30% 50%, rgba(232,80,10,0.2), transparent 60%), var(--dark-2);
+      padding: 60px 8%; border-bottom: 1px solid rgba(244,169,27,0.12);
+      display: flex; align-items: center; gap: 80px;
+    }
+    .hero-left { flex: 1; }
+    .hero-left h1 { font-family: var(--font-display); font-size: 52px; color: var(--cream); margin-bottom: 12px; }
+    .hero-left h1 span { color: var(--gold); }
+    .hero-left .hindi { font-family: var(--font-hindi); font-size: 22px; color: var(--saffron); margin-bottom: 16px; }
+    .hero-left p { color: var(--muted-light); font-size: 16px; max-width: 460px; margin-bottom: 24px; }
+    .trust-pills { display: flex; gap: 10px; flex-wrap: wrap; }
+    .trust-pill {
+      background: rgba(244,169,27,0.08); border: 1px solid rgba(244,169,27,0.2);
+      border-radius: 999px; padding: 6px 14px; font-size: 12px; font-family: var(--font-display);
+      font-weight: 700; color: var(--gold); letter-spacing: 0.5px;
+    }
+    .hero-chart { flex-shrink: 0; }
+
+    /* USAGE COUNTER */
+    .usage-banner {
+      display: flex; align-items: center; justify-content: space-between;
+      background: linear-gradient(135deg, rgba(244,169,27,0.1), rgba(232,80,10,0.1));
+      border: 1px solid rgba(244,169,27,0.2); border-radius: var(--radius);
+      padding: 16px 24px; margin-bottom: 32px;
+    }
+    .usage-left { display: flex; align-items: center; gap: 16px; }
+    .usage-icon { font-size: 32px; }
+    .usage-text h4 { font-family: var(--font-display); font-size: 16px; color: var(--gold); margin-bottom: 4px; }
+    .usage-text p { font-size: 13px; color: var(--muted-light); }
+    .usage-circles { display: flex; gap: 8px; }
+    .usage-circle { width: 40px; height: 40px; border-radius: 50%; border: 3px solid var(--saffron); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 14px; font-weight: 700; color: var(--gold); }
+    .usage-circle.used { background: var(--saffron); color: var(--white); }
+    .usage-circle.available { background: transparent; color: var(--saffron); }
+
+    /* FORM */
+    .main { padding: 48px 8%; max-width: 1100px; margin: 0 auto; }
+    .form-card { background: var(--dark-card); border-radius: var(--radius-lg); padding: 40px; border: 1px solid rgba(244,169,27,0.12); }
+    .form-section-title {
+      font-family: var(--font-display); font-size: 16px; font-weight: 700;
+      color: var(--gold); margin-bottom: 20px; padding-bottom: 12px;
+      border-bottom: 1px solid rgba(244,169,27,0.1);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .form-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+    .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .step-indicator {
+      display: flex; align-items: center; gap: 0; margin-bottom: 40px;
+    }
+    .step { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; position: relative; }
+    .step:not(:last-child)::after {
+      content: ''; position: absolute; top: 20px; left: 50%; right: -50%;
+      height: 2px; background: rgba(244,169,27,0.2); z-index: 0;
+    }
+    .step-num {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 14px; font-weight: 700;
+      position: relative; z-index: 1;
+    }
+    .step-num.active { background: var(--saffron); color: var(--white); }
+    .step-num.done { background: var(--success); color: var(--white); }
+    .step-num.pending { background: var(--dark-3); color: var(--muted); border: 2px solid rgba(244,169,27,0.2); }
+    .step-label { font-family: var(--font-display); font-size: 11px; font-weight: 700; color: var(--muted-light); text-align: center; }
+    .step-label.active { color: var(--gold); }
+
+    /* SAMPLE CHART OUTPUT */
+    .sample-output { margin-top: 48px; }
+    .sample-output h3 { font-family: var(--font-display); font-size: 22px; color: var(--gold); margin-bottom: 24px; text-align: center; }
+    .chart-output-grid { display: grid; grid-template-columns: 300px 1fr; gap: 32px; }
+    .kundali-chart-box {
+      background: var(--dark); border: 2px solid rgba(244,169,27,0.2);
+      border-radius: var(--radius-lg); padding: 20px; aspect-ratio: 1;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr;
+      gap: 2px;
+    }
+    .chart-cell {
+      background: rgba(244,169,27,0.04); border: 1px solid rgba(244,169,27,0.1);
+      border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 4px;
+    }
+    .chart-cell.center { background: rgba(232,80,10,0.1); }
+    .cell-num { font-family: var(--font-display); font-size: 9px; color: var(--muted); }
+    .cell-planets { font-size: 10px; color: var(--saffron-light); font-weight: 700; font-family: var(--font-display); text-align: center; }
+    .chart-info { }
+    .planet-table { width: 100%; }
+    .planet-table th { background: rgba(244,169,27,0.08); color: var(--gold); font-family: var(--font-display); font-size: 11px; font-weight: 700; padding: 10px 12px; text-align: left; border-bottom: 1px solid rgba(244,169,27,0.1); }
+    .planet-table td { padding: 10px 12px; font-size: 13px; color: var(--cream-2); border-bottom: 1px solid rgba(255,255,255,0.04); }
+
+    .paywall-section {
+      margin-top: 24px; border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(232,80,10,0.1), rgba(244,169,27,0.08));
+      border: 1px solid rgba(232,80,10,0.3); padding: 32px; text-align: center;
+    }
+    .paywall-section h3 { font-family: var(--font-display); color: var(--gold); font-size: 22px; margin-bottom: 12px; }
+    .paywall-section p { color: var(--muted-light); margin-bottom: 24px; }
+    .paywall-options { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+<nav class="pub-nav">
+  <a class="logo" href="01-home.html">Jyotish<span>AI</span></a>
+  <ul class="nav-links">
+    <li><a href="02-horoscope.html">Horoscope</a></li>
+    <li><a href="05-free-kundali.html" style="color:var(--gold)">Free Kundali</a></li>
+    <li><a href="06-services.html">Services</a></li>
+    <li><a href="07-pricing.html">Pricing</a></li>
+  </ul>
+  <div class="lang-toggle">🌐 EN | हिं</div>
+  <a href="10-login.html" class="btn btn-outline btn-sm">Login</a>
+  <a href="11-register.html" class="btn btn-primary btn-sm">Register Free</a>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-left">
+    <h1>Your Free<br/><span>Kundali Chart</span></h1>
+    <div class="hindi">मुफ्त कुंडली बनाएं</div>
+    <p>Generate your accurate Vedic birth chart instantly. No registration required for your first 2 readings.</p>
+    <div class="trust-pills">
+      <span class="trust-pill">✓ 100% Accurate</span>
+      <span class="trust-pill">⚡ Instant Results</span>
+      <span class="trust-pill">🔒 Private & Secure</span>
+      <span class="trust-pill">📜 Vedic System</span>
+    </div>
+  </div>
+  <div class="hero-chart">
+    <div class="chart-wheel" style="opacity:0.4">
+      <div class="chart-inner">ॐ</div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <!-- Usage Tracker -->
+  <div class="usage-banner">
+    <div class="usage-left">
+      <div class="usage-icon">🎁</div>
+      <div class="usage-text">
+        <h4>Your Free Readings</h4>
+        <p>You have <strong style="color:var(--gold)">2 free kundali generations</strong> remaining. <a href="11-register.html" style="color:var(--saffron)">Register</a> for unlimited access.</p>
+      </div>
+    </div>
+    <div class="usage-circles">
+      <div class="usage-circle available">1</div>
+      <div class="usage-circle available">2</div>
+    </div>
+  </div>
+
+  <!-- Step Indicator -->
+  <div class="step-indicator">
+    <div class="step"><div class="step-num active">1</div><div class="step-label active">Birth Details</div></div>
+    <div class="step"><div class="step-num pending">2</div><div class="step-label">Preferences</div></div>
+    <div class="step"><div class="step-num pending">3</div><div class="step-label">Your Chart</div></div>
+  </div>
+
+  <!-- Form -->
+  <div class="form-card">
+    <div class="form-section-title">👤 Personal Information</div>
+    <div class="form-grid-2" style="margin-bottom:24px">
+      <div class="form-group">
+        <label class="form-label" style="color:var(--muted-light)">Full Name / पूरा नाम</label>
+        <input class="form-control form-control-dark" placeholder="e.g. Rahul Sharma" type="text"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" style="color:var(--muted-light)">Gender / लिंग</label>
+        <select class="form-control form-control-dark">
+          <option>Male — पुरुष</option>
+          <option>Female — महिला</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-section-title">📅 Birth Information — जन्म की जानकारी</div>
+    <div class="form-grid-3" style="margin-bottom:24px">
+      <div class="form-group">
+        <label class="form-label" style="color:var(--muted-light)">Date of Birth / जन्म तिथि</label>
+        <input class="form-control form-control-dark" type="date"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" style="color:var(--muted-light)">Time of Birth / जन्म समय</label>
+        <input class="form-control form-control-dark" type="time"/>
+        <small style="color:var(--muted);font-size:11px;margin-top:4px;display:block">⚠️ Accurate time gives best results</small>
+      </div>
+      <div class="form-group">
+        <label class="form-label" style="color:var(--muted-light)">Time Unknown?</label>
+        <select class="form-control form-control-dark">
+          <option>I know exact time</option>
+          <option>Approximate (±1 hr)</option>
+          <option>Birth time unknown</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" style="color:var(--muted-light)">Place of Birth / जन्म स्थान</label>
+      <input class="form-control form-control-dark" placeholder="🔍 Search city or village... e.g. Varanasi, Uttar Pradesh" type="text"/>
+      <small style="color:var(--muted);font-size:11px;margin-top:4px;display:block">Start typing and select from dropdown — we support 50,000+ Indian locations</small>
+    </div>
+
+    <div class="form-section-title">⚙️ Chart Preferences</div>
+    <div class="form-grid-2">
+      <div class="form-group">
+        <label class="form-label" style="color:var(--muted-light)">Chart Style</label>
+        <select class="form-control form-control-dark">
+          <option>North Indian Style (Diamond)</option>
+          <option>South Indian Style (Square)</option>
+          <option>East Indian Style</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" style="color:var(--muted-light)">Ayanamsha System</label>
+        <select class="form-control form-control-dark">
+          <option>Lahiri (Most Common)</option>
+          <option>Krishnamurti</option>
+          <option>Raman</option>
+          <option>Yukteshwar</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;display:flex;justify-content:space-between;align-items:center">
+      <p style="font-size:13px;color:var(--muted)">🔒 Your data is never shared. Read our <a href="#" style="color:var(--saffron)">Privacy Policy</a></p>
+      <button class="btn btn-primary btn-lg">🔭 Generate My Kundali →</button>
+    </div>
+  </div>
+
+  <!-- Sample Output (shown after generation) -->
+  <div class="sample-output">
+    <h3>✨ Your Kundali is Ready — आपकी कुंडली तैयार है</h3>
+    <div class="chart-output-grid">
+      <div>
+        <div style="text-align:center;margin-bottom:12px;font-family:var(--font-display);font-size:14px;color:var(--gold)">Birth Chart (D1)</div>
+        <div class="kundali-chart-box">
+          <div class="chart-cell"><div class="cell-num">H12</div><div class="cell-planets">Sun Mer</div></div>
+          <div class="chart-cell"><div class="cell-num">H1</div><div class="cell-planets">Asc</div></div>
+          <div class="chart-cell"><div class="cell-num">H2</div><div class="cell-planets">Venus</div></div>
+          <div class="chart-cell"><div class="cell-num">H11</div><div class="cell-planets">Sat</div></div>
+          <div class="chart-cell center"><div class="cell-planets" style="font-size:20px;color:var(--gold)">ॐ</div></div>
+          <div class="chart-cell"><div class="cell-num">H3</div><div class="cell-planets">Jup</div></div>
+          <div class="chart-cell"><div class="cell-num">H10</div><div class="cell-planets">Moon</div></div>
+          <div class="chart-cell"><div class="cell-num">H9</div><div class="cell-planets">Rahu</div></div>
+          <div class="chart-cell"><div class="cell-num">H6</div><div class="cell-planets">Mars Ketu</div></div>
+        </div>
+      </div>
+      <div class="chart-info">
+        <table class="planet-table">
+          <thead><tr><th>Planet / ग्रह</th><th>Sign / राशि</th><th>House / भाव</th><th>Degree</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>☀️ Sun (Surya)</td><td>Pisces (मीन)</td><td>12th</td><td>5°24'</td><td><span class="badge badge-saffron">Exalted</span></td></tr>
+            <tr><td>🌙 Moon (Chandra)</td><td>Capricorn (मकर)</td><td>10th</td><td>18°02'</td><td><span class="badge badge-gold">Strong</span></td></tr>
+            <tr><td>♂️ Mars (Mangal)</td><td>Virgo (कन्या)</td><td>6th</td><td>12°44'</td><td><span class="badge badge-green">Neutral</span></td></tr>
+            <tr><td>☿ Mercury (Budh)</td><td>Pisces (मीन)</td><td>12th</td><td>3°12'</td><td><span class="badge badge-red">Debilitated</span></td></tr>
+            <tr><td>♀️ Venus (Shukra)</td><td>Aries (मेष)</td><td>1st</td><td>22°10'</td><td><span class="badge badge-green">Neutral</span></td></tr>
+            <tr><td>♃ Jupiter (Guru)</td><td>Gemini (मिथुन)</td><td>3rd</td><td>8°55'</td><td><span class="badge badge-gold">Strong</span></td></tr>
+            <tr><td>♄ Saturn (Shani)</td><td>Aquarius (कुम्भ)</td><td>11th</td><td>20°30'</td><td><span class="badge badge-saffron">Own Sign</span></td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:20px;padding:16px;background:rgba(244,169,27,0.06);border-radius:var(--radius);border:1px solid rgba(244,169,27,0.15)">
+          <div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--gold);margin-bottom:8px">Basic Summary</div>
+          <p style="font-size:13px;color:var(--cream-2);line-height:1.7">Lagna: <strong style="color:var(--saffron)">Aries (मेष)</strong> • Rashi: <strong style="color:var(--saffron)">Capricorn</strong> • Nakshatra: <strong style="color:var(--saffron)">Shravana</strong> • Dasha: <strong style="color:var(--saffron)">Saturn Mahadasha</strong> (ends 2030)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paywall for detailed report -->
+    <div class="paywall-section">
+      <div style="font-size:40px;margin-bottom:12px">🔓</div>
+      <h3>Want a Detailed 10-Page Report?</h3>
+      <p>Your free kundali shows the chart. Unlock the full AI-powered interpretation with career, love, health, and life predictions.</p>
+      <div class="paywall-options">
+        <div style="background:var(--dark-card);border:1px solid rgba(244,169,27,0.2);border-radius:var(--radius);padding:20px;min-width:200px;text-align:center">
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:900;color:var(--gold)">₹199</div>
+          <div style="font-size:13px;color:var(--cream-2);margin:8px 0">General Kundali Report</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:12px">10 Pages PDF • Instant Download</div>
+          <button class="btn btn-primary w-full">Buy Report</button>
+        </div>
+        <div style="background:var(--dark-card);border:2px solid var(--saffron);border-radius:var(--radius);padding:20px;min-width:200px;text-align:center">
+          <div style="font-size:11px;color:var(--saffron);font-family:var(--font-display);font-weight:700;margin-bottom:4px">BEST VALUE</div>
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:900;color:var(--gold)">₹299/mo</div>
+          <div style="font-size:13px;color:var(--cream-2);margin:8px 0">Basic Plan</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:12px">Unlimited Reports + AI Chat</div>
+          <button class="btn btn-gold w-full">Subscribe</button>
+        </div>
+        <div style="background:var(--dark-card);border:1px solid rgba(244,169,27,0.2);border-radius:var(--radius);padding:20px;min-width:200px;text-align:center">
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:900;color:var(--gold)">Free</div>
+          <div style="font-size:13px;color:var(--cream-2);margin:8px 0">Just Register</div>
+          <div style="font-size:12px;color:var(--muted);margin-bottom:12px">Get 1 more free reading</div>
+          <a href="11-register.html" class="btn btn-outline w-full">Register Free</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

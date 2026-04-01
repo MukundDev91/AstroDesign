@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><title>My Profile — JyotishAI</title><link rel="stylesheet" href="../assets/style.css"/>
+<style>body{background:var(--cream)}.profile-header{display:flex;align-items:center;gap:24px;background:var(--white);border-radius:var(--radius-lg);padding:32px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin-bottom:28px}.ph-avatar{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,var(--saffron),var(--ember));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:36px;font-weight:700;color:white;flex-shrink:0}.ph-info h2{font-family:var(--font-display);font-size:24px;margin-bottom:4px}.ph-info p{font-size:14px;color:var(--muted)}.profile-grid{display:grid;grid-template-columns:1fr 340px;gap:24px}.profile-section{background:var(--white);border-radius:var(--radius-lg);padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin-bottom:20px}.ps-title{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--dark);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--cream-3)}</style></head>
+<body>
+<div class="app-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><a href="../public/01-home.html">Jyotish<span>AI</span></a><div class="plan-badge"><span class="badge badge-saffron">Free Plan</span></div></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Main</div><a href="U01-dashboard.html" class="sidebar-link"><span class="icon">🏠</span>Dashboard</a><a href="U02-my-kundali.html" class="sidebar-link"><span class="icon">📜</span>My Kundali</a><a href="U03-ai-reader.html" class="sidebar-link"><span class="icon">🤖</span>AI Kundali Reader</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Account</div><a href="U10-my-reports.html" class="sidebar-link"><span class="icon">🗂️</span>My Reports</a><a href="U11-billing.html" class="sidebar-link"><span class="icon">💳</span>Billing</a><a href="U12-profile.html" class="sidebar-link active"><span class="icon">👤</span>Profile</a><a href="U13-notifications.html" class="sidebar-link"><span class="icon">🔔</span>Notifications</a></div>
+    <div class="sidebar-footer"><div style="display:flex;align-items:center;gap:10px;padding:0 4px"><div class="avatar">RS</div><div><div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--cream)">Rahul Sharma</div></div></div></div>
+  </aside>
+  <div class="main-content">
+    <div class="top-bar"><div class="top-bar-title">👤 My Profile</div><div class="top-bar-actions"><button class="btn btn-primary btn-sm">💾 Save Changes</button><div class="avatar">RS</div></div></div>
+    <div class="page-content">
+      <div class="profile-header">
+        <div class="ph-avatar">RS</div>
+        <div class="ph-info">
+          <h2>Rahul Sharma</h2>
+          <p>rahul.sharma@gmail.com • +91 98765 43210 • Mumbai, Maharashtra</p>
+          <div style="display:flex;gap:10px;margin-top:10px">
+            <span class="badge badge-saffron">Free Plan</span>
+            <span class="badge badge-gold">Member since Jan 2026</span>
+          </div>
+        </div>
+        <button class="btn btn-outline btn-sm" style="margin-left:auto">📷 Change Photo</button>
+      </div>
+      <div class="profile-grid">
+        <div>
+          <div class="profile-section">
+            <div class="ps-title">👤 Personal Information</div>
+            <div class="form-grid-2">
+              <div class="form-group"><label class="form-label">First Name</label><input class="form-control" value="Rahul"/></div>
+              <div class="form-group"><label class="form-label">Last Name</label><input class="form-control" value="Sharma"/></div>
+              <div class="form-group"><label class="form-label">Email</label><input class="form-control" value="rahul.sharma@gmail.com" type="email"/></div>
+              <div class="form-group"><label class="form-label">Phone</label><input class="form-control" value="+91 98765 43210"/></div>
+              <div class="form-group"><label class="form-label">Gender</label><select class="form-control"><option>Male</option><option>Female</option></select></div>
+              <div class="form-group"><label class="form-label">Language</label><select class="form-control"><option>English + Hindi</option><option>English only</option><option>Hindi only</option></select></div>
+            </div>
+          </div>
+          <div class="profile-section">
+            <div class="ps-title">🔭 Birth Details</div>
+            <div class="form-grid-3">
+              <div class="form-group"><label class="form-label">Date of Birth</label><input class="form-control" value="1992-08-15" type="date"/></div>
+              <div class="form-group"><label class="form-label">Time of Birth</label><input class="form-control" value="06:30" type="time"/></div>
+              <div class="form-group"><label class="form-label">Place of Birth</label><input class="form-control" value="Mumbai, Maharashtra"/></div>
+            </div>
+            <div style="background:rgba(232,80,10,.06);border-radius:var(--radius);padding:12px;font-size:12px;color:var(--muted);border-left:3px solid var(--saffron)">⚠️ Changing birth details will regenerate your kundali and invalidate existing reports.</div>
+          </div>
+          <div class="profile-section">
+            <div class="ps-title">🔒 Security</div>
+            <div class="form-group"><label class="form-label">Current Password</label><input class="form-control" type="password" placeholder="Enter current password"/></div>
+            <div class="form-grid-2">
+              <div class="form-group"><label class="form-label">New Password</label><input class="form-control" type="password" placeholder="New password"/></div>
+              <div class="form-group"><label class="form-label">Confirm Password</label><input class="form-control" type="password" placeholder="Confirm password"/></div>
+            </div>
+            <button class="btn btn-outline btn-sm">Update Password</button>
+          </div>
+        </div>
+        <div>
+          <div style="background:var(--white);border-radius:var(--radius-lg);padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin-bottom:20px">
+            <div style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--dark);margin-bottom:16px">🔔 Notification Preferences</div>
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:13px">Daily Horoscope Email</span><input type="checkbox" checked style="accent-color:var(--saffron);width:18px;height:18px"/></div>
+              <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:13px">Auspicious Date Alerts</span><input type="checkbox" checked style="accent-color:var(--saffron);width:18px;height:18px"/></div>
+              <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:13px">Report Ready Alerts</span><input type="checkbox" checked style="accent-color:var(--saffron);width:18px;height:18px"/></div>
+              <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:13px">WhatsApp Notifications</span><input type="checkbox" style="accent-color:var(--saffron);width:18px;height:18px"/></div>
+              <div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:13px">Promotional Offers</span><input type="checkbox" style="accent-color:var(--saffron);width:18px;height:18px"/></div>
+            </div>
+          </div>
+          <div style="background:linear-gradient(135deg,var(--dark),var(--dark-2));border-radius:var(--radius-lg);padding:24px;border:1px solid rgba(244,169,27,.15)">
+            <div style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--gold);margin-bottom:12px">📊 Your Stats</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <div style="background:rgba(244,169,27,.06);border-radius:8px;padding:12px;text-align:center"><div style="font-family:var(--font-display);font-size:20px;font-weight:900;color:var(--gold)">2</div><div style="font-size:11px;color:var(--muted-light)">Kundalis</div></div>
+              <div style="background:rgba(244,169,27,.06);border-radius:8px;padding:12px;text-align:center"><div style="font-family:var(--font-display);font-size:20px;font-weight:900;color:var(--gold)">2</div><div style="font-size:11px;color:var(--muted-light)">Reports</div></div>
+              <div style="background:rgba(244,169,27,.06);border-radius:8px;padding:12px;text-align:center"><div style="font-family:var(--font-display);font-size:20px;font-weight:900;color:var(--gold)">1</div><div style="font-size:11px;color:var(--muted-light)">Matchmaking</div></div>
+              <div style="background:rgba(244,169,27,.06);border-radius:8px;padding:12px;text-align:center"><div style="font-family:var(--font-display);font-size:20px;font-weight:900;color:var(--gold)">45</div><div style="font-size:11px;color:var(--muted-light)">AI Messages</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

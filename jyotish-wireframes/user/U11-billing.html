@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><title>Billing & Plans — JyotishAI</title><link rel="stylesheet" href="../assets/style.css"/>
+<style>body{background:var(--cream)}.current-plan-card{background:linear-gradient(135deg,var(--dark),var(--dark-2));border-radius:var(--radius-lg);padding:32px;margin-bottom:28px;border:2px solid rgba(244,169,27,0.2);display:flex;align-items:center;justify-content:space-between}.cpc-left h2{font-family:var(--font-display);font-size:24px;color:var(--cream);margin-bottom:8px}.billing-layout{display:grid;grid-template-columns:1fr 340px;gap:24px}.plan-row{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:var(--white);border-radius:var(--radius-lg);margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.05);border:2px solid transparent;transition:var(--transition);cursor:pointer}.plan-row:hover{border-color:rgba(232,80,10,.2)}.plan-row.active{border-color:var(--saffron)}.plan-row.current{border-color:var(--gold);background:linear-gradient(145deg,rgba(244,169,27,.04),white)}.pr-left .pr-name{font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--dark)}.pr-left .pr-features{font-size:12px;color:var(--muted);margin-top:4px}.pr-price{font-family:var(--font-display);font-size:28px;font-weight:900;color:var(--saffron)}.pr-price sub{font-size:13px;color:var(--muted)}.payment-methods{background:var(--white);border-radius:var(--radius-lg);padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin-bottom:20px}.pm-title{font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--dark);margin-bottom:16px}.pm-options{display:flex;flex-direction:column;gap:10px}.pm-opt{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1.5px solid var(--cream-3);border-radius:var(--radius);cursor:pointer;transition:var(--transition)}.pm-opt:hover,.pm-opt.selected{border-color:var(--saffron)}.pm-opt .pm-icon{font-size:24px}.pm-opt .pm-name{font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--dark)}.pm-opt .pm-desc{font-size:11px;color:var(--muted)}.invoice-table{width:100%}.invoice-table th{background:var(--dark);color:var(--gold);font-family:var(--font-display);font-size:11px;font-weight:700;padding:12px 16px;text-align:left}.invoice-table td{padding:12px 16px;font-size:13px;border-bottom:1px solid var(--cream-3)}.invoice-table tr:last-child td{border:none}</style></head>
+<body>
+<div class="app-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><a href="../public/01-home.html">Jyotish<span>AI</span></a><div class="plan-badge"><span class="badge badge-saffron">Free Plan</span></div></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Main</div><a href="U01-dashboard.html" class="sidebar-link"><span class="icon">🏠</span>Dashboard</a><a href="U02-my-kundali.html" class="sidebar-link"><span class="icon">📜</span>My Kundali</a><a href="U03-ai-reader.html" class="sidebar-link"><span class="icon">🤖</span>AI Kundali Reader</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Reports</div><a href="U04-general-report.html" class="sidebar-link"><span class="icon">📊</span>General Report</a><a href="U05-career-report.html" class="sidebar-link"><span class="icon">💼</span>Career Analysis</a><a href="U06-love-report.html" class="sidebar-link"><span class="icon">❤️</span>Love Life Report</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Services</div><a href="U08-matchmaking.html" class="sidebar-link"><span class="icon">💑</span>Matchmaking</a><a href="U09-baby-names.html" class="sidebar-link"><span class="icon">👶</span>Baby Names</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Account</div><a href="U10-my-reports.html" class="sidebar-link"><span class="icon">🗂️</span>My Reports</a><a href="U11-billing.html" class="sidebar-link active"><span class="icon">💳</span>Billing & Plans</a><a href="U12-profile.html" class="sidebar-link"><span class="icon">👤</span>Profile</a></div>
+    <div class="sidebar-footer"><div style="display:flex;align-items:center;gap:10px;padding:0 4px"><div class="avatar">RS</div><div><div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--cream)">Rahul Sharma</div><div style="font-size:11px;color:var(--muted)">Free Plan</div></div></div></div>
+  </aside>
+  <div class="main-content">
+    <div class="top-bar"><div class="top-bar-title">💳 Billing & Plans</div><div class="top-bar-actions"><div class="avatar">RS</div></div></div>
+    <div class="page-content">
+      <!-- Current Plan Card -->
+      <div class="current-plan-card">
+        <div class="cpc-left">
+          <div style="font-family:var(--font-display);font-size:12px;font-weight:700;color:var(--muted-light);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">CURRENT PLAN</div>
+          <h2>Free Plan</h2>
+          <p style="color:var(--muted-light);font-size:14px;margin-bottom:16px">2 of 2 free kundali reads used • Upgrade to continue</p>
+          <div style="display:flex;gap:12px">
+            <div style="background:rgba(244,169,27,.08);border:1px solid rgba(244,169,27,.2);border-radius:8px;padding:12px 16px;text-align:center"><div style="font-family:var(--font-display);font-size:20px;font-weight:900;color:var(--gold)">0</div><div style="font-size:11px;color:var(--muted-light)">Free Reads Left</div></div>
+            <div style="background:rgba(244,169,27,.08);border:1px solid rgba(244,169,27,.2);border-radius:8px;padding:12px 16px;text-align:center"><div style="font-family:var(--font-display);font-size:20px;font-weight:900;color:var(--gold)">2</div><div style="font-size:11px;color:var(--muted-light)">Reports Generated</div></div>
+          </div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:48px;margin-bottom:8px">⚡</div>
+          <div style="font-family:var(--font-display);font-size:14px;color:var(--gold);margin-bottom:12px">Ready to Upgrade?</div>
+          <div style="font-family:var(--font-display);font-size:28px;font-weight:900;color:var(--saffron)">From ₹299/mo</div>
+        </div>
+      </div>
+
+      <div class="billing-layout">
+        <div>
+          <div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--dark);margin-bottom:16px">📦 Choose Your Plan</div>
+          <div class="plan-row current"><div class="pr-left"><div class="pr-name">🎁 Free <span class="badge badge-saffron" style="margin-left:8px">Current</span></div><div class="pr-features">2 Kundali charts • Daily Horoscope</div></div><div class="pr-price">₹0</div></div>
+          <div class="plan-row"><div class="pr-left"><div class="pr-name">🔭 Basic</div><div class="pr-features">Unlimited Kundalis • AI Reader (20/day) • General Report (1/mo)</div></div><div><div class="pr-price">₹299<sub>/mo</sub></div><div style="font-size:11px;color:var(--success)">₹2,499/year</div></div></div>
+          <div class="plan-row active"><div class="pr-left"><div class="pr-name">⭐ Premium <span style="background:rgba(232,80,10,.12);color:var(--saffron);font-size:10px;font-weight:700;padding:3px 8px;border-radius:999px;font-family:var(--font-display);margin-left:8px">POPULAR</span></div><div class="pr-features">Unlimited AI Reader • Career + Love Reports • Matchmaking (3/mo)</div></div><div><div class="pr-price">₹499<sub>/mo</sub></div><div style="font-size:11px;color:var(--success)">₹3,999/year</div></div></div>
+          <div class="plan-row"><div class="pr-left"><div class="pr-name">👑 Elite</div><div class="pr-features">Everything + Full Life Report (30 pg) • Unlimited Matchmaking • Baby Names</div></div><div><div class="pr-price">₹699<sub>/mo</sub></div><div style="font-size:11px;color:var(--success)">₹5,999/year</div></div></div>
+
+          <!-- Payment Methods -->
+          <div style="margin-top:28px;font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--dark);margin-bottom:16px">💳 Payment Method</div>
+          <div class="payment-methods">
+            <div class="pm-title">Select how you'd like to pay</div>
+            <div class="pm-options">
+              <div class="pm-opt selected"><div class="pm-icon">💳</div><div><div class="pm-name">Credit / Debit Card</div><div class="pm-desc">Visa, Mastercard, RuPay — via Razorpay</div></div><div style="margin-left:auto"><input type="radio" checked style="accent-color:var(--saffron)"/></div></div>
+              <div class="pm-opt"><div class="pm-icon">📱</div><div><div class="pm-name">UPI</div><div class="pm-desc">PhonePe, Google Pay, Paytm, BHIM UPI</div></div><div style="margin-left:auto"><input type="radio" style="accent-color:var(--saffron)"/></div></div>
+              <div class="pm-opt"><div class="pm-icon">🏦</div><div><div class="pm-name">Net Banking</div><div class="pm-desc">All major Indian banks supported</div></div><div style="margin-left:auto"><input type="radio" style="accent-color:var(--saffron)"/></div></div>
+              <div class="pm-opt"><div class="pm-icon">📲</div><div><div class="pm-name">QR Code</div><div class="pm-desc">Scan and pay via any UPI app</div></div><div style="margin-left:auto"><input type="radio" style="accent-color:var(--saffron)"/></div></div>
+            </div>
+            <div style="margin-top:20px;padding:16px;background:var(--cream);border-radius:var(--radius)">
+              <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px"><span>Premium Plan (Monthly)</span><span>₹499</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px;color:var(--success)"><span>First Month Discount (WELCOME20)</span><span>-₹99</span></div>
+              <div style="height:1px;background:var(--cream-3);margin:12px 0"></div>
+              <div style="display:flex;justify-content:space-between;font-family:var(--font-display);font-size:16px;font-weight:700"><span>Total</span><span style="color:var(--saffron)">₹400</span></div>
+              <button class="btn btn-primary w-full" style="margin-top:16px;font-size:16px;padding:16px">🔒 Pay ₹400 via Razorpay</button>
+              <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:8px">🔒 256-bit SSL Encrypted • RBI Compliant • Cancel anytime</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div style="background:var(--white);border-radius:var(--radius-lg);padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin-bottom:20px">
+            <div style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--dark);margin-bottom:16px">📜 Payment History</div>
+            <div style="overflow-x:auto">
+              <table class="invoice-table">
+                <thead><tr><th>Date</th><th>Plan</th><th>Amount</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td>12 Mar 2026</td><td>One-time Report</td><td>₹199</td><td><span class="badge badge-green">Paid</span></td></tr>
+                  <tr><td>8 Mar 2026</td><td>Matchmaking</td><td>₹149</td><td><span class="badge badge-green">Paid</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <button class="btn btn-outline btn-sm w-full" style="margin-top:16px">📥 Download All Invoices</button>
+          </div>
+
+          <div style="background:linear-gradient(135deg,var(--dark),var(--dark-2));border-radius:var(--radius-lg);padding:24px;border:1px solid rgba(244,169,27,.15)">
+            <div style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--gold);margin-bottom:12px">🏷️ Have a Coupon?</div>
+            <div style="display:flex;gap:8px">
+              <input class="form-control form-control-dark" placeholder="Enter coupon code" style="flex:1"/>
+              <button class="btn btn-gold btn-sm">Apply</button>
+            </div>
+            <p style="font-size:12px;color:var(--muted-light);margin-top:8px">Try WELCOME20 for 20% off your first month</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

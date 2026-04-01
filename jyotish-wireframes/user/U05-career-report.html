@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Career Analysis Report — JyotishAI</title>
+  <link rel="stylesheet" href="../assets/style.css"/>
+  <style>
+    body { background: var(--cream); }
+    .report-banner { background: linear-gradient(135deg, #1A2744, #0D1B3E); border-radius: var(--radius-lg); padding: 32px; margin-bottom: 28px; border: 1px solid rgba(49,130,206,0.3); display: flex; justify-content: space-between; align-items: center; }
+    .rb-title { font-family: var(--font-display); font-size: 26px; color: white; margin-bottom: 6px; }
+    .rb-title span { color: #90CDF4; }
+    .report-grid { display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    .report-section { background: var(--white); border-radius: var(--radius-lg); padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); margin-bottom: 20px; }
+    .rs-title { font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    .career-timeline { position: relative; padding-left: 28px; }
+    .career-timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: linear-gradient(var(--saffron), var(--gold)); }
+    .ct-item { position: relative; margin-bottom: 24px; }
+    .ct-dot { position: absolute; left: -24px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: var(--saffron); border: 2px solid var(--cream); }
+    .ct-year { font-family: var(--font-display); font-size: 12px; font-weight: 700; color: var(--saffron); margin-bottom: 4px; }
+    .ct-text { font-size: 14px; color: var(--dark); line-height: 1.6; }
+    .skill-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .skill-chip { background: var(--cream); border-radius: 8px; padding: 12px; text-align: center; border: 1px solid var(--cream-3); }
+    .skill-chip .skill-name { font-family: var(--font-display); font-size: 12px; font-weight: 700; color: var(--dark); }
+    .skill-chip .skill-score { font-family: var(--font-display); font-size: 20px; font-weight: 900; color: var(--saffron); }
+  </style>
+</head>
+<body>
+<div class="app-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><a href="../public/01-home.html">Jyotish<span>AI</span></a><div class="plan-badge"><span class="badge badge-saffron" style="background:rgba(159,122,234,0.15);color:#B794F4;border:none">Premium</span></div></div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Main</div>
+      <a href="U01-dashboard.html" class="sidebar-link"><span class="icon">🏠</span>Dashboard</a>
+      <a href="U02-my-kundali.html" class="sidebar-link"><span class="icon">📜</span>My Kundali</a>
+      <a href="U03-ai-reader.html" class="sidebar-link"><span class="icon">🤖</span>AI Kundali Reader</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Reports</div>
+      <a href="U04-general-report.html" class="sidebar-link"><span class="icon">📊</span>General Report</a>
+      <a href="U05-career-report.html" class="sidebar-link active"><span class="icon">💼</span>Career Analysis</a>
+      <a href="U06-love-report.html" class="sidebar-link"><span class="icon">❤️</span>Love Life Report</a>
+      <a href="U07-full-life-report.html" class="sidebar-link"><span class="icon">📖</span>Full Life Report</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Services</div>
+      <a href="U08-matchmaking.html" class="sidebar-link"><span class="icon">💑</span>Matchmaking</a>
+      <a href="U09-baby-names.html" class="sidebar-link"><span class="icon">👶</span>Baby Names</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Account</div>
+      <a href="U11-billing.html" class="sidebar-link"><span class="icon">💳</span>Billing</a>
+    </div>
+    <div class="sidebar-footer">
+      <div style="display:flex;align-items:center;gap:10px;padding:0 4px">
+        <div class="avatar">RS</div>
+        <div><div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--cream)">Rahul Sharma</div></div>
+      </div>
+    </div>
+  </aside>
+  <div class="main-content">
+    <div class="top-bar">
+      <div class="top-bar-title">💼 Career Analysis Report</div>
+      <div class="top-bar-actions">
+        <button class="btn btn-primary btn-sm">📥 Download PDF (15 pages)</button>
+        <div class="avatar">RS</div>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="report-banner">
+        <div>
+          <div class="rb-title">Career Analysis — <span>Rahul Sharma</span></div>
+          <div style="font-family:var(--font-hindi);font-size:14px;color:#90CDF4;margin-bottom:10px">कैरियर विश्लेषण रिपोर्ट</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <span style="background:rgba(49,130,206,0.2);border:1px solid rgba(49,130,206,0.3);border-radius:999px;padding:4px 12px;font-size:12px;font-family:var(--font-display);font-weight:700;color:#90CDF4">📄 15 Pages PDF</span>
+            <span style="background:rgba(56,161,105,0.15);border:1px solid rgba(56,161,105,0.3);border-radius:999px;padding:4px 12px;font-size:12px;font-family:var(--font-display);font-weight:700;color:#68D391">✓ Premium Feature</span>
+          </div>
+        </div>
+        <button class="btn btn-primary">📥 Download PDF</button>
+      </div>
+
+      <div class="report-grid">
+        <div>
+          <div class="report-section">
+            <div class="rs-title">💼 Best Career Fields for You</div>
+            <div class="skill-grid">
+              <div class="skill-chip"><div class="skill-name">Technology & IT</div><div class="skill-score">92%</div></div>
+              <div class="skill-chip"><div class="skill-name">Entrepreneurship</div><div class="skill-score">88%</div></div>
+              <div class="skill-chip"><div class="skill-name">Law & Justice</div><div class="skill-score">82%</div></div>
+              <div class="skill-chip"><div class="skill-name">Defense / Police</div><div class="skill-score">78%</div></div>
+              <div class="skill-chip"><div class="skill-name">Real Estate</div><div class="skill-score">75%</div></div>
+              <div class="skill-chip"><div class="skill-name">Surgery / Medicine</div><div class="skill-score">72%</div></div>
+            </div>
+          </div>
+
+          <div class="report-section">
+            <div class="rs-title">📅 Career Timeline Predictions</div>
+            <div class="career-timeline">
+              <div class="ct-item">
+                <div class="ct-dot"></div>
+                <div class="ct-year">2026 (Current)</div>
+                <div class="ct-text">Saturn–Venus period brings a significant promotion or job change. Your professional network expands. A mentor figure (Jupiter placement) will play a key role in your career advancement.</div>
+              </div>
+              <div class="ct-item">
+                <div class="ct-dot" style="background:var(--gold)"></div>
+                <div class="ct-year" style="color:var(--gold)">2027–2028 ⭐ Peak Period</div>
+                <div class="ct-text">Saturn–Sun period is the best time of your professional life. Authority, recognition, and significant salary increases. Best time to start a business or take on leadership roles.</div>
+              </div>
+              <div class="ct-item">
+                <div class="ct-dot"></div>
+                <div class="ct-year">2029–2030</div>
+                <div class="ct-text">Saturn–Moon period may bring emotional stress at work. Focus on mental health. Financial consolidation period — avoid new ventures, focus on strengthening existing ones.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div style="background:var(--white);border-radius:var(--radius-lg);padding:24px;box-shadow:0 2px 12px rgba(0,0,0,0.05);margin-bottom:20px">
+            <div style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--dark);margin-bottom:16px">💰 Finance Predictions</div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:11px;color:var(--muted);font-family:var(--font-display);font-weight:700">INCOME GROWTH 2026</div><div style="font-family:var(--font-display);font-size:22px;font-weight:900;color:var(--success)">+35%</div></div>
+              <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:11px;color:var(--muted);font-family:var(--font-display);font-weight:700">BEST INVESTMENT PERIOD</div><div style="font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--dark)">Mar–Jul 2027</div></div>
+              <div style="background:rgba(229,62,62,0.06);border-radius:8px;padding:12px;border-left:3px solid var(--danger)"><div style="font-size:11px;color:var(--danger);font-family:var(--font-display);font-weight:700">CAUTION PERIOD</div><div style="font-size:13px;color:var(--dark)">Avoid loans in Oct–Dec 2026</div></div>
+            </div>
+          </div>
+
+          <div style="background:linear-gradient(135deg,var(--dark),var(--dark-2));border-radius:var(--radius-lg);padding:24px;border:1px solid rgba(244,169,27,0.15)">
+            <div style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--gold);margin-bottom:12px">🔗 Related Reports</div>
+            <a href="U04-general-report.html" class="btn btn-outline w-full" style="color:var(--cream-2);border-color:rgba(255,255,255,0.15);margin-bottom:8px">📊 General Report</a>
+            <a href="U06-love-report.html" class="btn btn-outline w-full" style="color:var(--cream-2);border-color:rgba(255,255,255,0.15);margin-bottom:8px">❤️ Love Life Report</a>
+            <a href="U07-full-life-report.html" class="btn btn-primary w-full">📖 Full Life Report (Elite)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

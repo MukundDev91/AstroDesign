@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><title>Analytics — JyotishAI Admin</title><link rel="stylesheet" href="../assets/style.css"/>
+<style>
+body { background: var(--cream); }
+.admin-sidebar { background: #0D0500; }
+.chart-box { background: linear-gradient(135deg, rgba(232,80,10,.04), rgba(244,169,27,.02)); border: 2px dashed rgba(232,80,10,.15); border-radius: var(--radius); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--muted); font-family: var(--font-display); font-size: 12px; font-weight: 700; gap: 8px; }
+.metric-tile { background: var(--white); border-radius: var(--radius-lg); padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,.05); }
+.mt-label { font-family: var(--font-display); font-size: 10px; font-weight: 700; color: var(--muted); letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 6px; }
+.mt-value { font-family: var(--font-display); font-size: 28px; font-weight: 900; color: var(--dark); }
+.mt-change { font-size: 12px; margin-top: 4px; }
+</style>
+</head>
+<body>
+<div class="app-layout">
+  <aside class="sidebar admin-sidebar">
+    <div class="sidebar-logo"><a href="A01-admin-dashboard.html">Jyotish<span>AI</span></a><div style="background:rgba(232,80,10,.15);color:var(--saffron);border:none;padding:3px 10px;border-radius:999px;font-size:10px;font-family:var(--font-display);font-weight:700;display:inline-block;margin-top:4px">Admin Panel</div></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Overview</div><a href="A01-admin-dashboard.html" class="sidebar-link"><span class="icon">📊</span>Dashboard</a><a href="A09-analytics.html" class="sidebar-link active"><span class="icon">📈</span>Analytics</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Users</div><a href="A02-users.html" class="sidebar-link"><span class="icon">👥</span>User Management</a><a href="A04-payments.html" class="sidebar-link"><span class="icon">💳</span>Payments</a><a href="A05-plans.html" class="sidebar-link"><span class="icon">📦</span>Plan Management</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Content</div><a href="A06-reports.html" class="sidebar-link"><span class="icon">📄</span>Report Management</a><a href="A07-horoscope.html" class="sidebar-link"><span class="icon">🔭</span>Horoscope Content</a><a href="A08-blog.html" class="sidebar-link"><span class="icon">✍️</span>Blog Management</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">System</div><a href="A10-settings.html" class="sidebar-link"><span class="icon">⚙️</span>Settings</a></div>
+    <div class="sidebar-footer"><div style="display:flex;align-items:center;gap:10px;padding:0 4px"><div class="avatar" style="background:linear-gradient(135deg,var(--saffron),var(--ember))">AD</div><div><div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--cream)">Admin User</div></div></div></div>
+  </aside>
+  <div class="main-content">
+    <div class="top-bar">
+      <div class="top-bar-title">📈 Analytics</div>
+      <div class="top-bar-actions">
+        <select style="padding:8px 16px;border:1.5px solid var(--cream-3);border-radius:var(--radius);font-size:13px;background:var(--white)"><option>Last 30 Days</option><option>Last 7 Days</option><option>Last 90 Days</option><option>This Year</option></select>
+        <button class="btn btn-outline btn-sm">📥 Export Report</button>
+      </div>
+    </div>
+    <div class="page-content">
+      <!-- Date Range Notice -->
+      <div style="background:linear-gradient(135deg,var(--dark),var(--dark-2));border-radius:var(--radius-lg);padding:20px 28px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(244,169,27,.12)">
+        <div style="font-family:var(--font-display);font-size:14px;color:var(--gold)">Showing: 19 Feb 2026 — 19 Mar 2026</div>
+        <div style="display:flex;gap:16px">
+          <div style="text-align:center"><div style="font-family:var(--font-display);font-size:18px;font-weight:900;color:var(--cream)">₹24.8L</div><div style="font-size:11px;color:var(--muted-light)">Revenue</div></div>
+          <div style="text-align:center"><div style="font-family:var(--font-display);font-size:18px;font-weight:900;color:var(--cream)">1,240</div><div style="font-size:11px;color:var(--muted-light)">New Users</div></div>
+          <div style="text-align:center"><div style="font-family:var(--font-display);font-size:18px;font-weight:900;color:var(--cream)">15.9%</div><div style="font-size:11px;color:var(--muted-light)">Conversion</div></div>
+        </div>
+      </div>
+
+      <!-- KPI Grid -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px">
+        <div class="metric-tile"><div class="mt-label">Monthly Active Users</div><div class="mt-value">18,420</div><div class="mt-change" style="color:var(--success)">↑ 14.2% vs last month</div></div>
+        <div class="metric-tile"><div class="mt-label">Free → Paid Conversion</div><div class="mt-value">15.9%</div><div class="mt-change" style="color:var(--success)">↑ 2.1pp vs last month</div></div>
+        <div class="metric-tile"><div class="mt-label">Avg Revenue Per User</div><div class="mt-value">₹295</div><div class="mt-change" style="color:var(--success)">↑ 8.6% vs last month</div></div>
+        <div class="metric-tile"><div class="mt-label">Monthly Churn Rate</div><div class="mt-value">3.2%</div><div class="mt-change" style="color:var(--danger)">↑ 0.4pp vs last month</div></div>
+      </div>
+
+      <!-- Main Charts Row -->
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:20px;margin-bottom:20px">
+        <div class="card">
+          <div style="font-family:var(--font-display);font-size:15px;font-weight:700;margin-bottom:16px">📈 Revenue Trend (30 Days)</div>
+          <div class="chart-box" style="height:220px">
+            <div style="font-size:28px">📊</div>
+            <div>Line + Bar Combo Chart</div>
+            <div style="font-weight:400;font-size:11px;color:var(--muted)">Daily Revenue (bars) + Cumulative (line)</div>
+            <div style="font-weight:400;font-size:11px;color:var(--muted)">Peak: ₹1.2L on 15 Mar 2026</div>
+          </div>
+        </div>
+        <div class="card">
+          <div style="font-family:var(--font-display);font-size:15px;font-weight:700;margin-bottom:16px">🌍 Traffic Sources</div>
+          <div class="chart-box" style="height:140px;margin-bottom:16px">
+            <div style="font-size:24px">🍩</div>
+            <div>Donut Chart</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;justify-content:space-between;font-size:13px"><span>🔍 Organic Search</span><strong>52%</strong></div>
+            <div style="display:flex;justify-content:space-between;font-size:13px"><span>📱 Direct</span><strong>24%</strong></div>
+            <div style="display:flex;justify-content:space-between;font-size:13px"><span>📲 Social Media</span><strong>16%</strong></div>
+            <div style="display:flex;justify-content:space-between;font-size:13px"><span>📧 Email</span><strong>8%</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Secondary Charts Row -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
+        <div class="card">
+          <div style="font-family:var(--font-display);font-size:15px;font-weight:700;margin-bottom:16px">👥 New Signups Per Day</div>
+          <div class="chart-box" style="height:180px">
+            <div style="font-size:28px">📉</div>
+            <div>Area Chart — Daily Signups</div>
+            <div style="font-weight:400;font-size:11px;color:var(--muted)">Avg: 41 signups/day • Peak: 124 (Purnima Day)</div>
+          </div>
+        </div>
+        <div class="card">
+          <div style="font-family:var(--font-display);font-size:15px;font-weight:700;margin-bottom:16px">💳 Plan Upgrade Funnel</div>
+          <div class="chart-box" style="height:180px">
+            <div style="font-size:28px">🏗️</div>
+            <div>Funnel Chart</div>
+            <div style="font-weight:400;font-size:11px;color:var(--muted)">Free → Basic → Premium → Elite</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Usage + Geography -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <div class="card">
+          <div style="font-family:var(--font-display);font-size:15px;font-weight:700;margin-bottom:16px">⚡ Feature Usage Breakdown</div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span>Kundali Generation</span><strong>1,24,520 uses</strong></div><div style="height:8px;background:var(--cream-3);border-radius:999px"><div style="width:100%;height:100%;background:var(--saffron);border-radius:999px"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span>Daily Horoscope</span><strong>84,200 reads</strong></div><div style="height:8px;background:var(--cream-3);border-radius:999px"><div style="width:68%;height:100%;background:var(--gold);border-radius:999px"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span>AI Chat Sessions</span><strong>42,840 chats</strong></div><div style="height:8px;background:var(--cream-3);border-radius:999px"><div style="width:34%;height:100%;background:var(--info);border-radius:999px"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span>Matchmaking</span><strong>8,420 checks</strong></div><div style="height:8px;background:var(--cream-3);border-radius:999px"><div style="width:18%;height:100%;background:#ED64A6;border-radius:999px"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span>Baby Names</span><strong>2,840 requests</strong></div><div style="height:8px;background:var(--cream-3);border-radius:999px"><div style="width:8%;height:100%;background:var(--success);border-radius:999px"></div></div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div style="font-family:var(--font-display);font-size:15px;font-weight:700;margin-bottom:16px">🗺️ Top User Locations</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:12px"><div style="font-size:18px">🏙️</div><div style="flex:1"><div style="font-size:13px;font-weight:700">Mumbai</div><div style="height:6px;background:var(--cream-3);border-radius:999px;margin-top:4px"><div style="width:84%;height:100%;background:var(--saffron);border-radius:999px"></div></div></div><span style="font-family:var(--font-display);font-size:12px;font-weight:700">8,420</span></div>
+            <div style="display:flex;align-items:center;gap:12px"><div style="font-size:18px">🏛️</div><div style="flex:1"><div style="font-size:13px;font-weight:700">Delhi / NCR</div><div style="height:6px;background:var(--cream-3);border-radius:999px;margin-top:4px"><div style="width:72%;height:100%;background:var(--gold);border-radius:999px"></div></div></div><span style="font-family:var(--font-display);font-size:12px;font-weight:700">7,280</span></div>
+            <div style="display:flex;align-items:center;gap:12px"><div style="font-size:18px">🌿</div><div style="flex:1"><div style="font-size:13px;font-weight:700">Bengaluru</div><div style="height:6px;background:var(--cream-3);border-radius:999px;margin-top:4px"><div style="width:58%;height:100%;background:var(--info);border-radius:999px"></div></div></div><span style="font-family:var(--font-display);font-size:12px;font-weight:700">5,840</span></div>
+            <div style="display:flex;align-items:center;gap:12px"><div style="font-size:18px">🏗️</div><div style="flex:1"><div style="font-size:13px;font-weight:700">Pune</div><div style="height:6px;background:var(--cream-3);border-radius:999px;margin-top:4px"><div style="width:42%;height:100%;background:var(--success);border-radius:999px"></div></div></div><span style="font-family:var(--font-display);font-size:12px;font-weight:700">4,220</span></div>
+            <div style="display:flex;align-items:center;gap:12px"><div style="font-size:18px">🌊</div><div style="flex:1"><div style="font-size:13px;font-weight:700">Hyderabad</div><div style="height:6px;background:var(--cream-3);border-radius:999px;margin-top:4px"><div style="width:30%;height:100%;background:#ED64A6;border-radius:999px"></div></div></div><span style="font-family:var(--font-display);font-size:12px;font-weight:700">2,980</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

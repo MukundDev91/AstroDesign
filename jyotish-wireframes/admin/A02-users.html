@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><title>User Management — JyotishAI Admin</title><link rel="stylesheet" href="../assets/style.css"/>
+<style>body{background:var(--cream)}.admin-sidebar{background:#0D0500}.filter-bar{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;align-items:center}.fb-input{padding:10px 16px;border:1.5px solid var(--cream-3);border-radius:var(--radius);font-family:var(--font-body);font-size:14px;background:var(--white)}.fb-select{padding:10px 16px;border:1.5px solid var(--cream-3);border-radius:var(--radius);font-family:var(--font-body);font-size:14px;background:var(--white);cursor:pointer}</style></head>
+<body>
+<div class="app-layout">
+  <aside class="sidebar admin-sidebar">
+    <div class="sidebar-logo"><a href="A01-admin-dashboard.html">Jyotish<span>AI</span></a><div style="background:rgba(232,80,10,.15);color:var(--saffron);border:none;padding:3px 10px;border-radius:999px;font-size:10px;font-family:var(--font-display);font-weight:700;display:inline-block;margin-top:4px">Admin Panel</div></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Overview</div><a href="A01-admin-dashboard.html" class="sidebar-link"><span class="icon">📊</span>Dashboard</a><a href="A09-analytics.html" class="sidebar-link"><span class="icon">📈</span>Analytics</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Users</div><a href="A02-users.html" class="sidebar-link active"><span class="icon">👥</span>User Management</a><a href="A04-payments.html" class="sidebar-link"><span class="icon">💳</span>Payments</a><a href="A05-plans.html" class="sidebar-link"><span class="icon">📦</span>Plan Management</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Content</div><a href="A06-reports.html" class="sidebar-link"><span class="icon">📄</span>Report Management</a><a href="A07-horoscope.html" class="sidebar-link"><span class="icon">🔭</span>Horoscope Content</a><a href="A08-blog.html" class="sidebar-link"><span class="icon">✍️</span>Blog Management</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">System</div><a href="A10-settings.html" class="sidebar-link"><span class="icon">⚙️</span>Settings</a></div>
+    <div class="sidebar-footer"><div style="display:flex;align-items:center;gap:10px;padding:0 4px"><div class="avatar" style="background:linear-gradient(135deg,var(--saffron),var(--ember))">AD</div><div><div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--cream)">Admin User</div></div></div></div>
+  </aside>
+  <div class="main-content">
+    <div class="top-bar"><div class="top-bar-title">👥 User Management</div><div class="top-bar-actions"><button class="btn btn-primary btn-sm">+ Add User</button><button class="btn btn-outline btn-sm">📥 Export CSV</button></div></div>
+    <div class="page-content">
+      <div class="stats-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:24px">
+        <div class="stat-card"><div class="stat-number">52,841</div><div class="stat-label">Total Users</div></div>
+        <div class="stat-card gold"><div class="stat-number">8,420</div><div class="stat-label">Paid Users</div></div>
+        <div class="stat-card green"><div class="stat-number">1,240</div><div class="stat-label">New This Month</div></div>
+        <div class="stat-card"><div class="stat-number">96</div><div class="stat-label">Active Today</div></div>
+      </div>
+      <div class="filter-bar">
+        <input class="fb-input" placeholder="🔍 Search by name, email, phone..." style="flex:1;min-width:240px"/>
+        <select class="fb-select"><option>All Plans</option><option>Free</option><option>Basic</option><option>Premium</option><option>Elite</option></select>
+        <select class="fb-select"><option>All Status</option><option>Active</option><option>Inactive</option><option>Blocked</option></select>
+        <select class="fb-select"><option>All Time</option><option>Today</option><option>This Week</option><option>This Month</option></select>
+        <button class="btn btn-primary btn-sm">Filter</button>
+      </div>
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>User</th><th>Email</th><th>Phone</th><th>Plan</th><th>Kundalis</th><th>Spent</th><th>Joined</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td><div style="display:flex;align-items:center;gap:10px"><div class="avatar" style="width:32px;height:32px;font-size:11px">PK</div><div><div style="font-weight:700">Priya Kapoor</div><div style="font-size:11px;color:var(--muted)">Mumbai</div></div></div></td><td>priya.k@gmail.com</td><td>+91 98100 12345</td><td><span class="badge badge-saffron">Free</span></td><td>0</td><td>₹0</td><td>Today</td><td><span class="badge badge-green">Active</span></td><td><a href="A03-user-detail.html" class="btn btn-outline btn-sm">View</a></td></tr>
+              <tr><td><div style="display:flex;align-items:center;gap:10px"><div class="avatar" style="width:32px;height:32px;font-size:11px">AM</div><div><div style="font-weight:700">Arjun Mehta</div><div style="font-size:11px;color:var(--muted)">Delhi</div></div></div></td><td>arjun.m@yahoo.com</td><td>+91 99001 55678</td><td><span class="badge badge-gold">Premium</span></td><td>8</td><td>₹2,495</td><td>10 Jan 2026</td><td><span class="badge badge-green">Active</span></td><td><a href="A03-user-detail.html" class="btn btn-outline btn-sm">View</a></td></tr>
+              <tr><td><div style="display:flex;align-items:center;gap:10px"><div class="avatar" style="width:32px;height:32px;font-size:11px">RS</div><div><div style="font-weight:700">Rahul Sharma</div><div style="font-size:11px;color:var(--muted)">Mumbai</div></div></div></td><td>rahul.s@gmail.com</td><td>+91 98765 43210</td><td><span class="badge badge-saffron">Free</span></td><td>2</td><td>₹348</td><td>12 Mar 2026</td><td><span class="badge badge-green">Active</span></td><td><a href="A03-user-detail.html" class="btn btn-outline btn-sm">View</a></td></tr>
+              <tr><td><div style="display:flex;align-items:center;gap:10px"><div class="avatar" style="width:32px;height:32px;font-size:11px">AJ</div><div><div style="font-weight:700">Ananya Joshi</div><div style="font-size:11px;color:var(--muted)">Pune</div></div></div></td><td>ananya.j@hotmail.com</td><td>+91 97650 89012</td><td><span class="badge badge-dark">Elite</span></td><td>24</td><td>₹8,380</td><td>5 Oct 2025</td><td><span class="badge badge-green">Active</span></td><td><a href="A03-user-detail.html" class="btn btn-outline btn-sm">View</a></td></tr>
+              <tr><td><div style="display:flex;align-items:center;gap:10px"><div class="avatar" style="width:32px;height:32px;font-size:11px">RK</div><div><div style="font-weight:700">Ramesh Kumar</div><div style="font-size:11px;color:var(--muted)">Delhi</div></div></div></td><td>ramesh.k@gmail.com</td><td>+91 96001 34567</td><td><span class="badge badge-saffron">Basic</span></td><td>15</td><td>₹1,196</td><td>20 Dec 2025</td><td><span class="badge badge-red">Suspended</span></td><td><a href="A03-user-detail.html" class="btn btn-outline btn-sm">View</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:20px;padding-top:16px;border-top:1px solid var(--cream-3)">
+          <div style="font-size:13px;color:var(--muted)">Showing 1–5 of 52,841 users</div>
+          <div style="display:flex;gap:8px"><button class="btn btn-outline btn-sm">← Previous</button><button class="btn btn-outline btn-sm" style="background:var(--saffron);color:white;border-color:var(--saffron)">1</button><button class="btn btn-outline btn-sm">2</button><button class="btn btn-outline btn-sm">3</button><button class="btn btn-outline btn-sm">Next →</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

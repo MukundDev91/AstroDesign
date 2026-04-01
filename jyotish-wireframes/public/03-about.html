@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><title>About Us — JyotishAI</title><link rel="stylesheet" href="../assets/style.css"/>
+<style>
+body { background: var(--cream); }
+.hero-about { background: linear-gradient(160deg, var(--dark) 0%, var(--dark-2) 100%); padding: 80px 40px; text-align: center; position: relative; overflow: hidden; }
+.hero-about::before { content: 'ॐ'; position: absolute; font-family: var(--font-hindi); font-size: 400px; color: rgba(244,169,27,.04); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; }
+.hero-about h1 { font-family: var(--font-display); font-size: 52px; color: var(--cream); margin-bottom: 16px; position: relative; }
+.hero-about h1 span { color: var(--gold); }
+.hero-about p { font-size: 18px; color: var(--muted-light); max-width: 600px; margin: 0 auto 32px; position: relative; line-height: 1.8; }
+.section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
+.section-title { font-family: var(--font-display); font-size: 36px; color: var(--dark); margin-bottom: 12px; }
+.section-hindi { font-family: var(--font-hindi); font-size: 18px; color: var(--saffron); margin-bottom: 40px; }
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.team-card { background: var(--white); border-radius: var(--radius-lg); padding: 28px; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,.05); }
+.team-avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--saffron), var(--ember)); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 28px; font-weight: 700; color: white; margin: 0 auto 16px; }
+.team-name { font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--dark); }
+.team-role { font-size: 13px; color: var(--saffron); margin: 4px 0 8px; font-family: var(--font-display); font-weight: 700; }
+.values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.value-card { background: var(--white); border-radius: var(--radius-lg); padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,.05); border-top: 3px solid var(--saffron); }
+.value-icon { font-size: 36px; margin-bottom: 12px; }
+.value-title { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+</style>
+</head>
+<body>
+<!-- Navbar -->
+<nav style="background:var(--dark);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:70px;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(244,169,27,.1)">
+  <a href="01-home.html" style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--cream);text-decoration:none">Jyotish<span style="color:var(--gold)">AI</span></a>
+  <div style="display:flex;gap:28px;align-items:center">
+    <a href="02-horoscope.html" style="font-family:var(--font-display);font-size:14px;color:var(--muted-light);text-decoration:none;font-weight:700">Horoscope</a>
+    <a href="04-services.html" style="font-family:var(--font-display);font-size:14px;color:var(--muted-light);text-decoration:none;font-weight:700">Services</a>
+    <a href="07-pricing.html" style="font-family:var(--font-display);font-size:14px;color:var(--muted-light);text-decoration:none;font-weight:700">Pricing</a>
+    <a href="06-blog.html" style="font-family:var(--font-display);font-size:14px;color:var(--muted-light);text-decoration:none;font-weight:700">Blog</a>
+    <a href="03-about.html" style="font-family:var(--font-display);font-size:14px;color:var(--gold);text-decoration:none;font-weight:700">About</a>
+    <a href="10-login.html" class="btn btn-outline btn-sm" style="color:var(--cream);border-color:rgba(255,255,255,.2)">Login</a>
+    <a href="11-register.html" class="btn btn-primary btn-sm">Get Started Free</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero-about">
+  <div style="font-family:var(--font-hindi);font-size:48px;color:var(--saffron);margin-bottom:16px;position:relative">ॐ</div>
+  <h1>Ancient Wisdom,<br/><span>Modern Intelligence</span></h1>
+  <p>JyotishAI brings the 5,000-year-old science of Vedic Jyotish to your fingertips — powered by modern AI and guided by authentic astrological principles.</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative">
+    <div style="background:rgba(244,169,27,.08);border:1px solid rgba(244,169,27,.2);border-radius:var(--radius);padding:16px 24px;text-align:center"><div style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--gold)">52,841+</div><div style="font-size:13px;color:var(--muted-light)">Users Worldwide</div></div>
+    <div style="background:rgba(244,169,27,.08);border:1px solid rgba(244,169,27,.2);border-radius:var(--radius);padding:16px 24px;text-align:center"><div style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--gold)">1,24,520+</div><div style="font-size:13px;color:var(--muted-light)">Kundalis Generated</div></div>
+    <div style="background:rgba(244,169,27,.08);border:1px solid rgba(244,169,27,.2);border-radius:var(--radius);padding:16px 24px;text-align:center"><div style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--gold)">4.9★</div><div style="font-size:13px;color:var(--muted-light)">User Rating</div></div>
+    <div style="background:rgba(244,169,27,.08);border:1px solid rgba(244,169,27,.2);border-radius:var(--radius);padding:16px 24px;text-align:center"><div style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--gold)">2</div><div style="font-size:13px;color:var(--muted-light)">Languages</div></div>
+  </div>
+</div>
+
+<!-- Mission Section -->
+<div class="section">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center">
+    <div>
+      <div class="section-title">Our Mission</div>
+      <div class="section-hindi">हमारा उद्देश्य</div>
+      <p style="font-size:16px;color:var(--muted);line-height:1.9;margin-bottom:20px">Vedic astrology is one of humanity's oldest and most profound wisdom systems. For millennia, it guided kings, shaped empires, and helped ordinary people understand their karma and dharma.</p>
+      <p style="font-size:16px;color:var(--muted);line-height:1.9">We believe this wisdom should be accessible to everyone — not just those who can afford expensive pandits or have deep Sanskrit knowledge. JyotishAI democratizes authentic Vedic astrology through the power of AI.</p>
+    </div>
+    <div style="background:linear-gradient(135deg,var(--dark),var(--dark-2));border-radius:var(--radius-lg);padding:40px;text-align:center;border:2px solid rgba(244,169,27,.15)">
+      <div style="font-family:var(--font-hindi);font-size:48px;color:var(--saffron);margin-bottom:16px">ज्योतिष</div>
+      <div style="font-family:var(--font-display);font-size:14px;color:var(--muted-light);line-height:1.8">"Jyotish" means "Science of Light" in Sanskrit. It is the eye of the Vedas — Vedanga Jyotisha — one of the six auxiliary disciplines that illuminate the path of dharma.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Values -->
+<div style="background:var(--white);padding:80px 40px">
+  <div style="max-width:1100px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:48px">
+      <div class="section-title" style="text-align:center">Our Values — हमारे मूल्य</div>
+    </div>
+    <div class="values-grid">
+      <div class="value-card"><div class="value-icon">🔬</div><div class="value-title">Authenticity First</div><p style="font-size:13px;color:var(--muted);line-height:1.7">We follow classical Parashari Jyotish with Lahiri Ayanamsha — the same system used by traditional Indian astrologers for centuries.</p></div>
+      <div class="value-card" style="border-top-color:var(--gold)"><div class="value-icon">🤖</div><div class="value-title">AI with Wisdom</div><p style="font-size:13px;color:var(--muted);line-height:1.7">Our AI is trained on thousands of authentic astrological texts and case studies, not just pattern matching. It explains the "why" behind every prediction.</p></div>
+      <div class="value-card" style="border-top-color:var(--success)"><div class="value-icon">🌍</div><div class="value-title">Accessible to All</div><p style="font-size:13px;color:var(--muted);line-height:1.7">Full bilingual support in English and Hindi. Affordable pricing designed for India's diverse economic landscape.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- Team -->
+<div class="section">
+  <div style="text-align:center;margin-bottom:48px">
+    <div class="section-title" style="text-align:center">The Team — हमारी टीम</div>
+  </div>
+  <div class="team-grid">
+    <div class="team-card"><div class="team-avatar">AK</div><div class="team-name">Aryan Kumar</div><div class="team-role">Founder & CEO</div><p style="font-size:13px;color:var(--muted)">IIT Mumbai graduate and lifelong student of Jyotish Shastra. 12 years of astrological practice combined with 8 years in AI/ML.</p></div>
+    <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,#667EEA,#764BA2)">PS</div><div class="team-name">Priya Sharma</div><div class="team-role">Head of Astrology</div><p style="font-size:13px;color:var(--muted)">Certified Jyotish Acharya with 20 years of practice. Trained under Pt. Sanjay Rath in Parashari Jyotish.</p></div>
+    <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,#11998E,#38EF7D)">RV</div><div class="team-name">Rohan Verma</div><div class="team-role">CTO — AI Engineering</div><p style="font-size:13px;color:var(--muted)">Ex-Google AI researcher. Built the proprietary Jyotish-AI engine that powers our reports and chat features.</p></div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer style="background:var(--dark);padding:40px;text-align:center;border-top:1px solid rgba(244,169,27,.1)">
+  <a href="01-home.html" style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--cream);text-decoration:none">Jyotish<span style="color:var(--gold)">AI</span></a>
+  <p style="color:var(--muted);font-size:13px;margin-top:12px">© 2026 JyotishAI • Made with 🙏 in India</p>
+</footer>
+</body>
+</html>

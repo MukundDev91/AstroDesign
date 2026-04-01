@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>General Kundali Report — JyotishAI</title>
+  <link rel="stylesheet" href="../assets/style.css"/>
+  <style>
+    body { background: var(--cream); }
+    .report-hero { background: linear-gradient(135deg, var(--dark), var(--dark-2)); border-radius: var(--radius-lg); padding: 32px; margin-bottom: 28px; border: 1px solid rgba(244,169,27,0.15); display: flex; justify-content: space-between; align-items: center; }
+    .rh-left h2 { font-family: var(--font-display); font-size: 26px; color: var(--cream); margin-bottom: 6px; }
+    .rh-left h2 span { color: var(--gold); }
+    .rh-left p { font-size: 13px; color: var(--muted-light); margin-bottom: 16px; }
+    .rh-meta { display: flex; gap: 16px; flex-wrap: wrap; }
+    .rh-tag { background: rgba(244,169,27,0.1); border: 1px solid rgba(244,169,27,0.2); border-radius: 999px; padding: 4px 12px; font-size: 12px; font-family: var(--font-display); font-weight: 700; color: var(--gold); }
+    .rh-right { text-align: right; flex-shrink: 0; }
+    .report-price-box { background: rgba(232,80,10,0.15); border: 1px solid var(--saffron); border-radius: var(--radius-lg); padding: 20px 24px; text-align: center; min-width: 200px; }
+    .report-price-box .rp { font-family: var(--font-display); font-size: 36px; font-weight: 900; color: var(--gold); }
+    .report-price-box .rp-label { font-size: 12px; color: var(--muted-light); margin-bottom: 12px; }
+    .report-layout { display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    .report-toc { background: var(--white); border-radius: var(--radius-lg); padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); margin-bottom: 24px; }
+    .toc-title { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 16px; }
+    .toc-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--cream-3); cursor: pointer; transition: var(--transition); }
+    .toc-item:last-child { border: none; }
+    .toc-item:hover { padding-left: 4px; }
+    .toc-num { width: 28px; height: 28px; border-radius: 50%; background: var(--cream); border: 2px solid var(--cream-3); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 12px; font-weight: 700; color: var(--muted); flex-shrink: 0; }
+    .toc-num.done { background: var(--success); border-color: var(--success); color: var(--white); }
+    .toc-text { flex: 1; font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--dark); }
+    .toc-pages { font-size: 11px; color: var(--muted); }
+    .section-preview { background: var(--white); border-radius: var(--radius-lg); padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); margin-bottom: 24px; }
+    .sp-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--cream-3); }
+    .sp-icon { font-size: 32px; }
+    .sp-header h3 { font-family: var(--font-display); font-size: 18px; color: var(--dark); }
+    .sp-header .pages { font-size: 12px; color: var(--muted); }
+    .prediction-block { background: var(--cream); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; border-left: 3px solid var(--saffron); }
+    .pb-label { font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 1px; color: var(--saffron); margin-bottom: 6px; text-transform: uppercase; }
+    .pb-text { font-size: 14px; color: var(--dark); line-height: 1.7; }
+    .prediction-block.gold { border-color: var(--gold); }
+    .prediction-block.gold .pb-label { color: #B8860B; }
+    .prediction-block.green { border-color: var(--success); }
+    .prediction-block.green .pb-label { color: var(--success); }
+    .locked-preview { position: relative; border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 24px; }
+    .lp-blur { filter: blur(4px); opacity: 0.5; pointer-events: none; background: var(--white); padding: 28px; border-radius: var(--radius-lg); }
+    .lp-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(255,248,240,0.85); text-align: center; gap: 12px; padding: 24px; }
+    .lp-overlay h4 { font-family: var(--font-display); font-size: 18px; color: var(--dark); }
+    .lp-overlay p { font-size: 13px; color: var(--muted); max-width: 260px; }
+    .side-panel { background: var(--white); border-radius: var(--radius-lg); padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); margin-bottom: 20px; }
+    .remedy-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--cream-3); font-size: 13px; }
+    .remedy-item:last-child { border: none; }
+    .remedy-icon { font-size: 20px; }
+  </style>
+</head>
+<body>
+<div class="app-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><a href="../public/01-home.html">Jyotish<span>AI</span></a><div class="plan-badge"><span class="badge badge-gold">Basic Plan</span></div></div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Main</div>
+      <a href="U01-dashboard.html" class="sidebar-link"><span class="icon">🏠</span>Dashboard</a>
+      <a href="U02-my-kundali.html" class="sidebar-link"><span class="icon">📜</span>My Kundali</a>
+      <a href="U03-ai-reader.html" class="sidebar-link"><span class="icon">🤖</span>AI Kundali Reader</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Reports</div>
+      <a href="U04-general-report.html" class="sidebar-link active"><span class="icon">📊</span>General Report</a>
+      <a href="U05-career-report.html" class="sidebar-link"><span class="icon">💼</span>Career Analysis</a>
+      <a href="U06-love-report.html" class="sidebar-link"><span class="icon">❤️</span>Love Life Report</a>
+      <a href="U07-full-life-report.html" class="sidebar-link"><span class="icon">📖</span>Full Life Report</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Services</div>
+      <a href="U08-matchmaking.html" class="sidebar-link"><span class="icon">💑</span>Matchmaking</a>
+      <a href="U09-baby-names.html" class="sidebar-link"><span class="icon">👶</span>Baby Names</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Account</div>
+      <a href="U10-my-reports.html" class="sidebar-link"><span class="icon">🗂️</span>My Reports</a>
+      <a href="U11-billing.html" class="sidebar-link"><span class="icon">💳</span>Billing</a>
+    </div>
+    <div class="sidebar-footer">
+      <div style="display:flex;align-items:center;gap:10px;padding:0 4px">
+        <div class="avatar">RS</div>
+        <div><div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--cream)">Rahul Sharma</div><div style="font-size:11px;color:var(--muted)">Basic Plan</div></div>
+      </div>
+    </div>
+  </aside>
+  <div class="main-content">
+    <div class="top-bar">
+      <div class="top-bar-title">📊 General Kundali Report</div>
+      <div class="top-bar-actions">
+        <button class="btn btn-primary btn-sm">📥 Download PDF</button>
+        <div class="avatar">RS</div>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="report-hero">
+        <div class="rh-left">
+          <h2>General Kundali Report — <span>Rahul Sharma</span></h2>
+          <div style="font-family:var(--font-hindi);font-size:14px;color:var(--saffron);margin-bottom:8px">सामान्य कुंडली रिपोर्ट</div>
+          <p>10-page comprehensive Vedic astrology analysis of your birth chart</p>
+          <div class="rh-meta">
+            <span class="rh-tag">📅 Generated: 12 Mar 2026</span>
+            <span class="rh-tag">📄 10 Pages</span>
+            <span class="rh-tag">🔮 Lahiri Ayanamsha</span>
+            <span class="rh-tag badge-green" style="background:rgba(56,161,105,0.12);color:var(--success);border-color:rgba(56,161,105,0.3)">✓ Included in Basic Plan</span>
+          </div>
+        </div>
+        <div class="rh-right">
+          <div style="display:flex;gap:12px;margin-top:8px">
+            <button class="btn btn-primary">📥 Download PDF</button>
+            <button class="btn btn-outline" style="color:var(--gold);border-color:rgba(244,169,27,0.4)">🔗 Share</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="report-layout">
+        <div>
+          <!-- Table of Contents -->
+          <div class="report-toc">
+            <div class="toc-title">📑 Report Contents</div>
+            <div class="toc-item"><div class="toc-num done">✓</div><div class="toc-text">Lagna & Personality Analysis</div><div class="toc-pages">2 pages</div></div>
+            <div class="toc-item"><div class="toc-num done">✓</div><div class="toc-text">Planetary Positions & Strengths</div><div class="toc-pages">1 page</div></div>
+            <div class="toc-item"><div class="toc-num done">✓</div><div class="toc-text">House Analysis (All 12 Houses)</div><div class="toc-pages">2 pages</div></div>
+            <div class="toc-item"><div class="toc-num done">✓</div><div class="toc-text">Dasha Predictions (2026–2030)</div><div class="toc-pages">1 page</div></div>
+            <div class="toc-item"><div class="toc-num done">✓</div><div class="toc-text">Yoga Analysis</div><div class="toc-pages">1 page</div></div>
+            <div class="toc-item"><div class="toc-num done">✓</div><div class="toc-text">Career & Finance Highlights</div><div class="toc-pages">1 page</div></div>
+            <div class="toc-item"><div class="toc-num done">✓</div><div class="toc-text">Health & Wellness</div><div class="toc-pages">1 page</div></div>
+            <div class="toc-item"><div class="toc-num done">✓</div><div class="toc-text">Remedies & Gemstone Recommendations</div><div class="toc-pages">1 page</div></div>
+          </div>
+
+          <!-- Section 1: Lagna Analysis -->
+          <div class="section-preview">
+            <div class="sp-header">
+              <div class="sp-icon">♈</div>
+              <div>
+                <h3>Lagna & Personality Analysis</h3>
+                <div class="sp-pages">Pages 1–2 of 10</div>
+              </div>
+            </div>
+            <div class="prediction-block">
+              <div class="pb-label">Lagna Lord Placement</div>
+              <div class="pb-text">Your Lagna Lord Mars is placed in the 6th house of Virgo. This makes you a natural fighter — someone who overcomes every obstacle with determination. You are competitive, disciplined, and often drawn to challenging environments where others might give up.</div>
+            </div>
+            <div class="prediction-block gold">
+              <div class="pb-label">Core Personality</div>
+              <div class="pb-text">With Aries Ascendant and Venus in the 1st house, you are naturally charming, physically attractive, and possess strong leadership qualities. People are drawn to your confidence. Your first impressions are always positive and lasting.</div>
+            </div>
+            <div class="prediction-block green">
+              <div class="pb-label">Key Strengths</div>
+              <div class="pb-text">Natural leadership, entrepreneurial spirit, high energy, quick decision-making. Saturn in own sign (Aquarius) in the 11th house gives you long-term financial gains through your professional network.</div>
+            </div>
+          </div>
+
+          <!-- Career section preview -->
+          <div class="section-preview">
+            <div class="sp-header">
+              <div class="sp-icon">⚡</div>
+              <div>
+                <h3>Dasha Predictions (2026–2030)</h3>
+                <div class="sp-pages">Page 4 of 10</div>
+              </div>
+            </div>
+            <div class="prediction-block">
+              <div class="pb-label">2026 — Saturn–Venus Antardasha</div>
+              <div class="pb-text">This is a significant period for love and relationships. Venus antardasha under Saturn Mahadasha activates your 1st and 7th house axis strongly. Marriage or a serious commitment is very likely in the second half of 2026.</div>
+            </div>
+            <div class="prediction-block gold">
+              <div class="pb-label">2027–2028 — Saturn–Sun Antardasha</div>
+              <div class="pb-text">Professional peak period. Your name, fame, and authority in your field will increase significantly. Government or corporate recognition is possible. Finances will improve substantially — this is the most important period of your Saturn Mahadasha.</div>
+            </div>
+          </div>
+
+          <!-- Locked section -->
+          <div class="locked-preview">
+            <div class="lp-blur">
+              <h3 style="font-family:var(--font-display);margin-bottom:16px">Health & Wellness Analysis</h3>
+              <p>Your 6th house has Mars and Ketu conjunction which indicates... immune system... digestive health... best remedies include... exercise routine based on your Nakshatra...</p>
+              <div style="height:100px;background:var(--cream);border-radius:8px;margin-top:16px"></div>
+            </div>
+            <div class="lp-overlay">
+              <div style="font-size:40px">🔒</div>
+              <h4>Unlock Health Chapter</h4>
+              <p>Upgrade to Premium to access all 10 chapters including detailed health and remedies section</p>
+              <a href="U11-billing.html" class="btn btn-primary">Upgrade to Premium — ₹499/mo</a>
+              <span style="font-size:12px;color:var(--muted)">or <a href="#" style="color:var(--saffron)">buy this report ₹199</a></span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="side-panel">
+            <div style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--dark);margin-bottom:16px">🔮 Quick Prediction Summary</div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--cream-3)"><span style="font-size:13px;color:var(--dark)">Marriage</span><span class="badge badge-green">2026–27</span></div>
+              <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--cream-3)"><span style="font-size:13px;color:var(--dark)">Career Peak</span><span class="badge badge-gold">2027–28</span></div>
+              <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--cream-3)"><span style="font-size:13px;color:var(--dark)">Financial Gains</span><span class="badge badge-saffron">Ongoing</span></div>
+              <div style="display:flex;justify-content:space-between;padding:8px 0"><span style="font-size:13px;color:var(--dark)">Foreign Travel</span><span class="badge badge-saffron">Late 2026</span></div>
+            </div>
+          </div>
+
+          <div class="side-panel">
+            <div style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--dark);margin-bottom:16px">💊 Remedies Recommended</div>
+            <div class="remedy-item"><div class="remedy-icon">💎</div><div><strong>Ruby (Manikya)</strong> — Strengthen your Sun for career advancement. Wear on Sunday.</div></div>
+            <div class="remedy-item"><div class="remedy-icon">🔵</div><div><strong>Blue Sapphire (Neelam)</strong> — Saturn gemstone for protection. Consult pandit first.</div></div>
+            <div class="remedy-item"><div class="remedy-icon">🙏</div><div><strong>Hanuman Chalisa</strong> — Chant daily to strengthen your Mars (Lagna Lord).</div></div>
+            <div class="remedy-item"><div class="remedy-icon">🕯️</div><div><strong>Saturday Fast</strong> — Reduces Shani's malefic effects during Mahadasha.</div></div>
+          </div>
+
+          <div class="side-panel" style="background:linear-gradient(135deg,var(--dark),var(--dark-2));border:1px solid rgba(244,169,27,0.15)">
+            <div style="font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--gold);margin-bottom:12px">🚀 Want More Depth?</div>
+            <p style="font-size:13px;color:var(--muted-light);margin-bottom:16px">Upgrade to Premium for dedicated Career and Love Life reports with 15 pages each.</p>
+            <a href="U05-career-report.html" class="btn btn-outline w-full" style="color:var(--gold);border-color:rgba(244,169,27,0.3);margin-bottom:8px">💼 Career Report</a>
+            <a href="U06-love-report.html" class="btn btn-outline w-full" style="color:var(--gold);border-color:rgba(244,169,27,0.3)">❤️ Love Life Report</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

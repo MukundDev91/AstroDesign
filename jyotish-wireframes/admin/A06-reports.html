@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><title>Report Management — JyotishAI Admin</title><link rel="stylesheet" href="../assets/style.css"/>
+<style>body{background:var(--cream)}.admin-sidebar{background:#0D0500}</style></head>
+<body>
+<div class="app-layout">
+  <aside class="sidebar admin-sidebar">
+    <div class="sidebar-logo"><a href="A01-admin-dashboard.html">Jyotish<span>AI</span></a><div style="background:rgba(232,80,10,.15);color:var(--saffron);border:none;padding:3px 10px;border-radius:999px;font-size:10px;font-family:var(--font-display);font-weight:700;display:inline-block;margin-top:4px">Admin Panel</div></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Overview</div><a href="A01-admin-dashboard.html" class="sidebar-link"><span class="icon">📊</span>Dashboard</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Users</div><a href="A02-users.html" class="sidebar-link"><span class="icon">👥</span>User Management</a><a href="A04-payments.html" class="sidebar-link"><span class="icon">💳</span>Payments</a><a href="A05-plans.html" class="sidebar-link"><span class="icon">📦</span>Plan Management</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Content</div><a href="A06-reports.html" class="sidebar-link active"><span class="icon">📄</span>Report Management</a><a href="A07-horoscope.html" class="sidebar-link"><span class="icon">🔭</span>Horoscope Content</a><a href="A08-blog.html" class="sidebar-link"><span class="icon">✍️</span>Blog Management</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">System</div><a href="A10-settings.html" class="sidebar-link"><span class="icon">⚙️</span>Settings</a></div>
+    <div class="sidebar-footer"><div style="display:flex;align-items:center;gap:10px;padding:0 4px"><div class="avatar" style="background:linear-gradient(135deg,var(--saffron),var(--ember))">AD</div></div></div>
+  </aside>
+  <div class="main-content">
+    <div class="top-bar"><div class="top-bar-title">📄 Report Management</div><div class="top-bar-actions"><button class="btn btn-outline btn-sm">📥 Export Report Log</button></div></div>
+    <div class="page-content">
+      <div class="stats-grid" style="margin-bottom:24px">
+        <div class="stat-card"><div class="stat-number">3,840</div><div class="stat-label">Total Reports Generated</div></div>
+        <div class="stat-card gold"><div class="stat-number">1,240</div><div class="stat-label">General Reports (10 pg)</div></div>
+        <div class="stat-card green"><div class="stat-number">840</div><div class="stat-label">Career Reports</div></div>
+        <div class="stat-card"><div class="stat-number">620</div><div class="stat-label">Full Life Reports</div></div>
+      </div>
+      <div class="card">
+        <div class="flex-between" style="margin-bottom:16px"><h3 style="font-family:var(--font-display);font-size:16px">Recently Generated Reports</h3><input style="padding:8px 12px;border:1.5px solid var(--cream-3);border-radius:var(--radius);font-size:13px" placeholder="Search..."/></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>User</th><th>Report Type</th><th>Pages</th><th>Plan / Purchase</th><th>Generated</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td>Priya Kapoor</td><td>💼 Career Analysis</td><td>15</td><td><span class="badge badge-gold">Premium</span></td><td>Today 2:30 PM</td><td><span class="badge badge-green">Ready</span></td><td><button class="btn btn-outline btn-sm" style="font-size:11px">View PDF</button></td></tr>
+              <tr><td>Arjun Mehta</td><td>📊 General Kundali</td><td>10</td><td><span class="badge badge-gold">Premium</span></td><td>Today 12:15 PM</td><td><span class="badge badge-green">Ready</span></td><td><button class="btn btn-outline btn-sm" style="font-size:11px">View PDF</button></td></tr>
+              <tr><td>Rahul Sharma</td><td>📊 General Kundali</td><td>10</td><td><span class="badge badge-saffron">₹199</span></td><td>12 Mar 2026</td><td><span class="badge badge-green">Ready</span></td><td><button class="btn btn-outline btn-sm" style="font-size:11px">View PDF</button></td></tr>
+              <tr><td>Ananya Joshi</td><td>📖 Full Life Report</td><td>30</td><td><span class="badge badge-dark">Elite</span></td><td>10 Mar 2026</td><td><span class="badge badge-green">Ready</span></td><td><button class="btn btn-outline btn-sm" style="font-size:11px">View PDF</button></td></tr>
+              <tr><td>Unknown User</td><td>📊 General Kundali</td><td>10</td><td><span class="badge badge-saffron">₹199</span></td><td>8 Mar 2026</td><td><span class="badge badge-red">Failed</span></td><td><button class="btn btn-primary btn-sm" style="font-size:11px">Regenerate</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card" style="margin-top:20px">
+        <div style="font-family:var(--font-display);font-size:15px;font-weight:700;margin-bottom:16px">⚙️ AI Report Generation Settings</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+          <div class="form-group"><label class="form-label">AI Model for Reports</label><select class="form-control"><option>GPT-4o (Current)</option><option>GPT-4 Turbo</option><option>Claude Sonnet</option></select></div>
+          <div class="form-group"><label class="form-label">Report Generation Timeout</label><select class="form-control"><option>120 seconds</option><option>60 seconds</option><option>180 seconds</option></select></div>
+          <div class="form-group"><label class="form-label">Max Report Queue</label><input class="form-control" value="50 concurrent"/></div>
+          <div class="form-group"><label class="form-label">PDF Generation Engine</label><select class="form-control"><option>WeasyPrint (Current)</option><option>Puppeteer</option></select></div>
+        </div>
+        <button class="btn btn-primary btn-sm">Save Settings</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

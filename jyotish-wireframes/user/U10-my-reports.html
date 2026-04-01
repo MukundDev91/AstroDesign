@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><title>My Reports — JyotishAI</title><link rel="stylesheet" href="../assets/style.css"/>
+<style>body{background:var(--cream)}.reports-filter{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}.rf-btn{padding:8px 16px;border-radius:999px;font-family:var(--font-display);font-size:12px;font-weight:700;cursor:pointer;border:1.5px solid var(--cream-3);color:var(--muted);background:var(--white);transition:var(--transition)}.rf-btn.active{background:var(--saffron);color:white;border-color:var(--saffron)}.report-card{background:var(--white);border-radius:var(--radius-lg);padding:20px 24px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin-bottom:12px;display:flex;align-items:center;gap:16px;transition:var(--transition)}.report-card:hover{box-shadow:0 4px 20px rgba(232,80,10,.08)}.rc-icon{font-size:36px;width:56px;height:56px;background:var(--cream);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;flex-shrink:0}.rc-info{flex:1}.rc-title{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--dark)}.rc-meta{font-size:12px;color:var(--muted);margin-top:3px}.rc-actions{display:flex;gap:8px;flex-shrink:0}</style></head>
+<body>
+<div class="app-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><a href="../public/01-home.html">Jyotish<span>AI</span></a><div class="plan-badge"><span class="badge badge-gold">Basic Plan</span></div></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Main</div><a href="U01-dashboard.html" class="sidebar-link"><span class="icon">🏠</span>Dashboard</a><a href="U02-my-kundali.html" class="sidebar-link"><span class="icon">📜</span>My Kundali</a><a href="U03-ai-reader.html" class="sidebar-link"><span class="icon">🤖</span>AI Kundali Reader</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Reports</div><a href="U04-general-report.html" class="sidebar-link"><span class="icon">📊</span>General Report</a><a href="U05-career-report.html" class="sidebar-link"><span class="icon">💼</span>Career Analysis</a><a href="U06-love-report.html" class="sidebar-link"><span class="icon">❤️</span>Love Life Report</a><a href="U07-full-life-report.html" class="sidebar-link"><span class="icon">📖</span>Full Life Report</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Services</div><a href="U08-matchmaking.html" class="sidebar-link"><span class="icon">💑</span>Matchmaking</a><a href="U09-baby-names.html" class="sidebar-link"><span class="icon">👶</span>Baby Names</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Account</div><a href="U10-my-reports.html" class="sidebar-link active"><span class="icon">🗂️</span>My Reports</a><a href="U11-billing.html" class="sidebar-link"><span class="icon">💳</span>Billing</a><a href="U12-profile.html" class="sidebar-link"><span class="icon">👤</span>Profile</a></div>
+    <div class="sidebar-footer"><div style="display:flex;align-items:center;gap:10px;padding:0 4px"><div class="avatar">RS</div><div><div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--cream)">Rahul Sharma</div></div></div></div>
+  </aside>
+  <div class="main-content">
+    <div class="top-bar"><div class="top-bar-title">🗂️ My Reports</div><div class="top-bar-actions"><button class="btn btn-primary btn-sm">+ Generate New Report</button><div class="avatar">RS</div></div></div>
+    <div class="page-content">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+        <div><h2 style="font-family:var(--font-display);font-size:22px;margin-bottom:4px">All My Reports</h2><p style="font-size:13px;color:var(--muted)">4 reports generated • 2 available for download</p></div>
+      </div>
+      <div class="reports-filter">
+        <button class="rf-btn active">All Reports</button>
+        <button class="rf-btn">Kundali</button>
+        <button class="rf-btn">Career</button>
+        <button class="rf-btn">Love Life</button>
+        <button class="rf-btn">Matchmaking</button>
+        <button class="rf-btn">Baby Names</button>
+      </div>
+      <div class="report-card"><div class="rc-icon">📊</div><div class="rc-info"><div class="rc-title">General Kundali Report — Rahul Sharma</div><div class="rc-meta">Generated 12 Mar 2026 • 10 pages • PDF • Basic Plan</div></div><div class="rc-actions"><span class="badge badge-green">✓ Ready</span><a href="U04-general-report.html" class="btn btn-outline btn-sm">View</a><button class="btn btn-primary btn-sm">📥 PDF</button></div></div>
+      <div class="report-card"><div class="rc-icon">💑</div><div class="rc-info"><div class="rc-title">Matchmaking — Arjun × Priya</div><div class="rc-meta">Generated 8 Mar 2026 • Summary only • ₹149 for full report</div></div><div class="rc-actions"><span class="badge badge-saffron">Summary</span><a href="U08-matchmaking.html" class="btn btn-outline btn-sm">View</a><button class="btn btn-primary btn-sm">🔓 Buy Full</button></div></div>
+      <div class="report-card" style="opacity:.6"><div class="rc-icon">💼</div><div class="rc-info"><div class="rc-title">Career Analysis Report</div><div class="rc-meta">🔒 Locked — Requires Premium Plan (₹499/mo)</div></div><div class="rc-actions"><a href="U11-billing.html" class="btn btn-primary btn-sm">Unlock</a></div></div>
+      <div class="report-card" style="opacity:.6"><div class="rc-icon">❤️</div><div class="rc-info"><div class="rc-title">Love Life Report</div><div class="rc-meta">🔒 Locked — Requires Premium Plan (₹499/mo)</div></div><div class="rc-actions"><a href="U11-billing.html" class="btn btn-primary btn-sm">Unlock</a></div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

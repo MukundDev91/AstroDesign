@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><title>Our Services — JyotishAI</title><link rel="stylesheet" href="../assets/style.css"/>
+<style>
+body { background: var(--cream); }
+.nav-bar { background:var(--dark);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:70px;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(244,169,27,.1) }
+.hero-services { background: linear-gradient(160deg, var(--dark), #2D1000); padding: 70px 40px; text-align: center; }
+.hero-services h1 { font-family: var(--font-display); font-size: 48px; color: var(--cream); margin-bottom: 12px; }
+.hero-services h1 span { color: var(--gold); }
+.services-section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
+.service-card { background: var(--white); border-radius: var(--radius-lg); padding: 40px; margin-bottom: 24px; display: grid; grid-template-columns: 120px 1fr 200px; gap: 32px; align-items: center; box-shadow: 0 2px 12px rgba(0,0,0,.05); border: 1px solid var(--cream-3); transition: var(--transition); }
+.service-card:hover { box-shadow: 0 8px 32px rgba(232,80,10,.1); border-color: rgba(232,80,10,.2); }
+.service-card.featured { border-left: 4px solid var(--gold); background: linear-gradient(145deg, rgba(244,169,27,.02), white); }
+.sc-icon { font-size: 64px; text-align: center; }
+.sc-title { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+.sc-title-hi { font-family: var(--font-hindi); font-size: 14px; color: var(--saffron); margin-bottom: 12px; }
+.sc-desc { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 16px; }
+.sc-features { display: flex; flex-wrap: wrap; gap: 6px; }
+.sc-feat { background: var(--cream); border-radius: 999px; padding: 4px 10px; font-size: 11px; color: var(--muted); font-family: var(--font-display); font-weight: 700; }
+.sc-cta { text-align: center; }
+.sc-plan { font-size: 12px; color: var(--muted); margin-top: 8px; }
+</style>
+</head>
+<body>
+<nav class="nav-bar">
+  <a href="01-home.html" style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--cream);text-decoration:none">Jyotish<span style="color:var(--gold)">AI</span></a>
+  <div style="display:flex;gap:24px;align-items:center">
+    <a href="02-horoscope.html" style="font-family:var(--font-display);font-size:14px;color:var(--muted-light);text-decoration:none;font-weight:700">Horoscope</a>
+    <a href="04-services.html" style="font-family:var(--font-display);font-size:14px;color:var(--gold);text-decoration:none;font-weight:700">Services</a>
+    <a href="07-pricing.html" style="font-family:var(--font-display);font-size:14px;color:var(--muted-light);text-decoration:none;font-weight:700">Pricing</a>
+    <a href="03-about.html" style="font-family:var(--font-display);font-size:14px;color:var(--muted-light);text-decoration:none;font-weight:700">About</a>
+    <a href="10-login.html" class="btn btn-outline btn-sm" style="color:var(--cream);border-color:rgba(255,255,255,.2)">Login</a>
+    <a href="11-register.html" class="btn btn-primary btn-sm">Get Started Free</a>
+  </div>
+</nav>
+
+<div class="hero-services">
+  <div style="font-family:var(--font-hindi);font-size:16px;color:var(--saffron);margin-bottom:12px">हमारी सेवाएं</div>
+  <h1>Everything You Need<br/>from <span>Vedic Jyotish</span></h1>
+  <p style="font-size:17px;color:var(--muted-light);max-width:550px;margin:0 auto;line-height:1.7">From birth chart analysis to marriage matching — our AI-powered platform covers every dimension of Vedic astrology.</p>
+</div>
+
+<div class="services-section">
+  <div class="service-card">
+    <div class="sc-icon">📜</div>
+    <div>
+      <div class="sc-title">Kundali Generation</div>
+      <div class="sc-title-hi">कुंडली निर्माण</div>
+      <div class="sc-desc">Get your full Vedic birth chart with accurate North Indian chart format, all 9 planetary positions, house analysis, Nakshatra details, and Vimshottari Dasha calculations using Lahiri Ayanamsha.</div>
+      <div class="sc-features"><span class="sc-feat">North Indian Chart</span><span class="sc-feat">D1 / D9 / D10</span><span class="sc-feat">Nakshatra</span><span class="sc-feat">Vimshottari Dasha</span><span class="sc-feat">Transit View</span></div>
+    </div>
+    <div class="sc-cta"><a href="05-free-kundali.html" class="btn btn-primary w-full">Generate Free Kundali</a><div class="sc-plan">🎁 2 Free charts included</div></div>
+  </div>
+
+  <div class="service-card">
+    <div class="sc-icon">🤖</div>
+    <div>
+      <div class="sc-title">AI Kundali Reader</div>
+      <div class="sc-title-hi">AI कुंडली वाचन</div>
+      <div class="sc-desc">Chat with our AI that reads your birth chart like an experienced Jyotishi. Ask any question — career, marriage, health, finance, travel — and get authentic Vedic interpretations in seconds.</div>
+      <div class="sc-features"><span class="sc-feat">Natural Language</span><span class="sc-feat">Bilingual EN/HI</span><span class="sc-feat">Unlimited Chats</span><span class="sc-feat">Chart-Aware AI</span></div>
+    </div>
+    <div class="sc-cta"><a href="11-register.html" class="btn btn-primary w-full">Try AI Reader</a><div class="sc-plan">⭐ Basic Plan — ₹299/mo</div></div>
+  </div>
+
+  <div class="service-card featured">
+    <div class="sc-icon">📊</div>
+    <div>
+      <div class="sc-title">Detailed Reports</div>
+      <div class="sc-title-hi">विस्तृत रिपोर्ट</div>
+      <div class="sc-desc">AI-generated PDF reports up to 30 pages covering every dimension of your life. General (10 pg), Career (15 pg), Love Life (15 pg), and our flagship Full Life Report (30 pg).</div>
+      <div class="sc-features"><span class="sc-feat">PDF Download</span><span class="sc-feat">10–30 Pages</span><span class="sc-feat">Career Report</span><span class="sc-feat">Love Report</span><span class="sc-feat">Full Life (Elite)</span></div>
+    </div>
+    <div class="sc-cta"><a href="07-pricing.html" class="btn btn-gold w-full">View Plans</a><div class="sc-plan">👑 From ₹299/mo</div></div>
+  </div>
+
+  <div class="service-card">
+    <div class="sc-icon">💑</div>
+    <div>
+      <div class="sc-title">Kundali Matchmaking</div>
+      <div class="sc-title-hi">कुंडली मिलान</div>
+      <div class="sc-desc">Traditional 36-Gun Milan (Ashtakoot) matching for marriage compatibility. Get compatibility score, dosha analysis, Mangal Dosha check, and auspicious wedding muhurta dates.</div>
+      <div class="sc-features"><span class="sc-feat">36 Guna Score</span><span class="sc-feat">Mangal Dosha</span><span class="sc-feat">Wedding Muhurta</span><span class="sc-feat">Detailed Analysis</span></div>
+    </div>
+    <div class="sc-cta"><a href="11-register.html" class="btn btn-primary w-full">Match Kundalis</a><div class="sc-plan">⭐ Premium Plan or ₹149 one-time</div></div>
+  </div>
+
+  <div class="service-card">
+    <div class="sc-icon">👶</div>
+    <div>
+      <div class="sc-title">Baby Name Suggestions</div>
+      <div class="sc-title-hi">शिशु नामकरण</div>
+      <div class="sc-desc">Get 20+ Nakshatra-based auspicious baby names based on your newborn's birth chart. Each name includes Sanskrit meaning, lucky syllables, deity association, and numerology compatibility.</div>
+      <div class="sc-features"><span class="sc-feat">Nakshatra-Based</span><span class="sc-feat">Sanskrit Meanings</span><span class="sc-feat">Hindi Names</span><span class="sc-feat">20+ Suggestions</span></div>
+    </div>
+    <div class="sc-cta"><a href="11-register.html" class="btn btn-primary w-full">Get Baby Names</a><div class="sc-plan">👑 Elite Plan — ₹699/mo</div></div>
+  </div>
+
+  <div class="service-card">
+    <div class="sc-icon">🔭</div>
+    <div>
+      <div class="sc-title">Daily Horoscope</div>
+      <div class="sc-title-hi">दैनिक राशिफल</div>
+      <div class="sc-desc">Personalized daily, weekly, and monthly horoscopes for all 12 Moon Signs. Includes Panchang, planetary positions, auspicious timings, lucky colors/numbers, and detailed life area predictions.</div>
+      <div class="sc-features"><span class="sc-feat">12 Rashis</span><span class="sc-feat">Daily/Weekly/Monthly</span><span class="sc-feat">Panchang</span><span class="sc-feat">Muhurta</span></div>
+    </div>
+    <div class="sc-cta"><a href="02-horoscope.html" class="btn btn-outline w-full">Read Horoscope</a><div class="sc-plan">🎁 Always Free</div></div>
+  </div>
+</div>
+
+<footer style="background:var(--dark);padding:40px;text-align:center;border-top:1px solid rgba(244,169,27,.1)">
+  <a href="01-home.html" style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--cream);text-decoration:none">Jyotish<span style="color:var(--gold)">AI</span></a>
+  <p style="color:var(--muted);font-size:13px;margin-top:12px">© 2026 JyotishAI • Made with 🙏 in India</p>
+</footer>
+</body>
+</html>

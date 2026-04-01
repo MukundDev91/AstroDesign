@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><title>Plan Management — JyotishAI Admin</title><link rel="stylesheet" href="../assets/style.css"/>
+<style>body{background:var(--cream)}.admin-sidebar{background:#0D0500}.plan-mgmt-card{background:var(--white);border-radius:var(--radius-lg);padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin-bottom:20px;border-left:4px solid var(--saffron)}</style></head>
+<body>
+<div class="app-layout">
+  <aside class="sidebar admin-sidebar">
+    <div class="sidebar-logo"><a href="A01-admin-dashboard.html">Jyotish<span>AI</span></a><div style="background:rgba(232,80,10,.15);color:var(--saffron);border:none;padding:3px 10px;border-radius:999px;font-size:10px;font-family:var(--font-display);font-weight:700;display:inline-block;margin-top:4px">Admin Panel</div></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Overview</div><a href="A01-admin-dashboard.html" class="sidebar-link"><span class="icon">📊</span>Dashboard</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Users</div><a href="A02-users.html" class="sidebar-link"><span class="icon">👥</span>User Management</a><a href="A04-payments.html" class="sidebar-link"><span class="icon">💳</span>Payments</a><a href="A05-plans.html" class="sidebar-link active"><span class="icon">📦</span>Plan Management</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Content</div><a href="A06-reports.html" class="sidebar-link"><span class="icon">📄</span>Report Management</a><a href="A07-horoscope.html" class="sidebar-link"><span class="icon">🔭</span>Horoscope Content</a><a href="A08-blog.html" class="sidebar-link"><span class="icon">✍️</span>Blog Management</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">System</div><a href="A10-settings.html" class="sidebar-link"><span class="icon">⚙️</span>Settings</a></div>
+    <div class="sidebar-footer"><div style="display:flex;align-items:center;gap:10px;padding:0 4px"><div class="avatar" style="background:linear-gradient(135deg,var(--saffron),var(--ember))">AD</div></div></div>
+  </aside>
+  <div class="main-content">
+    <div class="top-bar"><div class="top-bar-title">📦 Plan Management</div><div class="top-bar-actions"><button class="btn btn-primary btn-sm">+ Create New Plan</button></div></div>
+    <div class="page-content">
+      <p style="color:var(--muted);margin-bottom:24px;font-size:14px">Manage subscription plans, pricing, features, and limits. Changes will apply to new subscribers immediately.</p>
+      <div class="plan-mgmt-card">
+        <div class="flex-between" style="margin-bottom:20px"><div><div style="font-family:var(--font-display);font-size:18px;font-weight:700">🎁 Free Plan</div><div style="font-size:13px;color:var(--muted);margin-top:4px">44,421 active users</div></div><div style="display:flex;gap:8px"><button class="btn btn-outline btn-sm">✏️ Edit</button><span class="badge badge-green">Active</span></div></div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+          <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:11px;color:var(--muted);font-family:var(--font-display);font-weight:700">PRICE</div><div style="font-family:var(--font-display);font-size:20px;font-weight:700">₹0</div></div>
+          <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:11px;color:var(--muted);font-family:var(--font-display);font-weight:700">KUNDALI LIMIT</div><div style="font-family:var(--font-display);font-size:20px;font-weight:700">2</div></div>
+          <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:11px;color:var(--muted);font-family:var(--font-display);font-weight:700">AI MESSAGES</div><div style="font-family:var(--font-display);font-size:20px;font-weight:700">0</div></div>
+          <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:11px;color:var(--muted);font-family:var(--font-display);font-weight:700">REPORTS</div><div style="font-family:var(--font-display);font-size:20px;font-weight:700">None</div></div>
+        </div>
+      </div>
+      <div class="plan-mgmt-card" style="border-color:var(--saffron)">
+        <div class="flex-between" style="margin-bottom:20px"><div><div style="font-family:var(--font-display);font-size:18px;font-weight:700">🔭 Basic Plan</div><div style="font-size:13px;color:var(--muted);margin-top:4px">4,220 active users • ₹12.6L/month revenue</div></div><div style="display:flex;gap:8px"><button class="btn btn-outline btn-sm">✏️ Edit</button><span class="badge badge-green">Active</span></div></div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+          <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:11px;color:var(--muted);font-family:var(--font-display);font-weight:700">PRICE</div><div style="font-family:var(--font-display);font-size:20px;font-weight:700">₹299/mo</div></div>
+          <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:11px;color:var(--muted);font-family:var(--font-display);font-weight:700">KUNDALI LIMIT</div><div style="font-family:var(--font-display);font-size:20px;font-weight:700">Unlimited</div></div>
+          <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:11px;color:var(--muted);font-family:var(--font-display);font-weight:700">AI MESSAGES</div><div style="font-family:var(--font-display);font-size:20px;font-weight:700">20/day</div></div>
+          <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:11px;color:var(--muted);font-family:var(--font-display);font-weight:700">REPORTS</div><div style="font-family:var(--font-display);font-size:20px;font-weight:700">1 General/mo</div></div>
+        </div>
+      </div>
+      <div class="plan-mgmt-card" style="border-color:var(--gold)">
+        <div class="flex-between" style="margin-bottom:20px"><div><div style="font-family:var(--font-display);font-size:18px;font-weight:700">⭐ Premium Plan <span style="background:rgba(232,80,10,.12);color:var(--saffron);font-size:10px;font-weight:700;padding:3px 8px;border-radius:999px;font-family:var(--font-display);margin-left:8px">MOST POPULAR</span></div><div style="font-size:13px;color:var(--muted);margin-top:4px">2,640 active users • ₹8.4L/month revenue</div></div><div style="display:flex;gap:8px"><button class="btn btn-outline btn-sm">✏️ Edit</button><span class="badge badge-green">Active</span></div></div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+          <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:11px;color:var(--muted);font-family:var(--font-display);font-weight:700">PRICE</div><div style="font-family:var(--font-display);font-size:20px;font-weight:700">₹499/mo</div></div>
+          <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:11px;color:var(--muted);font-family:var(--font-display);font-weight:700">AI MESSAGES</div><div style="font-family:var(--font-display);font-size:20px;font-weight:700">Unlimited</div></div>
+          <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:11px;color:var(--muted);font-family:var(--font-display);font-weight:700">REPORTS</div><div style="font-family:var(--font-display);font-size:20px;font-weight:700">Career + Love</div></div>
+          <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:11px;color:var(--muted);font-family:var(--font-display);font-weight:700">MATCHMAKING</div><div style="font-family:var(--font-display);font-size:20px;font-weight:700">3/month</div></div>
+        </div>
+      </div>
+      <div class="plan-mgmt-card" style="border-color:var(--dark)">
+        <div class="flex-between" style="margin-bottom:20px"><div><div style="font-family:var(--font-display);font-size:18px;font-weight:700">👑 Elite Plan</div><div style="font-size:13px;color:var(--muted);margin-top:4px">1,560 active users • ₹2.8L/month revenue</div></div><div style="display:flex;gap:8px"><button class="btn btn-outline btn-sm">✏️ Edit</button><span class="badge badge-green">Active</span></div></div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+          <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:11px;color:var(--muted);font-family:var(--font-display);font-weight:700">PRICE</div><div style="font-family:var(--font-display);font-size:20px;font-weight:700">₹699/mo</div></div>
+          <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:11px;color:var(--muted);font-family:var(--font-display);font-weight:700">FULL LIFE REPORT</div><div style="font-family:var(--font-display);font-size:20px;font-weight:700">Unlimited</div></div>
+          <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:11px;color:var(--muted);font-family:var(--font-display);font-weight:700">MATCHMAKING</div><div style="font-family:var(--font-display);font-size:20px;font-weight:700">Unlimited</div></div>
+          <div style="background:var(--cream);border-radius:8px;padding:12px"><div style="font-size:11px;color:var(--muted);font-family:var(--font-display);font-weight:700">BABY NAMES</div><div style="font-family:var(--font-display);font-size:20px;font-weight:700">Unlimited</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

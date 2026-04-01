@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><title>User Detail — JyotishAI Admin</title><link rel="stylesheet" href="../assets/style.css"/>
+<style>body{background:var(--cream)}.admin-sidebar{background:#0D0500}.user-detail-header{display:flex;gap:24px;align-items:center;background:var(--white);border-radius:var(--radius-lg);padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin-bottom:24px}.udh-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--saffron),var(--ember));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:28px;font-weight:700;color:white;flex-shrink:0}.detail-grid{display:grid;grid-template-columns:1fr 320px;gap:24px}.info-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--cream-3);font-size:13px}.info-row:last-child{border:none}.info-label{color:var(--muted);font-family:var(--font-display);font-weight:700;font-size:12px}.info-val{font-weight:600;color:var(--dark)}</style></head>
+<body>
+<div class="app-layout">
+  <aside class="sidebar admin-sidebar">
+    <div class="sidebar-logo"><a href="A01-admin-dashboard.html">Jyotish<span>AI</span></a><div style="background:rgba(232,80,10,.15);color:var(--saffron);border:none;padding:3px 10px;border-radius:999px;font-size:10px;font-family:var(--font-display);font-weight:700;display:inline-block;margin-top:4px">Admin Panel</div></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Overview</div><a href="A01-admin-dashboard.html" class="sidebar-link"><span class="icon">📊</span>Dashboard</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Users</div><a href="A02-users.html" class="sidebar-link active"><span class="icon">👥</span>User Management</a><a href="A04-payments.html" class="sidebar-link"><span class="icon">💳</span>Payments</a><a href="A05-plans.html" class="sidebar-link"><span class="icon">📦</span>Plan Management</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Content</div><a href="A06-reports.html" class="sidebar-link"><span class="icon">📄</span>Report Management</a><a href="A07-horoscope.html" class="sidebar-link"><span class="icon">🔭</span>Horoscope Content</a><a href="A08-blog.html" class="sidebar-link"><span class="icon">✍️</span>Blog Management</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">System</div><a href="A10-settings.html" class="sidebar-link"><span class="icon">⚙️</span>Settings</a></div>
+    <div class="sidebar-footer"><div style="display:flex;align-items:center;gap:10px;padding:0 4px"><div class="avatar" style="background:linear-gradient(135deg,var(--saffron),var(--ember))">AD</div><div><div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--cream)">Admin User</div></div></div></div>
+  </aside>
+  <div class="main-content">
+    <div class="top-bar"><div class="top-bar-title"><a href="A02-users.html" style="color:var(--muted);text-decoration:none">Users</a> / Rahul Sharma</div><div class="top-bar-actions"><button class="btn btn-outline btn-sm" style="color:var(--danger);border-color:var(--danger)">🚫 Suspend User</button><button class="btn btn-primary btn-sm">✉️ Send Email</button></div></div>
+    <div class="page-content">
+      <div class="user-detail-header">
+        <div class="udh-avatar">RS</div>
+        <div style="flex:1">
+          <div style="font-family:var(--font-display);font-size:24px;font-weight:700;margin-bottom:4px">Rahul Sharma</div>
+          <div style="font-size:14px;color:var(--muted);margin-bottom:12px">rahul.s@gmail.com • +91 98765 43210 • Mumbai, Maharashtra</div>
+          <div style="display:flex;gap:10px"><span class="badge badge-saffron">Free Plan</span><span class="badge badge-green">Active</span><span class="badge badge-gold">Member since 12 Mar 2026</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;flex-shrink:0">
+          <button class="btn btn-primary btn-sm">🔼 Upgrade Plan</button>
+          <button class="btn btn-outline btn-sm">📧 Reset Password</button>
+        </div>
+      </div>
+
+      <div class="detail-grid">
+        <div>
+          <div class="card" style="margin-bottom:20px">
+            <div style="font-family:var(--font-display);font-size:15px;font-weight:700;margin-bottom:16px">👤 Account Details</div>
+            <div class="info-row"><span class="info-label">Full Name</span><span class="info-val">Rahul Sharma</span></div>
+            <div class="info-row"><span class="info-label">Email</span><span class="info-val">rahul.s@gmail.com</span></div>
+            <div class="info-row"><span class="info-label">Phone</span><span class="info-val">+91 98765 43210</span></div>
+            <div class="info-row"><span class="info-label">Location</span><span class="info-val">Mumbai, Maharashtra</span></div>
+            <div class="info-row"><span class="info-label">Date of Birth</span><span class="info-val">15 Aug 1992 • 06:30 AM</span></div>
+            <div class="info-row"><span class="info-label">Nakshatra</span><span class="info-val">Shravana — Capricorn Moon</span></div>
+            <div class="info-row"><span class="info-label">Current Plan</span><span class="info-val"><span class="badge badge-saffron">Free</span></span></div>
+            <div class="info-row"><span class="info-label">Login Method</span><span class="info-val">Email + Password</span></div>
+          </div>
+          <div class="card" style="margin-bottom:20px">
+            <div style="font-family:var(--font-display);font-size:15px;font-weight:700;margin-bottom:16px">📊 Activity</div>
+            <div class="info-row"><span class="info-label">Kundalis Generated</span><span class="info-val">2</span></div>
+            <div class="info-row"><span class="info-label">Reports Purchased</span><span class="info-val">2</span></div>
+            <div class="info-row"><span class="info-label">AI Chat Messages</span><span class="info-val">45</span></div>
+            <div class="info-row"><span class="info-label">Total Spent</span><span class="info-val" style="color:var(--success);font-family:var(--font-display);font-weight:700">₹348</span></div>
+            <div class="info-row"><span class="info-label">Last Login</span><span class="info-val">Today, 2:30 PM</span></div>
+            <div class="info-row"><span class="info-label">Last Kundali</span><span class="info-val">12 Mar 2026</span></div>
+          </div>
+          <div class="card">
+            <div style="font-family:var(--font-display);font-size:15px;font-weight:700;margin-bottom:16px">💳 Payment History</div>
+            <table style="width:100%">
+              <thead><tr style="background:var(--dark)"><th style="color:var(--gold);font-family:var(--font-display);font-size:11px;padding:10px 14px;text-align:left">Date</th><th style="color:var(--gold);font-family:var(--font-display);font-size:11px;padding:10px 14px;text-align:left">Item</th><th style="color:var(--gold);font-family:var(--font-display);font-size:11px;padding:10px 14px;text-align:left">Amount</th><th style="color:var(--gold);font-family:var(--font-display);font-size:11px;padding:10px 14px;text-align:left">Status</th></tr></thead>
+              <tbody>
+                <tr><td style="padding:10px 14px;font-size:13px;border-bottom:1px solid var(--cream-3)">12 Mar 2026</td><td style="padding:10px 14px;font-size:13px;border-bottom:1px solid var(--cream-3)">General Report</td><td style="padding:10px 14px;font-size:13px;border-bottom:1px solid var(--cream-3)">₹199</td><td style="padding:10px 14px;border-bottom:1px solid var(--cream-3)"><span class="badge badge-green">Paid</span></td></tr>
+                <tr><td style="padding:10px 14px;font-size:13px">8 Mar 2026</td><td style="padding:10px 14px;font-size:13px">Matchmaking</td><td style="padding:10px 14px;font-size:13px">₹149</td><td style="padding:10px 14px"><span class="badge badge-green">Paid</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <div class="card" style="margin-bottom:20px">
+            <div style="font-family:var(--font-display);font-size:14px;font-weight:700;margin-bottom:16px">🛠️ Admin Actions</div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <button class="btn btn-primary w-full">🔼 Upgrade Plan Manually</button>
+              <button class="btn btn-outline w-full">🎁 Give Free Report Credit</button>
+              <button class="btn btn-outline w-full">📧 Send Custom Email</button>
+              <button class="btn btn-outline w-full">🔒 Reset Password</button>
+              <button class="btn btn-outline w-full" style="color:var(--danger);border-color:var(--danger)">🚫 Suspend Account</button>
+              <button class="btn btn-outline w-full" style="color:var(--danger);border-color:var(--danger)">🗑️ Delete Account</button>
+            </div>
+          </div>
+          <div class="card">
+            <div style="font-family:var(--font-display);font-size:14px;font-weight:700;margin-bottom:16px">📝 Admin Notes</div>
+            <textarea style="width:100%;border:1.5px solid var(--cream-3);border-radius:var(--radius);padding:12px;font-family:var(--font-body);font-size:13px;resize:vertical;min-height:100px" placeholder="Add internal notes about this user..."></textarea>
+            <button class="btn btn-outline btn-sm" style="margin-top:8px">Save Notes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

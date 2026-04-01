@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><title>System Settings — JyotishAI Admin</title><link rel="stylesheet" href="../assets/style.css"/>
+<style>
+body { background: var(--cream); }
+.admin-sidebar { background: #0D0500; }
+.settings-nav { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+.snav-btn { padding: 10px 20px; border-radius: var(--radius); font-family: var(--font-display); font-size: 13px; font-weight: 700; cursor: pointer; border: 1.5px solid var(--cream-3); color: var(--muted); background: var(--white); transition: var(--transition); }
+.snav-btn.active { background: var(--saffron); color: white; border-color: var(--saffron); }
+.settings-section { background: var(--white); border-radius: var(--radius-lg); padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.05); margin-bottom: 20px; }
+.ss-title { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+.ss-desc { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+.toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--cream-3); }
+.toggle-row:last-of-type { border: none; }
+.toggle-label { font-size: 14px; color: var(--dark); }
+.toggle-desc { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.toggle-switch { width: 48px; height: 26px; background: var(--cream-3); border-radius: 999px; position: relative; cursor: pointer; flex-shrink: 0; transition: var(--transition); }
+.toggle-switch.on { background: var(--saffron); }
+.toggle-switch::after { content: ''; position: absolute; width: 20px; height: 20px; background: white; border-radius: 50%; top: 3px; left: 3px; transition: var(--transition); box-shadow: 0 1px 4px rgba(0,0,0,.2); }
+.toggle-switch.on::after { left: 25px; }
+</style>
+</head>
+<body>
+<div class="app-layout">
+  <aside class="sidebar admin-sidebar">
+    <div class="sidebar-logo"><a href="A01-admin-dashboard.html">Jyotish<span>AI</span></a><div style="background:rgba(232,80,10,.15);color:var(--saffron);border:none;padding:3px 10px;border-radius:999px;font-size:10px;font-family:var(--font-display);font-weight:700;display:inline-block;margin-top:4px">Admin Panel</div></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Overview</div><a href="A01-admin-dashboard.html" class="sidebar-link"><span class="icon">📊</span>Dashboard</a><a href="A09-analytics.html" class="sidebar-link"><span class="icon">📈</span>Analytics</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Users</div><a href="A02-users.html" class="sidebar-link"><span class="icon">👥</span>User Management</a><a href="A04-payments.html" class="sidebar-link"><span class="icon">💳</span>Payments</a><a href="A05-plans.html" class="sidebar-link"><span class="icon">📦</span>Plan Management</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">Content</div><a href="A06-reports.html" class="sidebar-link"><span class="icon">📄</span>Report Management</a><a href="A07-horoscope.html" class="sidebar-link"><span class="icon">🔭</span>Horoscope Content</a><a href="A08-blog.html" class="sidebar-link"><span class="icon">✍️</span>Blog Management</a></div>
+    <div class="sidebar-section"><div class="sidebar-section-label">System</div><a href="A10-settings.html" class="sidebar-link active"><span class="icon">⚙️</span>Settings</a></div>
+    <div class="sidebar-footer"><div style="display:flex;align-items:center;gap:10px;padding:0 4px"><div class="avatar" style="background:linear-gradient(135deg,var(--saffron),var(--ember))">AD</div><div><div style="font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--cream)">Admin User</div><div style="font-size:11px;color:var(--muted)">Super Admin</div></div></div></div>
+  </aside>
+  <div class="main-content">
+    <div class="top-bar">
+      <div class="top-bar-title">⚙️ System Settings</div>
+      <div class="top-bar-actions">
+        <button class="btn btn-primary btn-sm">💾 Save All Changes</button>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="settings-nav">
+        <button class="snav-btn active">⚙️ General</button>
+        <button class="snav-btn">🤖 AI & Reports</button>
+        <button class="snav-btn">💳 Payment</button>
+        <button class="snav-btn">📧 Email & SMS</button>
+        <button class="snav-btn">🔒 Security</button>
+        <button class="snav-btn">🌐 SEO & Site</button>
+      </div>
+
+      <!-- General Settings -->
+      <div class="settings-section">
+        <div class="ss-title">🏠 Site Information</div>
+        <div class="ss-desc">Basic site-wide settings visible to users</div>
+        <div class="form-grid-2">
+          <div class="form-group"><label class="form-label">Site Name</label><input class="form-control" value="JyotishAI"/></div>
+          <div class="form-group"><label class="form-label">Site Tagline</label><input class="form-control" value="Your AI-Powered Vedic Astrologer"/></div>
+          <div class="form-group"><label class="form-label">Site URL</label><input class="form-control" value="https://jyotishai.com"/></div>
+          <div class="form-group"><label class="form-label">Support Email</label><input class="form-control" value="support@jyotishai.com"/></div>
+          <div class="form-group"><label class="form-label">Default Language</label><select class="form-control"><option>English + Hindi (Bilingual)</option><option>English Only</option><option>Hindi Only</option></select></div>
+          <div class="form-group"><label class="form-label">Default Ayanamsha</label><select class="form-control"><option>Lahiri (Chitrapaksha)</option><option>Raman</option><option>KP (Krishnamurti)</option></select></div>
+        </div>
+      </div>
+
+      <!-- Feature Toggles -->
+      <div class="settings-section">
+        <div class="ss-title">⚡ Feature Toggles</div>
+        <div class="ss-desc">Enable or disable platform features globally</div>
+
+        <div class="toggle-row">
+          <div><div class="toggle-label">🤖 AI Kundali Reader</div><div class="toggle-desc">Allow users to chat with AI about their kundali</div></div>
+          <div class="toggle-switch on"></div>
+        </div>
+        <div class="toggle-row">
+          <div><div class="toggle-label">📊 Auto Report Generation</div><div class="toggle-desc">Automatically generate PDF reports via AI</div></div>
+          <div class="toggle-switch on"></div>
+        </div>
+        <div class="toggle-row">
+          <div><div class="toggle-label">🔭 Daily Horoscope Page</div><div class="toggle-desc">Show horoscope for all 12 signs publicly</div></div>
+          <div class="toggle-switch on"></div>
+        </div>
+        <div class="toggle-row">
+          <div><div class="toggle-label">💑 Matchmaking Feature</div><div class="toggle-desc">Allow Kundali Milan / Guna matching</div></div>
+          <div class="toggle-switch on"></div>
+        </div>
+        <div class="toggle-row">
+          <div><div class="toggle-label">👶 Baby Names Feature</div><div class="toggle-desc">Allow Nakshatra-based baby name suggestions</div></div>
+          <div class="toggle-switch on"></div>
+        </div>
+        <div class="toggle-row">
+          <div><div class="toggle-label">✍️ Blog / Articles Section</div><div class="toggle-desc">Show public blog posts to all visitors</div></div>
+          <div class="toggle-switch on"></div>
+        </div>
+        <div class="toggle-row">
+          <div><div class="toggle-label">🔒 Maintenance Mode</div><div class="toggle-desc">Take site offline for maintenance (shows message page)</div></div>
+          <div class="toggle-switch"></div>
+        </div>
+      </div>
+
+      <!-- Free Plan Limits -->
+      <div class="settings-section">
+        <div class="ss-title">🎁 Free Plan Limits</div>
+        <div class="ss-desc">Control what free users can access before being prompted to upgrade</div>
+        <div class="form-grid-3">
+          <div class="form-group"><label class="form-label">Free Kundali Reads</label><input class="form-control" value="2" type="number"/></div>
+          <div class="form-group"><label class="form-label">Free AI Chat Messages</label><input class="form-control" value="0" type="number"/></div>
+          <div class="form-group"><label class="form-label">Free Reports Allowed</label><input class="form-control" value="0" type="number"/></div>
+        </div>
+        <div style="background:rgba(232,80,10,.06);border-radius:var(--radius);padding:12px;font-size:13px;color:var(--muted);border-left:3px solid var(--saffron)">
+          ⚠️ Changing free limits affects user experience immediately. A/B test recommended before global changes.
+        </div>
+      </div>
+
+      <!-- Razorpay Settings -->
+      <div class="settings-section">
+        <div class="ss-title">💳 Payment Gateway (Razorpay)</div>
+        <div class="ss-desc">Configure Razorpay API credentials and payment settings</div>
+        <div class="form-grid-2">
+          <div class="form-group"><label class="form-label">Razorpay Key ID</label><input class="form-control" value="rzp_live_••••••••••••" type="password"/></div>
+          <div class="form-group"><label class="form-label">Razorpay Key Secret</label><input class="form-control" value="••••••••••••••••••••" type="password"/></div>
+          <div class="form-group"><label class="form-label">Webhook URL</label><input class="form-control" value="https://jyotishai.com/api/webhooks/razorpay" readonly style="background:var(--cream);color:var(--muted)"/></div>
+          <div class="form-group"><label class="form-label">Currency</label><select class="form-control"><option>INR — Indian Rupee</option></select></div>
+        </div>
+        <div style="display:flex;gap:12px">
+          <button class="btn btn-primary btn-sm">💾 Save Credentials</button>
+          <button class="btn btn-outline btn-sm">🧪 Test Connection</button>
+        </div>
+      </div>
+
+      <!-- AI Config -->
+      <div class="settings-section">
+        <div class="ss-title">🤖 AI Model Configuration</div>
+        <div class="ss-desc">Configure which AI models power each feature</div>
+        <div class="form-grid-2">
+          <div class="form-group"><label class="form-label">Kundali Report Generation</label><select class="form-control"><option>GPT-4o (Recommended)</option><option>GPT-4 Turbo</option><option>Claude Sonnet 4.6</option></select></div>
+          <div class="form-group"><label class="form-label">AI Chat (Kundali Reader)</label><select class="form-control"><option>Claude Sonnet 4.6</option><option>GPT-4o</option></select></div>
+          <div class="form-group"><label class="form-label">Horoscope Generation</label><select class="form-control"><option>GPT-4o Mini (Fast)</option><option>GPT-4o</option></select></div>
+          <div class="form-group"><label class="form-label">Blog Post Generation</label><select class="form-control"><option>GPT-4o</option><option>Claude Sonnet 4.6</option></select></div>
+        </div>
+        <div class="form-group"><label class="form-label">AI System Prompt (Kundali Reader)</label><textarea class="form-control" rows="4">You are JyotishAI, an expert Vedic astrologer with deep knowledge of Jyotish Shastra. You interpret birth charts (Kundali) using traditional Parashari system with Lahiri Ayanamsha. Always respond with warmth, wisdom, and cultural sensitivity. Support both English and Hindi.</textarea></div>
+        <button class="btn btn-primary btn-sm">💾 Save AI Config</button>
+      </div>
+
+      <div style="display:flex;justify-content:flex-end;gap:12px;margin-top:8px">
+        <button class="btn btn-outline">Discard Changes</button>
+        <button class="btn btn-primary">💾 Save All Settings</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
